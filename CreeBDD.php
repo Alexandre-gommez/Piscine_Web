@@ -23,7 +23,7 @@ if($data){
 	//tant que le fichier n'est pas fini on execute ligne par ligne les commandes dans la base de donnée
 	while(!feof($data)){
 		//lecture ligne par ligne
-		$requete=fgets($data)
+		$requete=fgets($data);
 		//execution de la requette 
 		mysqli_query($db_handle,$requete);
 	}
