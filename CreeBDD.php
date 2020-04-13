@@ -16,7 +16,7 @@ mysqli_query($db_handle,"CREATE DATABASE ecey;");
 	//on ouvre le fichier contenant les requettes
 $data=fopen('BDD.sql','r');
 
-if($data){
+if(!$data){
 	echo "lecture des données impossible";
 	exit();
 }else {
@@ -27,5 +27,6 @@ if($data){
 		//execution de la requette 
 		mysqli_query($db_handle,$requete);
 	}
+	echo "BDD crée";
 }
 ?>
