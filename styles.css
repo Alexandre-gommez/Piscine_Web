@@ -113,17 +113,12 @@
     }
     
     @media (max-width: 575.98px) {
-        .description {
-            left: 0;
-            padding: 0 15px;
-            position: absolute;
-            top: 10%;
-            transform: none;
-            text-align: center;
-        }
         
         .description h1 {
             font-size: 2em;
+        }
+        .nav-link {
+            text-align: center;
         }
         
         .description p {
