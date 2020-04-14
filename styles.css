@@ -1,0 +1,239 @@
+    body {
+        padding: 0px;
+        margin: 0px;
+        background: #f2f6e9;
+    }
+    header {
+        background-image: url('sky-wallpaper-hd.png');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        opacity: 90%;
+    }
+    .overlay {
+        position: absolute;
+        min-height: 100%;
+        min-width: 100%;
+        left: 0px;
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .navbar {
+        background:white ;
+    }
+    .nav-link, .navbar-brand {
+        color: #000;
+        cursor: pointer;
+    }
+    .nav-link {
+        margin-right: 1em !important;
+    }
+    .nav-link:hover {
+        color: #6897ff ;
+    }
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+    #logo{
+        vertical-align: middle;
+        width: 130px;
+        weight: 70px;
+    }
+    .description button {
+        border:1px solid #6897ff ;
+        background-color: #6897ff ;
+        border-radius: 0;
+        color: #fff;
+        font-family: 'Arapey', serif;
+    }
+    .description button:hover {
+        border:1px solid #fff;
+        background-color: #fff;
+        color: #000;
+    }
+    .description {
+        position: relative;
+        top:35%;
+        text-align: center;
+        animation:SlideUp 2.5s ease;
+    }
+    .description h1 {
+        color: #6897ff  ;
+        font-family: 'Arapey', serif;
+    }
+    .description p {
+        color: #fff;
+        font-size: 1.3rem;
+        line-height: 1.5;
+        font-family: 'Arapey', serif;
+    }
+    
+    .features {
+        margin: 4em auto;
+        padding: 1em;
+        position: relative;
+    }
+    .feature-title {
+        color: #333;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    .features img {
+        -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        margin-bottom: 16px;
+    }
+    .features .form-control,
+    .features input {
+        border-radius: 0;
+    }
+    .features .btn {
+        background-color: #6897ff  ;
+        border: 1px solid #6897ff  ;
+        color: #fff;
+        margin-top: 20px;
+    }
+    .features .btn:hover {
+        background-color: #333;
+        border: 1px solid #6897ff ;
+    }
+    
+    #page-footer {
+        background-color: #222;
+        color: #ccc;
+        padding: 60px 0 30px;
+    }
+    .footer-copyright {
+        color: #666;
+        padding: 40px 0;
+    }
+    
+    @media (max-width: 575.98px) {
+        
+        .description h1 {
+            font-size: 2em;
+        }
+        .nav-link {
+            text-align: center;
+        }
+        
+        .description p {
+            font-size: 1.2rem;
+        }
+        
+        .features {
+            margin: 0;
+        }
+    }
+    
+    /* width */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #6897ff ;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+.categories{
+    display: inline-block;
+    font-size: 20px;
+    padding-right: 10px;
+    margin-top: 2.3rem;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #d4b09d  ;
+    font-family: 'Arapey', serif;
+}
+.product-text{
+    font-size: 25px;
+    color: #d4b09d  ;
+    font-family: 'Arapey', serif;
+}
+.categories:hover{
+
+    color: #000000  ;
+}
+@media (max-width: 990px) {
+    .categories{
+        display: inline-block;
+        padding-right: 10px;
+        margin-top: 0px;
+        margin-bottom: 1.5rem;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+.fade-in {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+  }
+  }
+
+  @keyframes SlideUp {
+    0% {
+        transform:translateY(250px);
+      }
+      100% {
+        transform:translateY(0);
+    }
+  }
