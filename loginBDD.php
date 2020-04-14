@@ -13,5 +13,4 @@ $db_found=mysqli_select_db($db_handle,'ecey');
 if(!$db_found){
 	echo "Problemes";
 }
-echo "test";
 ?>
