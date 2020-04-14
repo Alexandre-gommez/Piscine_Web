@@ -24,7 +24,7 @@ if(!$data){
 	//tant que le fichier n'est pas fini on execute ligne par ligne les commandes dans la base de donnée
 	while(!feof($data)){
 		//lecture ligne par ligne
-		$requete=fgets($data);
+		$requete=fgets($data, filesize('BDD.sql'));
 		echo $requete;
 		echo "<br>";
 		//execution de la requette 

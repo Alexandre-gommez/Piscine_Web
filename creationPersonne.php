@@ -19,12 +19,17 @@
  $date=isset($_POST["date"]) ? $_POST["date"]:"";
 
 	//Creation CB
- mysqli_query($db_handle,"INSERT INTO CB(Nom_carte, Num, Crypto, Date_Expiration, Mdp, adresse1, adresse2, ville, CodePostal, Pays) VALUES("'.$nom.'","'.$prenom.'","'.$mail.'","'.$Ntel.'","'.$mdp.'","'.$adresse1.'",'.$adresse2.'","'.$ville.'","'.$codePostal.'","'.$Pays.');");
+ mysqli_query($db_handle,"INSERT INTO CB(Solde, Nom_carte, Num, Crypto, Type, Date_expiration) VALUES('100','".$NomCB."','".$NCarte."','".$crypto."','".$typecarte."','".$date."');");
+
+$temp=mysqli_query($db_handle,"SELECT MAX(id) FROM CB");
+$Personne=mysqli_fetch_assoc($temp);
+$idPersonne=$Personne['MAX(id)'];
+echo $idPersonne;
 
 	//creation de la personne 
- mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays) VALUES("'.$nom.'","'.$prenom.'","'.$mail.'","'.$Ntel.'","'.$mdp.'","'.$adresse1.'",'.$adresse2.'","'.$ville.'","'.$codePostal.'","'.$Pays.');");
+ mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idPersonne."');");
 
-$idPersonne=mysqli_query($db_handle,"SELECT MAX(id) FROM CB");
+
 
 
 
