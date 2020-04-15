@@ -26,57 +26,64 @@
                         <div id="form1">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputname">Nom</label>
-                                    <input type="text" class="form-control" id="inputname">
+                                    <label for="nom">Nom</label>
+                                    <input type="text" class="form-control" id="nom" required>
+                                    <span id="nom_manquant"></span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Prenom</label>
-                                    <input type="text" class="form-control" id="inputname2">
+                                    <label for="prenom">Prenom</label>
+                                    <input type="text" class="form-control" id="prenom" required>
+                                    <span id="prenom_manquant"></span>
                                 </div>
                             </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <span id="email_manquant"></span>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Nom d'utilisateur</label>
-                                <input type="text" class="form-control" id="username1">
+                                <label for="username">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="username" required>
+                                <span id="username_manquant"></span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputPassword1">Password</label>
-                                <input type="password" class="form-control" id="inputPassword1">
+                                <label for="Password1">Password</label>
+                                <input type="password" class="form-control" id="Password1" required>
+                                <span id="pass_manquant"></span>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputPassword2">Password</label>
-                                <input type="password" class="form-control" id="inputPassword2">
+                                <label for="Password2">Password</label>
+                                <input type="password" class="form-control" id="Password2" required>
+                                <span id="pas2_manquant"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            <label for="adress1">Addresse</label>
+                            <input type="text" class="form-control" id="adress1" placeholder="1 rue ece" required>
+                            <span id="adress_manquant"></span>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                            <label for="adress2">Addresse 2</label>
+                            <input type="text" class="form-control" id="adress2" >
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                </select>
+                                <label for="ville">Ville</label>
+                                <input type="text" class="form-control" id="ville" required>
+                                <span id="ville_manquant"></span>
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
+                                <label for="pays">Pays</label>
+                                <input type="text" class="form-control" id="pays" required>
+                                <span id="pays_manquant"></span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="cp">Code Postal</label>
+                                <input type="text" class="form-control" id="cp" required>
+                                <span id="cp_manquant"></span>
                             </div>
                         </div>
                         <input type="button" value="Suivant" class="btn btn-primary" id="valid1"></input>
@@ -84,31 +91,35 @@
                     
                     <div id="form2">
                         <div class="form-group">
-                            <label for="number">Numéro de carte</label>
-                            <input type="text" class="form-control" id="number" placeholder="1234 Main St">
+                            <label for="number1">Numéro de carte</label>
+                            <input type="text" class="form-control" id="number1" required>
+                            <span id="nb_manquant"></span>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <label for="inputEmail4">CVV</label>
-                                <input type="email" class="form-control" id="inputEmail4" required
-                                minlength="4" maxlength="8">
+                                <label for="cvv">CVV</label>
+                                <input type="text" class="form-control" id="cvv"required>
+                                <span id="cvv_manquant"></span>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="inputPassword4">Date</label>
-                                <input type="password" class="form-control" id="inputPassword4">
+                                <label for="date">Date</label>
+                                <input type="text" class="form-control" id="date"required>
+                                <span id="date_manquant"></span>
                             </div>
                             <div class="form-group col-md-7">
                             <label for="type">Type de carte</label>
-                            <select class="custom-select mr-sm-2" id="type">
-                              <option selected>...</option>
+                            <select class="custom-select mr-sm-2" id="type" required>
+                              <option selected></option>
                               <option value="1">Mastercard</option>
                               <option value="2">Visa</option>
                               <option value="3">American Express</option>
                             </select>
+                            <span id="type_manquant"></span>
                           </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" id="valid2"> Valider </input>
+                        <input type="button" value="Retour" class="btn btn-secondary" id="retour"></input>
+                        <button type="submit" class="btn btn-primary" id="valid2"> Valider </button>
                         
                     </div>
                         
@@ -124,15 +135,227 @@
     <script>
 
         var validate1 = document.getElementById("valid1");
+        var validate2 = document.getElementById("valid2");
+        var retour = document.getElementById("retour");
+
         var form1 = document.getElementById('form1');
         var form2 = document.getElementById('form2');
-        form2.style.display = 'none';
-        validate1.addEventListener('click',validation);
+
+        var number = document.getElementById("number1");
+        var numbermanquant = document.getElementById("nb_manquant");
+
+        var dat = document.getElementById("date");
+        var datmanquant = document.getElementById("date_manquant");
+
+        var type = document.getElementById("type");
+        var typemanquant = document.getElementById("type_manquant");
+
+        var cvv = document.getElementById("cvv");
+        var cvvmanquant = document.getElementById("cvv_manquant");
+
+        var nom = document.getElementById("nom");
+        var nmanquant = document.getElementById("nom_manquant");
+
+        var prenom = document.getElementById("prenom");
+        var pnmanquant = document.getElementById("prenom_manquant");
+
+        var username = document.getElementById("username");
+        var umanquant = document.getElementById("username_manquant");
+
+        var mail = document.getElementById("email");
+        var mmanquant = document.getElementById("email_manquant");
+
+        var pass = document.getElementById("Password1");
+        var pmanquant = document.getElementById("pass_manquant");
+
+        var pass2 = document.getElementById("Password2");
+        var p2manquant = document.getElementById("pas2_manquant");
+
+        var adress = document.getElementById("adress1");
+        var amanquant = document.getElementById("adress_manquant");
+
+        var pays = document.getElementById("pays");
+        var paysmanquant = document.getElementById("pays_manquant");
+
+        var ville = document.getElementById("ville");
+        var vmanquant = document.getElementById("ville_manquant");
+
+        var cp = document.getElementById("cp");
+        var cpmanquant = document.getElementById("cp_manquant");
         
+        validate1.addEventListener('click',validation);
+        validate2.addEventListener('click',validation2);
+        retour.addEventListener('click',back);
+
+        form2.style.display = 'none';
+
+        function validation2(res)
+       {
+        if(dat.validity.valueMissing)
+          {
+             res.preventDefault();
+             datmanquant.textContent = "Entrez la date d'expiration";
+             datmanquant.style.color = 'red';
+             datmanquant.style.display = 'block';
+          }
+          else{
+            datmanquant.style.display = 'none';
+          }
+         if(cvv.validity.valueMissing)
+          {
+             res.preventDefault();
+             cvvmanquant.textContent = "Entrez votre cvv";
+             cvvmanquant.style.color = 'red';
+             cvvmanquant.style.display = 'block';
+          }
+          else{
+            cvvmanquant.style.display = 'none';
+          }
+          if(number.validity.valueMissing)
+          {
+             res.preventDefault();
+             numbermanquant.textContent = "Entrez un numéro de carte";
+             numbermanquant.style.color = 'red';
+             numbermanquant.style.display = 'block';
+          }
+          else{
+            numbermanquant.style.display = 'none';
+          }
+          if(type.validity.valueMissing)
+          {
+             res.preventDefault();
+             typemanquant.textContent = "Entrez le type de carte";
+             typemanquant.style.color = 'red';
+             typemanquant.style.display = 'block';
+          }
+          else{
+            typemanquant.style.display = 'none';
+          }
+       }
+
         function validation()
         {
+            var i = 0;
+
+         if(pass.validity.valueMissing)
+          {
+             pmanquant.textContent = "Entrez un mot de passe";
+             pmanquant.style.color = 'red';
+             pmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            pmanquant.style.display = 'none';
+          }
+          if(pass2.validity.valueMissing)
+          {
+             p2manquant.textContent = "Entrez un mot de passe";
+             p2manquant.style.color = 'red';
+             p2manquant.style.display = 'block';
+             i++;
+          }
+          else if(pass!=pass2)
+          {
+             pmanquant.textContent = "Entrez deux mots de passes identiques";
+             pmanquant.style.color = 'red';
+             pmanquant.style.display = 'block';
+             p2manquant.style.display = 'none';
+             i++;
+          }
+          else{
+            p2manquant.style.display = 'none';
+          }
+          if(username.validity.valueMissing)
+          {
+             umanquant.textContent = "Entrez un nom d'utilisateur";
+             umanquant.style.color = 'red';
+             umanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            umanquant.style.display = 'none';
+          }
+
+          if(nom.validity.valueMissing)
+          {
+             nmanquant.textContent = "Entrez votre nom";
+             nmanquant.style.color = 'red';
+             nmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            nmanquant.style.display = 'none';
+          }
+          if(prenom.validity.valueMissing)
+          {
+             pnmanquant.textContent = "Entrez votre prenom";
+             pnmanquant.style.color = 'red';
+             pnmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            pnmanquant.style.display = 'none';
+          }
+          if(mail.validity.valueMissing)
+          {
+             mmanquant.textContent = "Entrez votre email";
+             mmanquant.style.color = 'red';
+             mmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            mmanquant.style.display = 'none';
+          }
+          if(adress.validity.valueMissing)
+          {
+             amanquant.textContent = "Entrez votre adresse";
+             amanquant.style.color = 'red';
+             amanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            amanquant.style.display = 'none';
+          }
+          if(pays.validity.valueMissing)
+          {
+             paysmanquant.textContent = "Entrez votre pays";
+             paysmanquant.style.color = 'red';
+             paysmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            paysmanquant.style.display = 'none';
+          }
+          if(ville.validity.valueMissing)
+          {
+             vmanquant.textContent = "Entrez votre ville";
+             vmanquant.style.color = 'red';
+             vmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            vmanquant.style.display = 'none';
+          }
+          if(cp.validity.valueMissing)
+          {
+             cpmanquant.textContent = "Entrez votre code postal";
+             cpmanquant.style.color = 'red';
+             cpmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            cpmanquant.style.display = 'none';
+          }
+          if(i==0)
+          {
             form1.style.display = 'none';
             form2.style.display = 'block';
+          }
+        }
+        function back()
+        {
+            form2.style.display = 'none';
+            form1.style.display = 'block';
         }
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

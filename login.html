@@ -56,15 +56,21 @@
              res.preventDefault();
              pmanquant.textContent = "Entrez un mot de passe";
              pmanquant.style.color = 'red';
+             pmanquant.style.display = 'block';
           }
-
+          else{
+            pmanquant.style.display = 'none';
+          }
           if(username.validity.valueMissing)
           {
              res.preventDefault();
              umanquant.textContent = "Entrez un nom d'utilisateur";
              umanquant.style.color = 'red';
+             umanquant.style.display = 'block';
           }
-          
+          else{
+            umanquant.style.display = 'none';
+          }          
 
        }
     </script>
