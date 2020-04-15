@@ -11,7 +11,9 @@ CREATE TABLE Vendeur(Personne int NOT NULL, FOREIGN KEY(Personne) REFERENCES Per
 --Table Acheteur
 CREATE TABLE Acheteur(Personne int NOT NULL, FOREIGN KEY(Personne) REFERENCES Personne(Id));
 --Table Enchere
-CREATE TABLE Enchere(Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id),Fin DATE NOT NULL, Prix float NOT NULL);
+CREATE TABLE Enchere(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id),Fin DATE NOT NULL, Prix float NOT NULL);
+--Table offre 
+CREATE 	TABLE ListeEnchere(Referance int NOT NULL, FOREIGN KEY(Referance) REFERENCES Enchere(Id),Personne int NOT NULL, FOREIGN KEY(Personne) REFERENCES Personne(Id),Offre float NOT NULL);
 --Table Achat
 CREATE TABLE Achat(Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id), Prix float NOT NULL);
 --Table Offre
