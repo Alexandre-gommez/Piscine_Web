@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,7 @@ session_start();
     
 </head>
 <body class="fade-in">
+  <p><?php echo $_SESSION['role'];?></p>
     <nav class="navbar navbar-expand-md shadow">
         <a class="navbar-brand" href="#">
             <img id="logo" src="logo.png" alt="">
@@ -67,6 +69,7 @@ session_start();
               <br>
               <br>
               <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+              <p><?php $_SESSION['role'];?></p>
             </div>
             <div class="col-md-6">
               <h4>Vendez</h4>

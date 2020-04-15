@@ -41,4 +41,5 @@ if ($Role==1) {
 }
 
 mysqli_close($db_handle);
+header("Location:index.php");
 ?>
