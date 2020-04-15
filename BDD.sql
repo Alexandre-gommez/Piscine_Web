@@ -26,3 +26,5 @@ CREATE TABLE VIP(Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id));
 CREATE TABLE ListeAchat(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Achat int NOT NULL, FOREIGN KEY(Achat) REFERENCES Objet(Id), Client int NOT NULL, FOREIGN KEY(Client) REFERENCES Personne(Id));
 --Table Liste Vente 
 CREATE TABLE ListeVente(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Vente int NOT NULL, FOREIGN KEY(Vente) REFERENCES Objet(Id), Client int NOT NULL, FOREIGN KEY(Client) REFERENCES Personne(Id));
+--Table Hitorique des vendeurs
+CREATE TABLE Histovendeur(Personne int NOT NULL, FOREIGN KEY(Personne) REFERENCES Personne(Id));
