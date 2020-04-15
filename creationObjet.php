@@ -25,6 +25,15 @@ if($type=="Musée"){
 	mysqli_query($db_handle,"INSERT INTO Ferraille(Objet) VALUES('".$idObjet."');");
 }
 
+if($type=="Musée"){
+	mysqli_query($db_handle,"INSERT INTO Musee(Objet) VALUES('".$idObjet."');");
+}
+if($type=="VIP"){
+	mysqli_query($db_handle,"INSERT INTO VIP(Objet) VALUES('".$idObjet."');");
+}
+if($type=="Ferraille"){
+	mysqli_query($db_handle,"INSERT INTO Ferraille(Objet) VALUES('".$idObjet."');");
+}
 
 mysqli_close($db_handle);
 ?>
