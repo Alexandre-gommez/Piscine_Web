@@ -25,16 +25,25 @@
                     <div   class="card-body">
                         <div id="form1">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="nom">Nom</label>
                                     <input type="text" class="form-control" id="nom" required>
                                     <span id="nom_manquant"></span>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label for="prenom">Prenom</label>
                                     <input type="text" class="form-control" id="prenom" required>
                                     <span id="prenom_manquant"></span>
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label for="role">Role</label>
+                                    <select class="custom-select mr-sm-2" id="role" required>
+                                      <option selected></option>
+                                      <option value="1">Vendeur</option>
+                                      <option value="2">Acheteur</option>
+                                    </select>
+                                    <span id="role_manquant"></span>
+                                  </div>
                             </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -158,6 +167,9 @@
 
         var prenom = document.getElementById("prenom");
         var pnmanquant = document.getElementById("prenom_manquant");
+
+        var role = document.getElementById("role");
+        var rmanquant = document.getElementById("role_manquant");
 
         var username = document.getElementById("username");
         var umanquant = document.getElementById("username_manquant");
@@ -295,6 +307,16 @@
           }
           else{
             pnmanquant.style.display = 'none';
+          }
+          if(role.validity.valueMissing)
+          {
+             rmanquant.textContent = "Entrez votre role";
+             rmanquant.style.color = 'red';
+             rmanquant.style.display = 'block';
+             i++;
+          }
+          else{
+            rmanquant.style.display = 'none';
           }
           if(mail.validity.valueMissing)
           {
