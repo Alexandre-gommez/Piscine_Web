@@ -1,4 +1,5 @@
 <?php
+session_start();
 //connexionau a la bdd
 $db_handle = mysqli_connect('localhost', 'root', '');
 
