@@ -33,18 +33,18 @@
    
    <div class="row justify-content-center align-items-center" style="height:79vh">
       
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate  action="login.php" method="post">
             <div class="card text-center shadow p-3 mb-5" >
             <h3 >Connexion</h3>
             <div class="card-body">
                      <div class="form-group">
                         <label for="validation1">Identifiant</label>
-                        <input type="text" class="form-control" id="username" placeholder="Identifiant" required>
+                        <input type="text" class="form-control" id="username"  name="username" placeholder="Identifiant" required>
                         <span id="user_manquant"></span>
                      </div>
                      <div class="form-group">
                         <label>Mot de passe</label>
-                        <input type="password" class="form-control" id="password" placeholder="Mot de passe" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
                         <span id="pass_manquant"></span>
                      </div>
                      <br>
