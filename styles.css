@@ -1,7 +1,6 @@
     body {
         padding: 0px;
         margin: 0px;
-        background: #f2f6e9;
     }
     header {
         background-image: url('sky-wallpaper-hd.png');
@@ -155,12 +154,12 @@
     margin-top: 2.3rem;
     padding-right: 15px;
     padding-left: 15px;
-    color: #d4b09d  ;
+    color: #6897ff  ;
     font-family: 'Arapey', serif;
 }
 .product-text{
     font-size: 25px;
-    color: #d4b09d  ;
+    color: #6897ff  ;
     font-family: 'Arapey', serif;
 }
 .categories:hover{

@@ -1,4 +1,5 @@
 <?php
+session_start();
 //connexionau a la bdd
 $db_handle = mysqli_connect('localhost', 'root', '');
 
@@ -13,5 +14,4 @@ $db_found=mysqli_select_db($db_handle,'ecey');
 if(!$db_found){
 	echo "Problemes";
 }
-echo "test";
 ?>
