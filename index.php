@@ -26,7 +26,6 @@ session_start();
     
 </head>
 <body class="fade-in">
-  <p><?php echo $_SESSION['role'];?></p>
     <nav class="navbar navbar-expand-md shadow">
         <a class="navbar-brand" href="#">
             <img id="logo" src="logo.png" alt="">
