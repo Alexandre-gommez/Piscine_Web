@@ -35,7 +35,7 @@
         <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Mon compte</a></li>
+        <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
       </ul>
     </div>
   </nav>
@@ -79,14 +79,13 @@
       echo "<div class=\"w-100\"></div>";
       echo "<div class=\"col\">";
       echo "<h5>Adresse</h5>";
-      echo "<p>".$info['adresse1']."</p>";
+      echo "<p>".$info['adresse1']."  ".$info['adresse2']."</p>";
+      echo "<p>".$info['CodePostal']."  ".$info['ville']."</p>";
       echo "</div>";
       echo "</div>";
       echo "<button id=\"edit\" class=\"btn btn-primary\">Modifier les infos</button>";
       echo "</div>";
       ?>
-      
-      
       <br>
 
       <form id="formedit" role="form">
@@ -162,7 +161,7 @@
               <span id="cp_manquant"></span>
             </div>
           </div>
-          <input type="reset" onclick="location.href='profile.php'" class="btn btn-secondary" value="Annuler">
+          <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
           <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
 
         </form>
