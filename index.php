@@ -35,7 +35,7 @@ session_start();
         <div class="collapse navbar-collapse" id="main-navigation">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav2" href="product.php">Vendre</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav2" href="Frontlogin.php">Vendre</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav4" href="compte.php">Mon Compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
@@ -90,32 +90,32 @@ session_start();
           var elem5 = document.getElementById("nav5");
           var elem6 = document.getElementById("nav6");
 
+          elem2.style.display = 'none';
+          elem5.style.display = 'none';
+          elem6.style.display = 'none';
+
           var btnco = document.getElementById("btnconnexion");
 
-          if((<?php echo $_SESSION['role']?>)=='' || (<?php echo $_SESSION['role']?>)==0)
-          {
-            elem2.style.display = 'none';
-            elem5.style.display = 'none';
-            elem6.style.display = 'none';
-            elem4.href="Frontlogin.php";
-          }
           else if((<?php echo $_SESSION['role']?>)==1)
           {
-            elem2.style.display = 'none';
-            elem5.style.display = 'none';
+            elem4.style.display = 'block';
+            elem6.style.display = 'block';
             btnco.style.display = 'none';
+            elem2.href ="compte.php";
           }
           else if((<?php echo $_SESSION['role']?>)==2)
           {
-            elem5.style.display = 'none';
-            elem6.style.display = 'none';
+            elem2.style.display = 'block';
+            elem4.style.display = 'block';
             btnco.style.display = 'none';
+            elem2.href ="compte.php";
           }
           else if((<?php echo $_SESSION['role']?>)==3)
           {
-            elem2.style.display = 'none';
-            elem6.style.display = 'none';
+            elem4.style.display = 'block';
+            elem5.style.display = 'block';
             btnco.style.display = 'none';
+            elem2.href ="compte.php";
           } 
           </script>
     </body>
