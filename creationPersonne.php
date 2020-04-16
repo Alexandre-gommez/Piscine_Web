@@ -21,7 +21,7 @@ $Role=isset($_POST["role"]) ? $_POST["role"]:"";
 $username=isset($_POST["username"]) ? $_POST["username"]:"";
 
 	//Creation CB
-mysqli_query($db_handle,"INSERT INTO CB(Solde, Nom_carte, Num, Crypto, Type, Date_expiration) VALUES('100','".$NomCB."','".$NCarte."','".$crypto."','".$typecarte."','".$date."');");
+mysqli_query($db_handle,"INSERT INTO CB(Solde, Nom_carte, Num, Crypto, Type, Date_expiration) VALUES('1000','".$NomCB."','".$NCarte."','".$crypto."','".$typecarte."','".$date."');");
 
 $tempcb=mysqli_query($db_handle,"SELECT MAX(id) FROM CB");
 $CB=mysqli_fetch_assoc($tempcb);
