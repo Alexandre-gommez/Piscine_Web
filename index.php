@@ -98,7 +98,7 @@ session_start();
 
           var btnco = document.getElementById("btnconnexion");
 
-          else if((<?php echo $_SESSION['role']?>)==1)
+          if((<?php echo $_SESSION['role']?>)==1)
           {
             elem4.style.display = 'block';
             elem6.style.display = 'block';
