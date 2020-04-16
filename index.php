@@ -105,7 +105,6 @@ session_start();
     echo "elem6.style.display = 'block';";
     echo "btnco.style.display = 'none';";
     echo "elem4.href =\"compte.php\";";
-    echo "alert(\"ntm\");";
   }
   else if(isset($_SESSION['role']))
   {
