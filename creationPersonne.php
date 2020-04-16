@@ -36,6 +36,7 @@ $idPersonne=$Personne['MAX(id)'];
 
 if ($Role==1) {
 	mysqli_query($db_handle,"INSERT INTO Vendeur(Personne) VALUES('".$idPersonne."');");
+	mysqli_query($db_handle,"INSERT INTO Histovendeur(Personne) VALUES('".$idPersonne."');");
 } else if ($Role==2){
 	mysqli_query($db_handle,"INSERT INTO Acheteur(Personne) VALUES('".$idPersonne."');");
 }

@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>ECEY</title>
     <meta charset="utf-8">
@@ -22,13 +23,15 @@ session_start();
             $('.header').height($(window).height());
         });
     </script>
-    
+
 </head>
+
 <body class="fade-in">
+
     <nav class="navbar navbar-expand-md shadow">
         <a class="navbar-brand" href="index.html">
             <img id="logo" src="logo.png" alt="">
-          </a>
+        </a>
         <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#main-navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,4 +44,26 @@ session_start();
             </ul>
         </div>
     </nav>
+
+    <!--Template afficher article
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action">First item</a>
+  <a href="#" class="list-group-item list-group-item-action">Second item</a>
+  <a href="#" class="list-group-item list-group-item-action">Third item</a>
+</div>-->
+    <div> <!--ce div est pour un article-->
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">image</div>
+            <div class="col-sm-4">descirption</div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">prix ???</div>
+            <div class="col-sm-4">supprimer</div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
 </body>
