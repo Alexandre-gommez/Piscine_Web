@@ -36,9 +36,9 @@ session_start();
         <div class="collapse navbar-collapse" id="main-navigation">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav2" href="Frontlogin.php">Vendre</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav2" href="">Vendre</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
-                <li class="nav-item"><a class="nav-link" id="nav4" href="compte.php">Mon Compte</a></li>
+                <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav6" href="#page-footer">Panier</a></li>
             </ul>
@@ -103,22 +103,22 @@ session_start();
             elem4.style.display = 'block';
             elem6.style.display = 'block';
             btnco.style.display = 'none';
-            elem2.href ="compte.php";
+            elem4.href ="compte.php";
           }
           else if((<?php echo $_SESSION['role']?>)==2)
           {
             elem2.style.display = 'block';
             elem4.style.display = 'block';
             btnco.style.display = 'none';
-            elem2.href ="compte.php";
+            elem4.href ="compte.php";
           }
           else if((<?php echo $_SESSION['role']?>)==3)
           {
             elem4.style.display = 'block';
             elem5.style.display = 'block';
             btnco.style.display = 'none';
-            elem2.href ="compte.php";
-          } 
+            elem4.href ="compte.php";
+          }
           </script>
     </body>
     </html>
