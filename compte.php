@@ -218,7 +218,30 @@
   
   edit.addEventListener('click',editionopen);
   sauver.addEventListener('click',validation);
+  role2.addEventListener('click',swap1);
+  role3.addEventListener('click',swap2);
   rolechoice();
+
+  function swap1()
+  {
+    <?php 
+    if ($_SESSION['role']==1){
+      $_SESSION['role']=2;
+      $test=mysqli_query($db_handle,"DELETE FROM Acheteur WHERE '".$_SESSION['id']."';");
+      $test=mysqli_query($db_handle,"INSERT INTO Vendeur(personne) VALUES '".$_SESSION['id']."';");
+    }
+      ?> 
+    }
+  function swap2()
+  {
+    <?php 
+    if ($_SESSION['role']==2){
+      $_SESSION['role']=1;
+      $test=mysqli_query($db_handle,"DELETE FROM Vendeur WHERE '".$_SESSION['id']."';");
+      $test=mysqli_query($db_handle,"INSERT INTO Acheteur(personne) VALUES '".$_SESSION['id']."';");
+    }
+      ?> 
+    }
   function rolechoice()
   {
     <?php 
