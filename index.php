@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +68,7 @@ session_start();
               <br>
               <br>
               <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+              <p><?php $_SESSION['role'];?></p>
             </div>
             <div class="col-md-6">
               <h4>Vendez</h4>
