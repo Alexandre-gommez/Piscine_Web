@@ -103,25 +103,25 @@ session_start();
   {
     if($_SESSION['role']==1)
     {
-    echo "elem4.style.display = 'block';";
-    echo "elem6.style.display = 'block';";
-    echo "btnco.style.display = 'none';";
-    echo "elem4.href =\"compte.php\";";
-    else if($_SESSION['role']==2)
+      echo "elem4.style.display = 'block';";
+      echo "elem6.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
     }
-  {
-    echo "elem2.style.display = 'block';";
-    echo "elem4.style.display = 'block';";
-    echo "btnco.style.display = 'none';";
-    echo "elem4.href =\"compte.php\";";
-  }
-  else if($_SESSION['role']==3)
-  {
-    echo "elem4.style.display = 'block';";
-    echo "elem5.style.display = 'block';";
-    echo "btnco.style.display = 'none';";
-    echo "elem4.href =\"compte.php\";";
-  }
+    else if($_SESSION['role']==2)
+    {
+      echo "elem2.style.display = 'block';";
+      echo "elem4.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
+    }
+    else if($_SESSION['role']==3)
+    {
+      echo "elem4.style.display = 'block';";
+      echo "elem5.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
+    }
   }
   
   ?>
