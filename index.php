@@ -41,6 +41,7 @@ session_start();
         <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
         <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
         <li class="nav-item"><a class="nav-link" id="nav6" href="#page-footer">Panier</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
       </ul>
     </div>
   </nav>
@@ -68,7 +69,6 @@ session_start();
         <br>
         <br>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-        <p><?php $_SESSION['role'];?></p>
       </div>
       <div class="col-md-6">
         <h4>Vendez</h4>
