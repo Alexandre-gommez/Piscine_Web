@@ -17,7 +17,9 @@ CREATE 	TABLE ListeEnchere(Referance int NOT NULL, FOREIGN KEY(Referance) REFERE
 --Table Achat
 CREATE TABLE Achat(Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id), Prix float NOT NULL);
 --Table Offre
-CREATE TABLE Offre(Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id),Nb int NOT NULL, Prix float NOT NULL);
+CREATE TABLE Offre(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id),Nb int NOT NULL, Prix float NOT NULL);
+--TABLE Negociation 
+CREATE 	TABLE ListeEnchere(Referance int NOT NULL, FOREIGN KEY(Referance) REFERENCES Offre(Id),Personne int NOT NULL, FOREIGN KEY(Personne) REFERENCES Personne(Id),Offre1 float,Offre2 float,Offre3 float,Offre4 float,Offre5 float);
 --Table Ferraille
 CREATE TABLE Ferraille(Objet int NOT NULL, FOREIGN KEY(Objet) REFERENCES Objet(Id));
 --Table Mussée
