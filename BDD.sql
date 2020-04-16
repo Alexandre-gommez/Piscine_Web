@@ -32,3 +32,12 @@ CREATE TABLE ListeAchat(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Achat int NOT
 CREATE TABLE ListeVente(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Vente int NOT NULL, FOREIGN KEY(Vente) REFERENCES Objet(Id), Client int NOT NULL, FOREIGN KEY(Client) REFERENCES Personne(Id));
 --Table Hitorique des vendeurs
 CREATE TABLE Histovendeur(Personne int NOT NULL, FOREIGN KEY(Personne) REFERENCES Personne(Id));
+
+INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","a","1","1","1","12/20");
+INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","b","2","2","2","12/20");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,adresse2,ville,CodePostal,Pays,Carte,username) VALUES ("a","a","a","a","a","a","a","a","1","a","1","a");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,adresse2,ville,CodePostal,Pays,Carte,username) VALUES ("b","b","b","b","b","b","b","b","2","b","2","b");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,adresse2,ville,CodePostal,Pays,username) VALUES ("c","c","c","c","c","c","c","c","3","c","c");
+INSERT INTO Acheteur(Personne) VALUES (1);
+INSERT INTO Vendeur(Personne) VALUES (2);
+INSERT INTO Admin(Personne) VALUES (3);
