@@ -92,13 +92,13 @@ session_start();
           var elem5 = document.getElementById("nav5");
           var elem6 = document.getElementById("nav6");
 
-          elem2.style.display = 'none';
-          elem5.style.display = 'none';
-          elem6.style.display = 'none';
-
           var btnco = document.getElementById("btnconnexion");
 
-          if((<?php echo $_SESSION['role']?>)==1)
+            elem2.style.display = 'none';
+            elem5.style.display = 'none';
+            elem6.style.display = 'none';
+
+           if((<?php echo $_SESSION['role']?>)==1)
           {
             elem4.style.display = 'block';
             elem6.style.display = 'block';
