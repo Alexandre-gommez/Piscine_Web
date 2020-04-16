@@ -91,12 +91,14 @@ session_start();
   var elem4 = document.getElementById("nav4");
   var elem5 = document.getElementById("nav5");
   var elem6 = document.getElementById("nav6");
+  var elem7 = document.getElementById("nav7");
 
   var btnco = document.getElementById("btnconnexion");
 
   elem2.style.display = 'none';
   elem5.style.display = 'none';
   elem6.style.display = 'none';
+  elem7.style.display = 'none';
 
   <?php 
   if(isset($_SESSION['role']))
@@ -105,6 +107,7 @@ session_start();
     {
       echo "elem4.style.display = 'block';";
       echo "elem6.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
       echo "btnco.style.display = 'none';";
       echo "elem4.href =\"compte.php\";";
     }
@@ -112,6 +115,7 @@ session_start();
     {
       echo "elem2.style.display = 'block';";
       echo "elem4.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
       echo "btnco.style.display = 'none';";
       echo "elem4.href =\"compte.php\";";
     }
@@ -119,6 +123,7 @@ session_start();
     {
       echo "elem4.style.display = 'block';";
       echo "elem5.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
       echo "btnco.style.display = 'none';";
       echo "elem4.href =\"compte.php\";";
     }
