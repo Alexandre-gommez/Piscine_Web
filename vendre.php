@@ -113,7 +113,7 @@ session_start();
     <br />
 
     <!-- Il faudrait que quand on clique sur ajouter un produit ça ça se déroule-->
-    
+
     <div class="row justify-content-center align-items-center">
         <form class="needs-validation">
             <div class="card text-center shadow p-3 mb-5" style="background-color: rgb(250, 250, 250);">
@@ -128,7 +128,7 @@ session_start();
                             </div>
                         </div>
                         <div class="form-group">
-                        <div>
+                            <div>
                                 <label for="description">Description</label>
                                 <input type="text" class="form-control" id="description" name="desciption" required>
                                 <span id="description_manquant"></span>
@@ -141,29 +141,21 @@ session_start();
                                 <span id="image_manquant"></span>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md">
-                                <label for="role">Image 2</label>
-                                <input type="file" name="image2" id="image2">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md">
-                                <label for="role">Image 3</label>
-                                <input type="file" name="image3" id="image3">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md">
-                                <label for="role">Image 4</label>
-                                <input type="file" name="image4" id="image4">
-                            </div>
+                        <div class="form-group">
+                            <label for="role">Image 2</label>
+                            <input type="file" name="image2" id="image2">
                         </div>
                         <div class="form-group">
-                            <div class="form-group col-md">
-                                <label for="role">Video</label>
-                                <input type="file" name="video" id="video">
-                            </div>
+                            <label for="role">Image 3</label>
+                            <input type="file" name="image3" id="image3">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Image 4</label>
+                            <input type="file" name="image4" id="image4">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Video</label>
+                            <input type="file" name="video" id="video">
                         </div>
                         <div class="form-group">
                             <label for="type">Catégorie</label>
@@ -176,7 +168,7 @@ session_start();
                             <span id="type_manquant"></span>
                         </div>
                         <div class="form-group">
-                            <label for="type">Type de vente</label>
+                            <label>Type de vente</label>
                             <div class="custom-control custom-checkbox mr-sm-2">
                                 <input type="checkbox" class="custom-control-input" id="Achat">
                                 <label class="custom-control-label" for="Achat">Achat</label>
@@ -189,7 +181,31 @@ session_start();
                                 <input type="checkbox" class="custom-control-input" id="Enchere">
                                 <label class="custom-control-label" for="Enchere">Enchere</label>
                             </div>
-                            <span id="type_manquant"></span>
+                            <span id="vente_manquant"></span>
+                        </div>
+                        <!--Ils sont pas forcément required en effet ça dépend des checkbox coché au dessu A FAIRE EN JS je pense-->
+                        <div class="form-group">
+                            <label for="number1">Prix pour à l'achat</label>
+                            <input type="text" class="form-control" id="number1" name="number1" placeholder=" en €" required>
+                            <span id="nb_manquant"></span>
+                            <!--on peux mettre les mêmes car même alerte si pas rempli-->
+                        </div>
+                        <div class="form-group">
+                            <label for="number2">Prix pour à l'enchère</label>
+                            <input type="text" class="form-control" id="number2" name="number2" placeholder=" en €" required>
+                            <span id="nb_manquant"></span>
+                            <!--on peux mettre les mêmes car même alerte si pas rempli-->
+                        </div>
+                        <div class="form-group">
+                            <label for="number3">Prix pour de base pour la négociation</label>
+                            <input type="text" class="form-control" id="number3" name="number3" placeholder=" en €" required>
+                            <span id="nb_manquant"></span>
+                            <!--on peux mettre les mêmes car même alerte si pas rempli-->
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date limite de l'enchère</label>
+                            <input type="text" class="form-control" id="date" name="date" placeholder="JJ/MM/AAAA" required>
+                            <span id="date_manquant"></span>
                         </div>
                         <input type="button" value="Suivant" class="btn btn-primary" id="valid1"></input>
                     </div>
