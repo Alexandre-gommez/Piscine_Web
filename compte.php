@@ -41,9 +41,9 @@
   </nav>
   <br>
   <br>
-  <div class="container">
-    <h4 class="mb-3">Votre compte</h4>
-    <div class="col-md-10">
+<div class="container">
+    <h4 class="mb-3" style="text-align:center">Votre compte</h4>
+    <div class="col-md-10" style="margin:auto">
       <h5>Type</h5>
       <div id="role1">
         <a  href="#" class="badge badge-warning badge-pill">Admin</a>
