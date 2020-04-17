@@ -53,32 +53,43 @@ session_start();
   <a href="#" class="list-group-item list-group-item-action">Second item</a>
   <a href="#" class="list-group-item list-group-item-action">Third item</a>
 </div>-->
-<br/>
+    <br />
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
             </div>
-            <div class="col-sm-6">
-                <a href="#" class="list-group-item list-group-item-action">
+            <div class="col-sm-8">
+                <a class="list-group-item list-group-item-action">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm">image</div>
-                            <div class="col-sm">description</div>
+                            <div class="col-sm text-center">
+                                Nom objet
+                            </div>
                         </div>
-
+                        <br />
                         <div class="row">
-                            <div class="col-sm">prix ???</div>
-                            <div class="col-sm"></div>
+                            <div class="col-sm text-center"><img style="width : 100%; height :100%;" src="image1.jpeg" class="img-rounded" alt="test"></div>
+                            <div class="col-sm text-justify">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row justify-content-between">
+                            <div class="col-sm">
+                                <span class="font-weight-bold">Prix</span>
+                            </div>
+                            <div class="col-sm align-self-end text-right">
+                                <img style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
+                            </div>
                         </div>
                     </div>
-
                 </a>
             </div>
         </div>
         <div class="row content">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <a href="#" class="list-group-item list-group-item-action">
                     <div class="container">
                         <div class="row">
@@ -87,53 +98,17 @@ session_start();
                         </div>
 
                         <div class="row">
-                            <div class="col-sm">prix ???</div>
                             <div class="col-sm"></div>
+                            <div class="col-sm">
+                                <p class="font-weight-bold">Prix</p>
+                            </div>
                         </div>
                     </div>
 
                 </a>
             </div>
+            <img style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
         </div>
     </div>
-
-    <footer class="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4">
-          <span class="copyright">Copyright &copy; Your Website 2019</span>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <ul class="list-inline quicklinks">
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 </body>
