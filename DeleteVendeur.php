@@ -46,5 +46,6 @@ while($liste=mysqli_fetch_assoc($boucle))
 	}
 	$test=mysqli_query($db_handle,"DELETE FROM Objet WHERE Id='".$liste['Id']."';");
 }
+$test=mysqli_query($db_handle,"DELETE FROM Personne WHERE Id='".$id."';");
 header("Location:Admin.php");
 ?>

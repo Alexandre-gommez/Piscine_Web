@@ -7,6 +7,10 @@
 	
 	if ($categorie==1&&$vente==1){
 		$Enchere=mysqli_query($db_handle,"SELECT * FROM Enchere");
+		while($liste1=mysqli_fetch_assoc($Enchere))
+		{
+			
+		}
 		$Achat=mysqli_query($db_handle,"SELECT * FROM Achat");
 		$Offre=mysqli_query($db_handle,"SELECT * FROM Offre");
 	}else if ($categorie==1&&$vente==2){
