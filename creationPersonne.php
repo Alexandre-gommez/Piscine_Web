@@ -22,9 +22,7 @@ $username=isset($_POST["username"]) ? $_POST["username"]:"";
 
 if($_SESSION['role']==1||$_SESSION['role']==2||$_SESSION['role']==3)
 {
-	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."' WHERE Id = '".$_SESSION['Id']."';");
-	mysqli_close($db_handle);
-	header("Location:compte.php");
+	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."' WHERE Id = '"$_SESSION['ID']"');");
 }
 else 
 {
@@ -48,7 +46,7 @@ else
 	} else if ($Role==2){
 		mysqli_query($db_handle,"INSERT INTO Acheteur(Personne) VALUES('".$idPersonne."');");
 	}
-	mysqli_close($db_handle);
-	header("Location:index.php");
 }
+mysqli_close($db_handle);
+header("Location:index.php");
 ?>

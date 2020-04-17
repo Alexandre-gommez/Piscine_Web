@@ -57,7 +57,7 @@ while($liste=mysqli_fetch_assoc($boucle))
       echo '<td>'.$info['Prenom'].'</td>';
       echo '<td>'.$info['username'].'</td>';
       echo '<td>';
-      echo '<a href="DeleteVendeur.php?ID='.$liste['Personne'].'" style="color:red">';
+      echo '<a href="DeleteVendeur.php?ID="'.$liste['Personne'].'" style="color:red">';
       echo '<div>';
       echo 'supprimer';
       echo '</div>';
