@@ -35,9 +35,9 @@ CREATE 	TABLE ListeOffres(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Referance i
 --Table Liste Achat
 CREATE TABLE ListeAchat(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Achat int NOT NULL, FOREIGN KEY(Achat) REFERENCES Objet(Id), Client int NOT NULL, FOREIGN KEY(Client) REFERENCES Personne(Id));
 --Remplisage
-INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","a","1","1","1","12/20");
+INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","Thévin","1","1","1","12/20");
 INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","b","2","2","2","12/20");
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,adresse2,ville,CodePostal,Pays,Carte,username) VALUES ("a","a","a","a","a","a","a","a","1","a","1","a");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username) VALUES ("Thévin","Victor","victor.thevin@edu.ece.fr","0669632774","a","5 rue Amélie","Gennevilliers","92230","France","1","VT");
 INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,adresse2,ville,CodePostal,Pays,Carte,username) VALUES ("b","b","b","b","b","b","b","b","2","b","2","b");
 INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,adresse2,ville,CodePostal,Pays,username) VALUES ("c","c","c","c","c","c","c","c","3","c","c");
 INSERT INTO Acheteur(Personne) VALUES ("1");
