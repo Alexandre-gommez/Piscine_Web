@@ -3,7 +3,7 @@
 session_start();
 
 	//connexionau a la bdd
-$db_handle = mysqli_connect('localhost', 'root','root');
+$db_handle = mysqli_connect('localhost', 'root','');
 	//test de connexion
 if ($db_handle -> connect_errno){
 	echo "Echec connexion";
