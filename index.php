@@ -39,7 +39,7 @@ session_start();
         <li class="nav-item"><a class="nav-link" id="nav2" href="">Vendre</a></li>
         <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
         <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav5" href="Admin.php">Admin</a></li>
         <li class="nav-item"><a class="nav-link" id="nav6" href="#page-footer">Panier</a></li>
         <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
       </ul>
@@ -53,7 +53,7 @@ session_start();
     <p>
       Le meilleur site d'achat et vente en France
     </p>
-    <button onclick="window.location.href = 'Frontlogin.php';"class="btn btn-outline-secondary btn-lg" id="btnconnexion">S'inscrire!</button>
+    <button onclick="window.location.href = 'Frontlogin.php';"class="btn btn-outline-secondary btn-lg" id="btnconnexion">Se Connecter!</button>
   </div>
 
 </header>
