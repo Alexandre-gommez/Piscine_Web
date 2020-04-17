@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +23,7 @@
 </head>
 <body class="fade-in">
   <nav class="navbar navbar-expand-md shadow">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="index.php">
       <img id="logo" src="logo.png" alt="">
     </a>
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -32,10 +31,13 @@
     </button>
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Mon compte</a></li>
+      <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav2" href="">Vendre</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav6" href="#page-footer">Panier</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
       </ul>
     </div>
   </nav>
@@ -45,11 +47,9 @@
     <h4 class="mb-3" style="text-align:center">Votre compte</h4>
     <div class="col-md-10" style="margin:auto">
       <h5>Type</h5>
-      <div id="role1">
-        <a  href="#" class="badge badge-warning badge-pill">Admin</a>
-      </div>
-      <a id="role2" href="#" class="badge badge-success badge-pill">Vendeur</a>
-      <a id="role3" href="#" class="badge badge-dark badge-pill">Acheteur</a>
+      <a id="role1" href="#" class="badge badge-warning badge-pill">Admin</a>
+      <a id="role2" href="swap.php" class="badge badge-success badge-pill">Vendeur</a>
+      <a id="role3" href="swap.php" class="badge badge-dark badge-pill">Acheteur</a>
       <hr>
       
       <?php
@@ -79,96 +79,89 @@
       echo "<div class=\"w-100\"></div>";
       echo "<div class=\"col\">";
       echo "<h5>Adresse</h5>";
-      echo "<p>".$info['adresse1']."</p>";
+      echo "<p>".$info['adresse1']."  ".$info['adresse2']."</p>";
+      echo "<p>".$info['CodePostal']."  ".$info['ville']." ".$info['Pays']."</p>";
       echo "</div>";
       echo "</div>";
+      echo "<hr>";
       echo "<button id=\"edit\" class=\"btn btn-primary\">Modifier les infos</button>";
       echo "</div>";
+      echo "<br>";
+      echo "<form id=\"formedit\" role=\"form\" action=\"creationPersonne.php\" method=\"post\">";
+      echo "<div class=\"form-group\">";
+      echo "<div class=\"form-row\">";
+      echo "<div class=\"form-group col-md-4\">";
+      echo "<label for=\"nom\">Nom</label>";
+      echo "<input type=\"text\" value=".$info['Nom']." class=\"form-control\" id=\"nom\" name=\"nom\" required>";
+      echo "<span id=\"nom_manquant\"></span>";
+      echo "</div>";  
+      echo '<div class="form-group col-md-4">';
+      echo '<label for="prenom">Prenom</label>';
+      echo '<input type="text" value='.$info['Prenom'].' class="form-control" id="prenom" name="prenom" required>';
+      echo '<span id="prenom_manquant"></span>';
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="form-row">';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="email">Email</label>';
+      echo '<input type="email" value='.$info['Mail'].' class="form-control" id="email" name="email" required>';
+      echo '<span id="email_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="username">Nom d\'utilisateur</label>';
+      echo '<input type="text" value='.$info['username'].' class="form-control" id="username" name="username" required>';
+      echo '<span id="username_manquant"></span>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="form-row">';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="Password1">Password</label>';
+      echo '<input type="password" class="form-control" id="Password1" name="Password1" required>';
+      echo '<span id="pass_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="Password2">Password</label>';
+      echo '<input type="password" class="form-control" id="Password2" required>';
+      echo '<span id="pas2_manquant"></span>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="form-group">';
+      echo '<label for="adress1">Addresse</label>';
+      echo '<input type="text" value="'.$info['adresse1'].'" class="form-control" id="adress1" name="adress1" placeholder="1 rue ece" required>';
+      echo '<span id="adress_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group">';
+      echo '<label for="adress2">Addresse 2</label>';
+      echo '<input type="text"  class="form-control" id="adress2" name="adress2" value='.$info['adresse2'].'>';
+      echo '</div>';
+      echo '<div class="form-row">';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="ville">Ville</label>';
+      echo '<input type="text" value='.$info['ville'].' class="form-control" id="ville" name="ville" required>';
+      echo '<span id="ville_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-2">';
+      echo '<label for="pays">Pays</label>';
+      echo '<input type="text" value='.$info['Pays'].' class="form-control" id="pays" name="pays" required>';
+      echo '<span id="pays_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-4">';
+      echo '<label for="cp">Code Postal</label>';
+      echo '<input type="text" value='.$info['CodePostal'].' class="form-control" id="cp" name="cp" required>';
+      echo '<span id="cp_manquant"></span>';
+      echo '</div>';
       ?>
-      
-      
-      <br>
-
-      <form id="formedit" role="form">
-        <div class="form-group">
-          <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="nom">Nom</label>
-              <input type="text" class="form-control" id="nom" name="nom" required>
-              <span id="nom_manquant"></span>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="prenom">Prenom</label>
-              <input type="text" class="form-control" id="prenom" name="prenom" required>
-              <span id="prenom_manquant"></span>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="role">Role</label>
-              <select class="custom-select mr-sm-2" id="role" name="role" required>
-                <option selected></option>
-                <option value="1">Vendeur</option>
-                <option value="2">Acheteur</option>
-              </select>
-              <span id="role_manquant"></span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-              <span id="email_manquant"></span>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="username">Nom d'utilisateur</label>
-              <input type="text" class="form-control" id="username" name="username" required>
-              <span id="username_manquant"></span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="Password1">Password</label>
-              <input type="password" class="form-control" id="Password1" name="Password1" required>
-              <span id="pass_manquant"></span>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="Password2">Password</label>
-              <input type="password" class="form-control" id="Password2" required>
-              <span id="pas2_manquant"></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="adress1">Addresse</label>
-            <input type="text" class="form-control" id="adress1" name="adress1" placeholder="1 rue ece" required>
-            <span id="adress_manquant"></span>
-          </div>
-          <div class="form-group">
-            <label for="adress2">Addresse 2</label>
-            <input type="text" class="form-control" id="adress2" name="adress2" >
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="ville">Ville</label>
-              <input type="text" class="form-control" id="ville" name="ville" required>
-              <span id="ville_manquant"></span>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="pays">Pays</label>
-              <input type="text" class="form-control" id="pays" name="pays" required>
-              <span id="pays_manquant"></span>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="cp">Code Postal</label>
-              <input type="text" class="form-control" id="cp" name="cp" required>
-              <span id="cp_manquant"></span>
-            </div>
-          </div>
-          <input type="reset" onclick="location.href='profile.php'" class="btn btn-secondary" value="Annuler">
-          <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
-
-        </form>
-      </div>
     </div>
-  </div>
+    <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
+    <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
+    <br>
+    <br>
+    <br>
+  </form>
+</div>
+</div>
+</div>
 </div>
 
 <script>        
@@ -189,9 +182,6 @@
 
   var prenom = document.getElementById("prenom");
   var pnmanquant = document.getElementById("prenom_manquant");
-
-  var role = document.getElementById("role");
-  var rmanquant = document.getElementById("role_manquant");
 
   var username = document.getElementById("username");
   var umanquant = document.getElementById("username_manquant");
@@ -217,9 +207,27 @@
   var cp = document.getElementById("cp");
   var cpmanquant = document.getElementById("cp_manquant");
   
+  var elem1 = document.getElementById("nav1");
+  var elem2 = document.getElementById("nav2");
+  var elem3 = document.getElementById("nav3");
+  var elem4 = document.getElementById("nav4");
+  var elem5 = document.getElementById("nav5");
+  var elem6 = document.getElementById("nav6");
+  var elem7 = document.getElementById("nav7");
+
+  var btnco = document.getElementById("btnconnexion");
+
+  elem2.style.display = 'none';
+  elem5.style.display = 'none';
+  elem6.style.display = 'none';
+  elem7.style.display = 'none';
+
+
   edit.addEventListener('click',editionopen);
   sauver.addEventListener('click',validation);
+
   rolechoice();
+
   function rolechoice()
   {
     <?php 
@@ -229,12 +237,32 @@
       echo "role3.classList.add('badge-success');";
       echo "role2.classList.remove('badge-success');";
       echo "role2.classList.add('badge-dark');";
+      echo "role3.href =\"#\";";
+      echo "elem4.style.display = 'block';";
+      echo "elem6.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
+    }
+    if(($_SESSION['role'])==2)
+    {
+      echo "role2.href =\"#\";";
+      echo "elem2.style.display = 'block';";
+      echo "elem4.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
     }
     else if(($_SESSION['role'])==3)
     {
       echo "role1.style.display = 'block';";
       echo "role2.style.display = 'none';";
       echo "role3.style.display = 'none';";
+      echo "elem4.style.display = 'block';";
+      echo "elem5.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
     }
     ?>
   }
@@ -359,16 +387,6 @@ if(prenom.validity.valueMissing)
 }
 else{
   pnmanquant.style.display = 'none';
-}
-if(role.validity.valueMissing)
-{
- rmanquant.textContent = "Entrez votre role";
- rmanquant.style.color = 'red';
- rmanquant.style.display = 'block';
- i++;
-}
-else{
-  rmanquant.style.display = 'none';
 }
 if(mail.validity.valueMissing)
 {
