@@ -23,7 +23,7 @@
 </head>
 <body class="fade-in">
   <nav class="navbar navbar-expand-md shadow">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="index.php">
       <img id="logo" src="logo.png" alt="">
     </a>
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -31,10 +31,13 @@
     </button>
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
-        <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
+      <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav2" href="">Vendre</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav6" href="#page-footer">Panier</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
       </ul>
     </div>
   </nav>
@@ -80,6 +83,7 @@
       echo "<p>".$info['CodePostal']."  ".$info['ville']." ".$info['Pays']."</p>";
       echo "</div>";
       echo "</div>";
+      echo "<hr>";
       echo "<button id=\"edit\" class=\"btn btn-primary\">Modifier les infos</button>";
       echo "</div>";
       echo "<br>";
@@ -151,7 +155,9 @@
     </div>
     <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
     <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
-
+    <br>
+    <br>
+    <br>
   </form>
 </div>
 </div>
@@ -201,6 +207,22 @@
   var cp = document.getElementById("cp");
   var cpmanquant = document.getElementById("cp_manquant");
   
+  var elem1 = document.getElementById("nav1");
+  var elem2 = document.getElementById("nav2");
+  var elem3 = document.getElementById("nav3");
+  var elem4 = document.getElementById("nav4");
+  var elem5 = document.getElementById("nav5");
+  var elem6 = document.getElementById("nav6");
+  var elem7 = document.getElementById("nav7");
+
+  var btnco = document.getElementById("btnconnexion");
+
+  elem2.style.display = 'none';
+  elem5.style.display = 'none';
+  elem6.style.display = 'none';
+  elem7.style.display = 'none';
+
+
   edit.addEventListener('click',editionopen);
   sauver.addEventListener('click',validation);
 
@@ -216,16 +238,31 @@
       echo "role2.classList.remove('badge-success');";
       echo "role2.classList.add('badge-dark');";
       echo "role3.href =\"#\";";
+      echo "elem4.style.display = 'block';";
+      echo "elem6.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
     }
     if(($_SESSION['role'])==2)
     {
       echo "role2.href =\"#\";";
+      echo "elem2.style.display = 'block';";
+      echo "elem4.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
     }
     else if(($_SESSION['role'])==3)
     {
       echo "role1.style.display = 'block';";
       echo "role2.style.display = 'none';";
       echo "role3.style.display = 'none';";
+      echo "elem4.style.display = 'block';";
+      echo "elem5.style.display = 'block';";
+      echo "elem7.style.display = 'block';";
+      echo "btnco.style.display = 'none';";
+      echo "elem4.href =\"compte.php\";";
     }
     ?>
   }
