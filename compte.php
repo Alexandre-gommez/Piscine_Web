@@ -41,8 +41,8 @@
   <br>
   <br>
 <div class="container">
-    <h4 class="mb-3">Votre compte</h4>
-    <div class="col-md-10">
+    <h4 class="mb-3" style="text-align:center">Votre compte</h4>
+    <div class="col-md-10" style="margin:auto">
       <h5>Type</h5>
       <a id="role1" href="#" class="badge badge-warning badge-pill">Admin</a>
       <a id="role2" href="swap.php" class="badge badge-success badge-pill">Vendeur</a>
