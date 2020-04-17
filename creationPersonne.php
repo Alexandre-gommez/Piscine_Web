@@ -20,27 +20,33 @@ $date=isset($_POST["date"]) ? $_POST["date"]:"";
 $Role=isset($_POST["role"]) ? $_POST["role"]:"";
 $username=isset($_POST["username"]) ? $_POST["username"]:"";
 
+if($_SESSION['role']==1||$_SESSION['role']==2||$_SESSION['role']==3)
+{
+	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."' WHERE Id = '"$_SESSION['ID']"');");
+}
+else 
+{
 	//Creation CB
-mysqli_query($db_handle,"INSERT INTO CB(Solde, Nom_carte, Num, Crypto, Type, Date_expiration) VALUES('1000','".$NomCB."','".$NCarte."','".$crypto."','".$typecarte."','".$date."');");
+	mysqli_query($db_handle,"INSERT INTO CB(Solde, Nom_carte, Num, Crypto, Type, Date_expiration) VALUES('1000','".$NomCB."','".$NCarte."','".$crypto."','".$typecarte."','".$date."');");
 
-$tempcb=mysqli_query($db_handle,"SELECT MAX(id) FROM CB");
-$CB=mysqli_fetch_assoc($tempcb);
-$idCB=$CB['MAX(id)'];
+	$tempcb=mysqli_query($db_handle,"SELECT MAX(id) FROM CB");
+	$CB=mysqli_fetch_assoc($tempcb);
+	$idCB=$CB['MAX(id)'];
 
 	//creation de la personne 
-mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."');");
+	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."');");
 
-$tempp=mysqli_query($db_handle,"SELECT MAX(id) FROM Personne");
-$Personne=mysqli_fetch_assoc($tempp);
-$idPersonne=$Personne['MAX(id)'];
+	$tempp=mysqli_query($db_handle,"SELECT MAX(id) FROM Personne");
+	$Personne=mysqli_fetch_assoc($tempp);
+	$idPersonne=$Personne['MAX(id)'];
 
-if ($Role==1) {
-	mysqli_query($db_handle,"INSERT INTO Vendeur(Personne) VALUES('".$idPersonne."');");
-	mysqli_query($db_handle,"INSERT INTO Histovendeur(Personne) VALUES('".$idPersonne."');");
-} else if ($Role==2){
-	mysqli_query($db_handle,"INSERT INTO Acheteur(Personne) VALUES('".$idPersonne."');");
+	if ($Role==1) {
+		mysqli_query($db_handle,"INSERT INTO Vendeur(Personne) VALUES('".$idPersonne."');");
+		mysqli_query($db_handle,"INSERT INTO Histovendeur(Personne) VALUES('".$idPersonne."');");
+	} else if ($Role==2){
+		mysqli_query($db_handle,"INSERT INTO Acheteur(Personne) VALUES('".$idPersonne."');");
+	}
 }
-
 mysqli_close($db_handle);
 header("Location:index.php");
 ?>

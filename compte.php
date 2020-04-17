@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +40,13 @@
   </nav>
   <br>
   <br>
-  <div class="container">
+<div class="container">
     <h4 class="mb-3">Votre compte</h4>
     <div class="col-md-10">
       <h5>Type</h5>
-      <div id="role1">
-        <a  href="#" class="badge badge-warning badge-pill">Admin</a>
-      </div>
-      <a id="role2" href="#" class="badge badge-success badge-pill">Vendeur</a>
-      <a id="role3" href="#" class="badge badge-dark badge-pill">Acheteur</a>
+      <a id="role1" href="#" class="badge badge-warning badge-pill">Admin</a>
+      <a id="role2" href="swap.php" class="badge badge-success badge-pill">Vendeur</a>
+      <a id="role3" href="swap.php" class="badge badge-dark badge-pill">Acheteur</a>
       <hr>
       
       <?php
@@ -80,94 +77,85 @@
       echo "<div class=\"col\">";
       echo "<h5>Adresse</h5>";
       echo "<p>".$info['adresse1']."  ".$info['adresse2']."</p>";
-      echo "<p>".$info['CodePostal']."  ".$info['ville']."</p>";
+      echo "<p>".$info['CodePostal']."  ".$info['ville']." ".$info['Pays']."</p>";
       echo "</div>";
       echo "</div>";
       echo "<button id=\"edit\" class=\"btn btn-primary\">Modifier les infos</button>";
       echo "</div>";
+      echo "<br>";
+      echo "<form id=\"formedit\" role=\"form\" action=\"creationPersonne.php\" method=\"post\">";
+      echo "<div class=\"form-group\">";
+      echo "<div class=\"form-row\">";
+      echo "<div class=\"form-group col-md-4\">";
+      echo "<label for=\"nom\">Nom</label>";
+      echo "<input type=\"text\" value=".$info['Nom']." class=\"form-control\" id=\"nom\" name=\"nom\" required>";
+      echo "<span id=\"nom_manquant\"></span>";
+      echo "</div>";  
+      echo '<div class="form-group col-md-4">';
+      echo '<label for="prenom">Prenom</label>';
+      echo '<input type="text" value='.$info['Prenom'].' class="form-control" id="prenom" name="prenom" required>';
+      echo '<span id="prenom_manquant"></span>';
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="form-row">';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="email">Email</label>';
+      echo '<input type="email" value='.$info['Mail'].' class="form-control" id="email" name="email" required>';
+      echo '<span id="email_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="username">Nom d\'utilisateur</label>';
+      echo '<input type="text" value='.$info['username'].' class="form-control" id="username" name="username" required>';
+      echo '<span id="username_manquant"></span>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="form-row">';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="Password1">Password</label>';
+      echo '<input type="password" class="form-control" id="Password1" name="Password1" required>';
+      echo '<span id="pass_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="Password2">Password</label>';
+      echo '<input type="password" class="form-control" id="Password2" required>';
+      echo '<span id="pas2_manquant"></span>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="form-group">';
+      echo '<label for="adress1">Addresse</label>';
+      echo '<input type="text" value="'.$info['adresse1'].'" class="form-control" id="adress1" name="adress1" placeholder="1 rue ece" required>';
+      echo '<span id="adress_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group">';
+      echo '<label for="adress2">Addresse 2</label>';
+      echo '<input type="text"  class="form-control" id="adress2" name="adress2" value='.$info['adresse2'].'>';
+      echo '</div>';
+      echo '<div class="form-row">';
+      echo '<div class="form-group col-md-6">';
+      echo '<label for="ville">Ville</label>';
+      echo '<input type="text" value='.$info['ville'].' class="form-control" id="ville" name="ville" required>';
+      echo '<span id="ville_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-2">';
+      echo '<label for="pays">Pays</label>';
+      echo '<input type="text" value='.$info['Pays'].' class="form-control" id="pays" name="pays" required>';
+      echo '<span id="pays_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-4">';
+      echo '<label for="cp">Code Postal</label>';
+      echo '<input type="text" value='.$info['CodePostal'].' class="form-control" id="cp" name="cp" required>';
+      echo '<span id="cp_manquant"></span>';
+      echo '</div>';
       ?>
-      <br>
-
-      <form id="formedit" role="form">
-        <div class="form-group">
-          <div class="form-row">
-            <div class="form-group col-md-4">
-              <label for="nom">Nom</label>
-              <input type="text" class="form-control" id="nom" name="nom" required>
-              <span id="nom_manquant"></span>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="prenom">Prenom</label>
-              <input type="text" class="form-control" id="prenom" name="prenom" required>
-              <span id="prenom_manquant"></span>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="role">Role</label>
-              <select class="custom-select mr-sm-2" id="role" name="role" required>
-                <option selected></option>
-                <option value="1">Vendeur</option>
-                <option value="2">Acheteur</option>
-              </select>
-              <span id="role_manquant"></span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-              <span id="email_manquant"></span>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="username">Nom d'utilisateur</label>
-              <input type="text" class="form-control" id="username" name="username" required>
-              <span id="username_manquant"></span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="Password1">Password</label>
-              <input type="password" class="form-control" id="Password1" name="Password1" required>
-              <span id="pass_manquant"></span>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="Password2">Password</label>
-              <input type="password" class="form-control" id="Password2" required>
-              <span id="pas2_manquant"></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="adress1">Addresse</label>
-            <input type="text" class="form-control" id="adress1" name="adress1" placeholder="1 rue ece" required>
-            <span id="adress_manquant"></span>
-          </div>
-          <div class="form-group">
-            <label for="adress2">Addresse 2</label>
-            <input type="text" class="form-control" id="adress2" name="adress2" >
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="ville">Ville</label>
-              <input type="text" class="form-control" id="ville" name="ville" required>
-              <span id="ville_manquant"></span>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="pays">Pays</label>
-              <input type="text" class="form-control" id="pays" name="pays" required>
-              <span id="pays_manquant"></span>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="cp">Code Postal</label>
-              <input type="text" class="form-control" id="cp" name="cp" required>
-              <span id="cp_manquant"></span>
-            </div>
-          </div>
-          <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
-          <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
-
-        </form>
-      </div>
     </div>
-  </div>
+    <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
+    <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
+
+  </form>
+</div>
+</div>
+</div>
 </div>
 
 <script>        
@@ -188,9 +176,6 @@
 
   var prenom = document.getElementById("prenom");
   var pnmanquant = document.getElementById("prenom_manquant");
-
-  var role = document.getElementById("role");
-  var rmanquant = document.getElementById("role_manquant");
 
   var username = document.getElementById("username");
   var umanquant = document.getElementById("username_manquant");
@@ -218,30 +203,9 @@
   
   edit.addEventListener('click',editionopen);
   sauver.addEventListener('click',validation);
-  role2.addEventListener('click',swap1);
-  role3.addEventListener('click',swap2);
+
   rolechoice();
 
-  function swap1()
-  {
-    <?php 
-    if ($_SESSION['role']==1){
-      $_SESSION['role']=2;
-      $test=mysqli_query($db_handle,"DELETE FROM Acheteur WHERE '".$_SESSION['id']."';");
-      $test=mysqli_query($db_handle,"INSERT INTO Vendeur(personne) VALUES '".$_SESSION['id']."';");
-    }
-      ?> 
-    }
-  function swap2()
-  {
-    <?php 
-    if ($_SESSION['role']==2){
-      $_SESSION['role']=1;
-      $test=mysqli_query($db_handle,"DELETE FROM Vendeur WHERE '".$_SESSION['id']."';");
-      $test=mysqli_query($db_handle,"INSERT INTO Acheteur(personne) VALUES '".$_SESSION['id']."';");
-    }
-      ?> 
-    }
   function rolechoice()
   {
     <?php 
@@ -251,6 +215,11 @@
       echo "role3.classList.add('badge-success');";
       echo "role2.classList.remove('badge-success');";
       echo "role2.classList.add('badge-dark');";
+      echo "role3.href =\"#\";";
+    }
+    if(($_SESSION['role'])==2)
+    {
+      echo "role2.href =\"#\";";
     }
     else if(($_SESSION['role'])==3)
     {
@@ -381,16 +350,6 @@ if(prenom.validity.valueMissing)
 }
 else{
   pnmanquant.style.display = 'none';
-}
-if(role.validity.valueMissing)
-{
- rmanquant.textContent = "Entrez votre role";
- rmanquant.style.color = 'red';
- rmanquant.style.display = 'block';
- i++;
-}
-else{
-  rmanquant.style.display = 'none';
 }
 if(mail.validity.valueMissing)
 {
