@@ -53,7 +53,7 @@ session_start();
     <p>
       Le meilleur site d'achat et vente en France
     </p>
-    <button onclick="window.location.href = 'Frontlogin.php';"class="btn btn-outline-secondary btn-lg" id="btnconnexion">S'inscrire!</button>
+    <button onclick="window.location.href = 'Frontlogin.php';"class="btn btn-outline-secondary btn-lg" id="btnconnexion">Se Connecter!</button>
   </div>
 
 </header>
