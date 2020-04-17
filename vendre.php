@@ -54,7 +54,8 @@ session_start();
   <a href="#" class="list-group-item list-group-item-action">Third item</a>
 </div>-->
     <br />
-    <div class="container-fluid">
+    <div class="container-fluid ">
+        <!--Template afficher article-->
         <div class="row content">
             <div class="col-sm-2">
             </div>
@@ -86,6 +87,7 @@ session_start();
                 </a>
             </div>
         </div>
+        <!--Fin Template afficher article-->
         <div class="row content">
             <div class="col-sm-2">
             </div>
@@ -104,11 +106,86 @@ session_start();
                             </div>
                         </div>
                     </div>
-
                 </a>
             </div>
-            <img style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
         </div>
+    </div>
+    <br />
+    <div class="row justify-content-center align-items-center">
+        <form class="needs-validation">
+            <div class="card text-center shadow p-3 mb-5" style="background-color: rgb(250, 250, 250);">
+                <h3 class="card-header" style="background-image: linear-gradient(rgb(0,123,255), rgb(102, 143, 255)); color: white">Ajouter un produit</h3>
+                <div class="card-body">
+                    <div id="form1">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="nom">Nom</label>
+                                <input type="text" class="form-control" id="nom" name="nom" required>
+                                <span id="nom_manquant"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description" name="desciption" required>
+                                <span id="description_manquant"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <label for="role">Visuel</label>
+                                <input type="file" name="image1" id="image1" required>
+                                <span id="image_manquant"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <label for="role">Image 2</label>
+                                <input type="file" name="image2" id="image2">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <label for="role">Image 3</label>
+                                <input type="file" name="image3" id="image3">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <label for="role">Image 4</label>
+                                <input type="file" name="image4" id="image4">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <label for="role">Video</label>
+                                <input type="file" name="video" id="video">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Catégorie</label>
+                            <select class="custom-select mr-sm-2" id="type" name="type" required>
+                                <option selected></option>
+                                <option value="1">Musée</option>
+                                <option value="2">VIP</option>
+                                <option value="3">Feraille</option>
+                            </select>
+                            <span id="type_manquant"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type de vente</label>
+                            <select class="custom-select mr-sm-2" id="type" name="type" required>
+                                <option selected></option>
+                                <option value="1">Musée</option>
+                                <option value="2">VIP</option>
+                                <option value="3">Feraille</option>
+                            </select>
+                            <span id="type_manquant"></span>
+                        </div>
+                        <input type="button" value="Suivant" class="btn btn-primary" id="valid1"></input>
+                    </div>
+                </div>
+            </div>
+
+        </form>
     </div>
 
 </body>
