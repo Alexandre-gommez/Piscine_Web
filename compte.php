@@ -154,7 +154,7 @@
       ?>
     </div>
     <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
-    <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
+    <button type="submit" id="save" class="btn btn-primary">Sauvegarder</button>
     <br>
     <br>
     <br>

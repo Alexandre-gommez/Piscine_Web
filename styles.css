@@ -111,7 +111,7 @@
     }
     
     @media (max-width: 575.98px) {
-        
+
         .description h1 {
             font-size: 2em;
         }
@@ -147,92 +147,99 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
-.categories{
-    display: inline-block;
-    font-size: 20px;
-    padding-right: 10px;
-    margin-top: 2.3rem;
-    padding-right: 15px;
-    padding-left: 15px;
-    color: #6897ff  ;
-    font-family: 'Arapey', serif;
-}
-.product-text{
-    font-size: 25px;
-    color: #6897ff  ;
-    font-family: 'Arapey', serif;
-}
-.categories:hover{
-
-    color: #000000  ;
-}
-@media (max-width: 990px) {
     .categories{
         display: inline-block;
+        font-size: 20px;
         padding-right: 10px;
-        margin-top: 0px;
-        margin-bottom: 1.5rem;
+        margin-top: 2.3rem;
         padding-right: 15px;
         padding-left: 15px;
+        color: #6897ff  ;
+        font-family: 'Arapey', serif;
     }
-}
-.fade-in {
-    animation: fadeIn ease 2s;
-    -webkit-animation: fadeIn ease 2s;
-    -moz-animation: fadeIn ease 2s;
-    -o-animation: fadeIn ease 2s;
-    -ms-animation: fadeIn ease 2s;
-  }
-  @keyframes fadeIn {
-    0% {
-      opacity:0;
+    .product-text{
+        font-size: 25px;
+        color: #6897ff  ;
+        font-family: 'Arapey', serif;
     }
-    100% {
-      opacity:1;
+    .categories:hover{
+
+        color: #000000  ;
     }
+    @media (max-width: 990px) {
+        .categories{
+            display: inline-block;
+            padding-right: 10px;
+            margin-top: 0px;
+            margin-bottom: 1.5rem;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+    }
+    .fade-in {
+        animation: fadeIn ease 2s;
+        -webkit-animation: fadeIn ease 2s;
+        -moz-animation: fadeIn ease 2s;
+        -o-animation: fadeIn ease 2s;
+        -ms-animation: fadeIn ease 2s;
+    }
+
+    @keyframes fadeIn {
+        0% {
+          opacity:0;
+      }
+      100% {
+          opacity:1;
+      }
   }
   
   @-moz-keyframes fadeIn {
     0% {
       opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
   }
-  
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
-  
-  @-o-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
-  
-  @-ms-keyframes fadeIn {
-    0% {
-      opacity:0;
-    }
-    100% {
+  100% {
       opacity:1;
   }
-  }
+}
 
-  @keyframes SlideUp {
+@-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+  }
+  100% {
+      opacity:1;
+  }
+}
+
+@keyframes SlideUp {
     0% {
         transform:translateY(250px);
-      }
-      100% {
+    }
+    100% {
         transform:translateY(0);
     }
-  }
+}
+
+.crop{
+    object-fit: cover;
+    width: 300px;
+    height: 500px;
+}
