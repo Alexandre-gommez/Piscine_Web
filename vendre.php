@@ -346,9 +346,6 @@ session_start();
     <script>
         var valid = document.getElementById("valid");
 
-    <script>
-        var valid = document.getElementById("valid");
-
         var ajout = document.getElementById("ajouter");
         var form = document.getElementById("form1");
 
