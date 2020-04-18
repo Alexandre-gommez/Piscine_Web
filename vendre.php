@@ -77,7 +77,7 @@ session_start();
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="vendre.php">Vendre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
+                <li class="nav-item"><a class="nav-link" href="affichage.php">Acheter</a></li>
                 <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
             </ul>
