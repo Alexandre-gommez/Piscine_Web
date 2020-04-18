@@ -66,7 +66,7 @@ INSERT INTO Offre(Objet,Prix) VALUES ("1","300");
 --Objet2
 INSERT INTO Objet(Nom,Description,Image1,Vendeur) VALUES ("Tag Heuer Carrera","Belle montre sportive","image2.jpeg","2");
 INSERT INTO VIP(Objet) VALUES ("2");
-INSERT INTO (Objet,Fin,Prix) VALUES("2","25/04/20-12:00","5000")
+INSERT INTO Enchere(Objet,Fin,Prix) VALUES("2","25/04/20-12:00","5000")
 INSERT INTO Achat(Objet,Prix) VALUES ("2","7500");
 --Objet3
 INSERT INTO Objet(Nom,Description,Image1,Vendeur) VALUES ("Casque de la guerre","Objet d'epoque","image3.jpeg","2");
