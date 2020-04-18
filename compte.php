@@ -32,7 +32,7 @@
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav2" href="">Vendre</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav2" href="vendre.php">Vendre</a></li>
         <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
         <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
         <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
@@ -154,7 +154,7 @@
       ?>
     </div>
     <input type="reset" onclick="location.href='compte.php'" class="btn btn-secondary" value="Annuler">
-    <input type="button" id="save" class="btn btn-primary" value="Sauvegarder">
+    <button type="submit" id="save" class="btn btn-primary">sauvegarder</button>
     <br>
     <br>
     <br>
