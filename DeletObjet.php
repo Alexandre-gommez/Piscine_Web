@@ -42,4 +42,6 @@ if(mysqli_num_rows($test7)!=0){
 	}
 	$temp=mysqli_query($db_handle,"DELETE FROM Enchere WHERE Objet='".$id."';");
 }
+$test=mysqli_query($db_handle,"DELETE FROM Objet WHERE Id='".$id."';");
+header("Location:achat.php");
 ?>

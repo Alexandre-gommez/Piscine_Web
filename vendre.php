@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -342,6 +343,8 @@ session_start();
             <br />
         </div>
     </div>
+    <script>
+        var valid = document.getElementById("valid");
 
     <script>
         var valid = document.getElementById("valid");
