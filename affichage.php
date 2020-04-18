@@ -19,6 +19,24 @@
 			$('.header').height($(window).height());
 		});
 	</script>
+	<style>
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		a:link{
+			text-decoration: none!important;
+			color:black;
+		}
+		a:hover{
+			opacity:30%;
+		}
+		.cropping{
+			overflow:hidden;
+			width:auto;
+			height:300px;
+		}
+	</style>
 
 </head>
 <body class="fade-in">
@@ -68,24 +86,29 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1)
 					{
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -119,23 +142,28 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
-						echo '<a href=\"DeletObjet.php?ID='.$liste1['Id'].'\"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
+						echo '<a href=\"DeletObjet.php?ID='.$liste1['Objet'].'\"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
 					}
 					echo "\n";
 					echo '</div>';
@@ -164,19 +192,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -216,19 +249,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -267,17 +305,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					echo '<img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">';
 					if($_SESSION['role']==3)
@@ -319,19 +371,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -371,17 +428,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -415,19 +486,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -461,19 +537,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -514,19 +595,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -565,17 +651,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -616,19 +716,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -668,17 +773,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -712,19 +831,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -758,19 +882,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -811,19 +940,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -862,17 +996,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -913,19 +1061,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -965,17 +1118,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -1009,19 +1176,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -1055,19 +1227,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -1109,19 +1286,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">Achat Direct -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -1160,17 +1342,31 @@
 					$objet=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$liste1['Objet']."';");
 					$tab_objet=mysqli_fetch_assoc($objet);
 					echo '<div class="col-sm-6 mb-5">';
+					echo "\n";
 					echo '<div class="card">';
+					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
+					echo "\n";
 					echo '<div class="card-body">';
+					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo "\n";
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+					echo "\n";
 					echo '</div>';
+					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo "\n";
+					echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'</span>';
+					echo "\n";
 					if(mysqli_num_rows($prix_enchere_temp)>1){
 						$prix_enchere==mysqli_fetch_assoc($prix_enchere_temp);
-						echo '<span class="font-weight-bold">'.$prix_enchere['Offre'].'</span>';
+						echo '<span class="font-weight-bold">Prix de l\'enchere : '.$prix_enchere['Offre'].'</span>';
 					}
 					if($_SESSION['role']==3)
 					{
@@ -1211,19 +1407,24 @@
 					echo "\n";
 					echo '<div class="card">';
 					echo "\n";
+					echo "<a href=\"#\" >";
+					echo "<div class=\"cropping\">";
 					echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+					echo "</div>";
 					echo "\n";
 					echo '<div class="card-body">';
 					echo "\n";
 					echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
 					echo "\n";
-					echo '<p class="card-text">'.$tab_objet['Nom'].'</p>';
+					echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
 					echo "\n";
 					echo '</div>';
 					echo "\n";
+					echo '</a>';
+					echo "\n";
 					echo '<div class="card-footer">';
 					echo "\n";
-					echo '<span class="font-weight-bold">Prix :'.$prix.'</span>';
+					echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'</span>';
 					echo "\n";
 					if($_SESSION['role']==3)
 					{
@@ -1259,7 +1460,6 @@
 		var elem5 = document.getElementById("nav5");
 		var elem6 = document.getElementById("nav6");
 		var elem7 = document.getElementById("nav7");
-
 		var btnco = document.getElementById("btnconnexion");
 
 		elem2.style.display = 'none';
