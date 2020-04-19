@@ -2,8 +2,9 @@
 include "loginBDD.php";
 
 $id=$_GET['ID'];
+echo $id;
 $test1=mysqli_query($db_handle,"SELECT * FROM Ferraille WHERE Objet='".$id."';");
-if(mysqli_num_rows($test1)!=0){
+if(mysqli_num_rows($test1)==1){
 	$temp=mysqli_query($db_handle,"DELETE FROM Ferraille WHERE Objet='".$id."';");
 }
 $test2=mysqli_query($db_handle,"SELECT * FROM VIP WHERE Objet='".$id."';");
@@ -43,5 +44,5 @@ if(mysqli_num_rows($test7)!=0){
 	$temp=mysqli_query($db_handle,"DELETE FROM Enchere WHERE Objet='".$id."';");
 }
 $test=mysqli_query($db_handle,"DELETE FROM Objet WHERE Id='".$id."';");
-header("Location:achat.php");
+header("Location:index.php");
 ?>
