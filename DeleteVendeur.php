@@ -51,12 +51,15 @@ if(mysqli_num_rows($test8)!=0)
 {
 	$test=mysqli_query($db_handle,"DELETE FROM Acheteur WHERE Personne='".$id."';");
 }
-$test=mysqli_query($db_handle,"SELECT * FROM Vendeur WHERE Personne='".$id."';");
+$test9=mysqli_query($db_handle,"SELECT * FROM Vendeur WHERE Personne='".$id."';");
 if(mysqli_num_rows($test9)!=0)
 {
 	$test=mysqli_query($db_handle,"DELETE FROM Vendeur WHERE Personne='".$id."';");
 }
-$test=mysqli_query($db_handle,"DELETE FROM Personne WHERE Id='".$id."';");
 $test=mysqli_query($db_handle,"DELETE FROM HistoVendeur WHERE Personne='".$id."';");
+$cb=mysqli_query($db_handle,"SELECT Carte FROM Personne WHERE Id'".$_SESSION['Id']."';");
+$valcb=mysqli_fetch_assoc($cb);
+$test=mysqli_query($db_handle,"DELETE FROM Personne WHERE Id='".$id."';");
+$test=mysqli_query($db_handle,"DELETE FROM CB WHERE Id='".$valcb['Carte']."';");
 header("Location:Admin.php");
 ?>
