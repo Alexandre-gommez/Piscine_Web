@@ -65,25 +65,34 @@
 		</div>
 	</nav>
 
-	<form action="affichage.php" method="post">
-		<select class="custom-select mr-sm-2" id="vente" name="vente">
-			<option selected></option>
-			<option value="1">Tout type d'achat</option>
-			<option value="2">Achat direct</option>
-			<option value="3">Enchere</option>
-			<option value="4">Negociation</option>
+	<br>
+	<div class="container">
+		<form action="affichage.php" method="post">
+			<div class="form-row justify-content-center align-items-center">
+				<div class="form-group col-md-2">
+					<select class="custom-select" id="vente" name="vente" >
+						<option value="1"selected>Tout type d'achat</option>
+						<option value="2">Achat direct</option>
+						<option value="3">Enchere</option>
+						<option value="4">Negociation</option>
+					</select>
+				</div>
+				<div class="form-group col-md-2">
+					<select class="custom-select mr-sm-2" id="categorie" name="categorie">
+						<option value="1" selected>Toute categorie</option>
+						<option value="2">Ferraille</option>
+						<option value="3">Musée</option>
+						<option value="4">VIP</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button type="sumbit" class="btn btn-primary" id="valid">Valider</button>
 
-		</select>
-		<select class="custom-select mr-sm-2" id="categorie" name="categorie">
-			<option selected></option>
-			<option value="1">Toute categorie</option>
-			<option value="2">Ferraille</option>
-			<option value="3">Musée</option>
-			<option value="4">VIP</option>
-		</select>
-		<button type="sumbit" class="btn btn-primary" id="valid2">Valider</button>
-	</form>
-
+				</div>
+			</div>
+		</form>
+		<hr>
+	</div>
 	<script>
 		var elem1 = document.getElementById("nav1");
 		var elem2 = document.getElementById("nav2");

@@ -55,7 +55,7 @@ session_start();
                   <input type="text" class="form-control" id="prenom" name="prenom" required>
                   <span id="prenom_manquant"></span>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-2">
                   <label for="role">Role</label>
                   <select class="custom-select mr-sm-2" id="role" name="role" required>
                     <option selected></option>
@@ -63,6 +63,12 @@ session_start();
                     <option value="2">Acheteur</option>
                   </select>
                   <span id="role_manquant"></span>
+                </div>
+                <div class="form-group col-md-1">
+                  <label for="profil">Photo</label>
+                  <input type="file"
+                  id="profil" name="profil"
+                  accept="image/png, image/jpg, image/jpeg">
                 </div>
               </div>
               <div class="form-row">
@@ -153,7 +159,14 @@ session_start();
                   <span id="type_manquant"></span>
                 </div>
               </div>
-
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="condition" required>
+                  <label class="form-check-label" for="condition">
+                    Accepter les conditions d'utilisation
+                  </label>
+                </div>
+              </div>
               <input type="button" value="Retour" class="btn btn-secondary" id="retour"></input>
               <button type="submit" class="btn btn-primary" id="valid2"> Valider </button>
 
@@ -225,6 +238,8 @@ session_start();
     var cp = document.getElementById("cp");
     var cpmanquant = document.getElementById("cp_manquant");
 
+    var condition = document.getElementById("condition");
+
     validate1.addEventListener('click',validation);
     validate2.addEventListener('click',validation2);
     retour.addEventListener('click',back);
@@ -243,8 +258,14 @@ session_start();
      else{
       datmanquant.style.display = 'none';
     }
-    if(cvv.validity.valueMissing)
+    if(condition.validity.valueMissing)
     {
+     res.preventDefault();
+     alert("Acceptez les conditions d'utilisation");
+   }
+
+   if(cvv.validity.valueMissing)
+   {
      res.preventDefault();
      cvvmanquant.textContent = "Entrez votre cvv";
      cvvmanquant.style.color = 'red';

@@ -59,20 +59,20 @@ INSERT INTO Acheteur(Personne) VALUES ("4");
 INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,username) VALUES ("Gommez","Alexandre","alexandre.gommez@edu.ece.fr","0678258572","e","6 rue du Docteur Rochefort","Chatou","78400","France","AG");
 INSERT INTO Admin(Personne) VALUES ("5");
 --Objet1
-INSERT INTO Objet(Nom,Description,Image1,Vendeur) VALUES ("Ferraille","5 tonnes de dechets","image1.jpeg","2");
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Ferraille","5 tonnes de dechets","Image1.jpeg","0","0","0","0","2");
 INSERT INTO Ferraille(Objet) VALUES ("1");
 INSERT INTO Achat(Objet,Prix) VALUES ("1","200");
 INSERT INTO Offre(Objet,Prix) VALUES ("1","300");
 --Objet2
-INSERT INTO Objet(Nom,Description,Image1,Vendeur) VALUES ("Tag Heuer Carrera","Belle montre sportive","image2.jpeg","2");
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Tag Heuer Carrera","Belle montre sportive","Image2.jpeg","0","0","0","0","2");
 INSERT INTO VIP(Objet) VALUES ("2");
-INSERT INTO (Objet,Fin,Prix) VALUES("2","25/04/20-12:00","5000")
+INSERT INTO Enchere(Objet,Fin,Prix) VALUES("2","25/04/20-12:00","5000")
 INSERT INTO Achat(Objet,Prix) VALUES ("2","7500");
 --Objet3
-INSERT INTO Objet(Nom,Description,Image1,Vendeur) VALUES ("Casque de la guerre","Objet d'epoque","image3.jpeg","2");
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Casque de la guerre","Objet d'epoque","Image3.jpeg","0","0","0","0","2");
 INSERT INTO Ferraille(Objet) VALUES ("3");
 INSERT INTO Achat(Objet,Prix) VALUES ("3","500");
 --Objet4
-INSERT INTO Objet(Nom,Description,Image1,Vendeur) VALUES ("Panneau de chantier","Ramener tot le matin","image4.jpeg","2");
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Panneau de chantier","Ramener tot le matin","Image4.jpeg","0","0","0","0","2");
 INSERT INTO VIP(Objet) VALUES ("4");
 INSERT INTO Achat(Objet,Prix) VALUES ("4","200");

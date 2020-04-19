@@ -19,7 +19,16 @@
       $('.header').height($(window).height());
     });
   </script>
-  
+  <style>
+    a:hover{
+      opacity:30%;
+    }
+    .cropping{
+      overflow:hidden;
+      height:120px;
+      width:120px;
+    }
+  </style>
 </head>
 <body class="fade-in">
   <nav class="navbar navbar-expand-md shadow">
@@ -31,8 +40,8 @@
     </button>
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav2" href="">Vendre</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav1" href="#">Acceuil</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav2" href="vendre.php">Vendre</a></li>
         <li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
         <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
         <li class="nav-item"><a class="nav-link" id="nav5" href="product.php">Admin</a></li>
@@ -43,21 +52,39 @@
   </nav>
   <br>
   <br>
-<div class="container">
+  <div class="container">
     <h4 class="mb-3" style="text-align:center">Votre compte</h4>
-    <div class="col-md-10" style="margin:auto">
-      <h5>Type</h5>
-      <a id="role1" href="#" class="badge badge-warning badge-pill">Admin</a>
-      <a id="role2" href="swap.php" class="badge badge-success badge-pill">Vendeur</a>
-      <a id="role3" href="swap.php" class="badge badge-dark badge-pill">Acheteur</a>
-      <hr>
-      
+    
+    <div class="col-md-10" style="margin:auto  ">
+      <div style="background-image: url('');">
+        <h5>Type</h5>
+        <a id="role1" href="#" class="badge badge-warning badge-pill">Admin</a>
+        <a id="role2" href="swap.php" class="badge badge-success badge-pill">Vendeur</a>
+        <a id="role3" href="swap.php" class="badge badge-dark badge-pill">Acheteur</a>
+        
+        <hr>
+      </div>
+
+      <a id="role4" href="#" class="float-right" style="color:black">Supprimer</a>
+      <span class="float-right">&nbsp;ou&nbsp; </span>
+      <a id="role4" href="#"  class="float-right" style="color:black"> Importer une bannière</a>
+
       <?php
       include 'loginBDD.php'; 
       $temp=mysqli_query($db_handle,"SELECT * FROM Personne WHERE id='".$_SESSION['Id']."';");
       $info=mysqli_fetch_assoc($temp);
 
       echo "<div class=\"container\">";
+      echo "<div class=\"row\">";
+      echo "<div class=\"col\">";
+      echo "<div class=\"cropping\">";
+      echo "<div class=\"text-center\">";
+      echo"<img src=\"image1.jpeg\" style=\"height:120px\">";
+      echo"</div>";
+      echo "</div>";
+      echo "</div>";
+      echo "</div>";
+      echo "<br>";
       echo "<div class=\"row\">";
       echo "<div class=\"col\">";
       echo "<h5>Nom</h5>";
@@ -82,6 +109,8 @@
       echo "<p>".$info['adresse1']."  ".$info['adresse2']."</p>";
       echo "<p>".$info['CodePostal']."  ".$info['ville']." ".$info['Pays']."</p>";
       echo "</div>";
+      echo "<div class=\"col\">";
+      echo "</div>";
       echo "</div>";
       echo "<hr>";
       echo "<button id=\"edit\" class=\"btn btn-primary\">Modifier les infos</button>";
@@ -99,6 +128,10 @@
       echo '<label for="prenom">Prenom</label>';
       echo '<input type="text" value='.$info['Prenom'].' class="form-control" id="prenom" name="prenom" required>';
       echo '<span id="prenom_manquant"></span>';
+      echo '</div>';
+      echo '<div class="form-group col-md-4">';
+      echo '<label for="img">Image de profil</label>';
+      echo '<input type="file" class="form-control" id="img" name="img" accept="image/png, image/jpg, image/jpeg">';
       echo '</div>';
       echo '</div>';
       echo '</div>';
