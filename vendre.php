@@ -16,6 +16,16 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Pour template de w3school-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- --------------- -->
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -27,21 +37,29 @@ session_start();
         });
     </script>
     <style>
-        a{
+        a {
             text-decoration: none;
-            color:black;
+            color: black;
         }
-        a:link{
-            text-decoration: none!important;
-            color:black;
+
+        a:link {
+            text-decoration: none !important;
+            color: black;
         }
-        a:hover{
-            opacity:30%;
+
+        a:hover {
+            opacity: 30%;
         }
-        .cropping{
-            overflow:hidden;
-            width:auto;
-            height:300px;
+
+        .cropping {
+            overflow: hidden;
+            width: auto;
+            height: 300px;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -59,7 +77,7 @@ session_start();
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="vendre.php">Vendre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
+                <li class="nav-item"><a class="nav-link" href="affichage.php">Acheter</a></li>
                 <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
             </ul>
@@ -83,7 +101,7 @@ session_start();
                                     <input type="text" class="form-control" id="nom" name="nom" required>
                                     <span id="nom_manquant"></span>
                                 </div>
-                                
+
                                 <div class="form-group col-md-3">
                                     <label for="type">Catégorie</label>
                                     <select class="custom-select mr-sm-2" id="type" name="type" required>
@@ -139,17 +157,15 @@ session_start();
                                     <div id="prix1">
                                         <label for="Pachat">Prix pour à l'achat</label>
                                         <input type="text" class="form-control" id="Pachat" name="Pachat" placeholder=" en €" required>
-                                        
+
                                         <span id="pa_manquant"></span>
                                     </div>
-                                    <!--on peux mettre les mêmes car même alerte si pas rempli-->
                                 </div>
                                 <div class="form-group col-md-3">
                                     <div id="prix2">
                                         <label for="Penchere">Prix pour à l'enchère</label>
                                         <input type="text" class="form-control" id="Penchere" name="Penchere" placeholder=" en €" required>
                                         <span id="pe_manquant"></span>
-                                        <!--on peux mettre les mêmes car même alerte si pas rempli-->
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
@@ -159,7 +175,6 @@ session_start();
 
                                         <span id="pn_manquant"></span>
                                     </div>
-                                    <!--on peux mettre les mêmes car même alerte si pas rempli-->
                                 </div>
                                 <div class="form-group col-md-3">
                                     <div id="datelim">
@@ -182,19 +197,19 @@ session_start();
                 <div class="col-sm-6 mb-5">
                     <div class="card">
 
-                        <a href="#" >
+                        <a data-toggle="modal" href="#myModal">
                             <div class="cropping">
                                 <img src="image1.jpeg" class="card-img-top">
                             </div>
-                            <div class="card-body" >
+                            <div class="card-body">
                                 <h5 class="card-title text-center">Nom objet</h5>
                                 <p style="color:black" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                             </div>
                         </a>
                         <div class="card-footer">
                             <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
+                            <a href="#">
+                                <img class="float-right" style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
                             </a>
                         </div>
                     </div>
@@ -202,7 +217,7 @@ session_start();
 
                 <div class="col-sm-6">
                     <div class="card">
-                        <a href="#" >
+                        <a data-toggle="modal" href="#myModal">
                             <div class="cropping">
                                 <img src="image2.jpeg" class="card-img-top">
                             </div>
@@ -213,8 +228,8 @@ session_start();
                         </a>
                         <div class="card-footer">
                             <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
+                            <a href="#">
+                                <img class="float-right" style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
                             </a>
                         </div>
                     </div>
@@ -224,19 +239,19 @@ session_start();
                 <div class="col-sm-6 mb-5">
                     <div class="card">
 
-                        <a href="#" >
+                        <a data-toggle="modal" href="#myModal">
                             <div class="cropping">
                                 <img src="image3.jpeg" class="card-img-top">
                             </div>
-                            <div class="card-body" >
+                            <div class="card-body">
                                 <h5 class="card-title text-center">Nom objet</h5>
                                 <p style="color:black" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                             </div>
                         </a>
                         <div class="card-footer">
                             <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
+                            <a href="#">
+                                <img class="float-right" style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
                             </a>
                         </div>
                     </div>
@@ -244,7 +259,7 @@ session_start();
 
                 <div class="col-sm-6">
                     <div class="card">
-                        <a href="#" >
+                        <a data-toggle="modal" href="#myModal">
                             <div class="cropping">
                                 <img src="image4.jpeg" class="card-img-top">
                             </div>
@@ -255,13 +270,76 @@ session_start();
                         </a>
                         <div class="card-footer">
                             <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
+                            <a href="#">
+                                <img class="float-right" style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
+
+            <!-- Modal -->
+            <div class="portfolio-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl"></div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 mx-auto">
+                                    <div class="modal-body">
+                                        <!-- Détail du modal-->
+                                        <h2 class="text-uppercase">Nom de l'objet</h2> <!-- uppercase ça veut dire MAJ-->
+
+                                        <!-- caroussel-->
+                                        <div id="demo" class="carousel slide" data-ride="carousel">
+
+                                            <!-- Indicators -->
+                                            <ul class="carousel-indicators">
+                                                <li data-target="#demo" data-slide-to="0" class="active"></li> <!-- Autant qu'il y a de photos -->
+                                                <li data-target="#demo" data-slide-to="1"></li>
+                                                <li data-target="#demo" data-slide-to="2"></li>
+                                            </ul>
+
+                                            <!-- Mettre les images -->
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="image1.jpeg" alt="image1" width="1100" height="500">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="image2.jpeg" alt="image2" width="1100" height="500">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="image3.jpeg" alt="image3" width="1100" height="500">
+                                                </div>
+                                            </div>
+
+                                            <!-- controles gauche-droite du caroussel -->
+                                            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                                <span class="carousel-control-prev-icon"></span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#demo" data-slide="next">
+                                                <span class="carousel-control-next-icon"></span>
+                                            </a>
+                                        </div>
+                                        <br />
+                                        <p>Mettre la description de l'objet ici</p>
+                                        <p>Mettre le type de vente</p>
+                                        <hr />
+                                        <p class="font-weight-bold">Prix</p>
+
+                                        <button class="btn btn-primary" data-dismiss="modal" type="button">Close Project</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <br />
         </div>
     </div>
@@ -457,6 +535,6 @@ session_start();
                 img.preventDefault();
             }
         }
-
     </script>
+
 </body>

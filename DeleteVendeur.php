@@ -46,6 +46,17 @@ while($liste=mysqli_fetch_assoc($boucle))
 	}
 	$test=mysqli_query($db_handle,"DELETE FROM Objet WHERE Id='".$liste['Id']."';");
 }
+$test8=mysqli_query($db_handle,"SELECT * FROM Acheteur WHERE Personne='".$id."';");
+if(mysqli_num_rows($test8)!=0)
+{
+	$test=mysqli_query($db_handle,"DELETE FROM Acheteur WHERE Personne='".$id."';");
+}
+$test=mysqli_query($db_handle,"SELECT * FROM Vendeur WHERE Personne='".$id."';");
+if(mysqli_num_rows($test9)!=0)
+{
+	$test=mysqli_query($db_handle,"DELETE FROM Vendeur WHERE Personne='".$id."';");
+}
 $test=mysqli_query($db_handle,"DELETE FROM Personne WHERE Id='".$id."';");
+$test=mysqli_query($db_handle,"DELETE FROM HistoVendeur WHERE Personne='".$id."';");
 header("Location:Admin.php");
 ?>
