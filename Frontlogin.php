@@ -99,4 +99,11 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
+  <footer class="footer" style="background-color:black;">
+    <div style="text-align :center; padding-top :1%;">
+      <a style="color:LightGrey;" href="mailto:victor.thevin@edu.ece.fr">Cliquer ici pour nous contacter !</a>
+      <div class="footer-copyright text-center py-3">&copy; 2020 Copyright : Alexandre GOMMEZ & Julien TERRIER & Victor THEVIN
+      </div>
+    </div>
+  </footer>
 </html>

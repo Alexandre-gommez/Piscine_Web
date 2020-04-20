@@ -133,6 +133,13 @@ session_start();
 
 </script>
 </body>
+<footer class="footer" style="background-color:black;">
+    <div style="text-align :center; padding-top :1%;">
+      <a style="color:LightGrey;" href="mailto:victor.thevin@edu.ece.fr">Cliquer ici pour nous contacter !</a>
+      <div class="footer-copyright text-center py-3">&copy; 2020 Copyright : Alexandre GOMMEZ & Julien TERRIER & Victor THEVIN
+      </div>
+    </div>
+  </footer>
 </html>
 
     <!--https://medium.com/cloud-native-the-gathering/how-to-use-css-to-fade-in-and-fade-out-html-text-and-pictures-f45c11364f08

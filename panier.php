@@ -99,7 +99,7 @@ session_start();
                 
                 if($tab_panier['typevente']==2){
                     $type=2;
-                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']"'");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."'");
                     $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
                     $test7=mysqli_query($db_handle,"SELECT * FROM Enchere WHERE Objet='".$tab_panier['Achat']."';");
                     $id_enchere=mysqli_fetch_assoc($test7);
@@ -287,7 +287,7 @@ session_start();
                 }
                 if($tab_panier['typevente']==1){
                     $type=1;
-                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']"'");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."'");
                     $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
                     $test1=mysqli_query($db_handle,"SELECT * FROM Achat WHERE Objet='".$tab_panier['Achat']."';");
                     $temp_prix=mysqli_fetch_assoc($test1);
@@ -473,7 +473,7 @@ session_start();
                 }
                 if($tab_panier['typevente']==3){
                     $type=3;
-                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']"'");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."'");
                     $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
                     $test4=mysqli_query($db_handle,"SELECT * FROM Offre WHERE Objet='".$tab_panier['Achat']."';");
                     $id_offre=mysqli_fetch_assoc($test4);
@@ -709,7 +709,7 @@ session_start();
                 echo "</div>";
                 ?>
                 <br>   
-                <br />
+                <br>
             </div>
         </div>
         <script>
