@@ -76,3 +76,8 @@ INSERT INTO Achat(Objet,Prix) VALUES ("3","500");
 INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Panneau de chantier","Ramener tot le matin","Image4.jpeg","0","0","0","0","2");
 INSERT INTO VIP(Objet) VALUES ("4");
 INSERT INTO Achat(Objet,Prix) VALUES ("4","200");
+-- Quelques encheres
+INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','1','12');
+INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','2','20');
+INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','3','3');
+INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','4','14');
