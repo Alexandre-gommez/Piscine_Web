@@ -65,8 +65,11 @@
     include 'loginBDD.php'; 
     $temp=mysqli_query($db_handle,"SELECT * FROM Personne WHERE id='".$_SESSION['Id']."';");
     $info=mysqli_fetch_assoc($temp);
-    echo '<div style="background-image: url('.$info['Image2'].');">';
+
     echo "<div class=\"container\">";
+    echo '<div style="background-image: url('.$info['Image2'].'); width : 100%; height : 100px; ">';
+    echo "</div>";
+    echo '<br>';
     echo "<div class=\"row\">";
     echo "<div class=\"col\">";
     echo "<div class=\"cropping\">";
@@ -185,7 +188,6 @@
     echo '<br>';
     echo '<br>';
     echo '</form>';
-    echo '</div>';
     echo '</div>';
     echo '</div>';
     ?>
