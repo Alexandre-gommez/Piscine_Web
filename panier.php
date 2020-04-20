@@ -66,10 +66,15 @@ session_start();
             </ul>
         </div>
     </nav>
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+                <button type="button" onclick="location.href='payement.php'" class="btn btn-secondary"> Payer </button>
+        </div>
+    </div>
 
     <div class="container-fluid ">
         <div class="container">
-        <button type="button" onclick="location.href='payement.php'" class="btn btn-secondary"> Payer </button>
         <hr>
             <?php
             echo "<div class=\"container-fluid \">";
@@ -573,7 +578,7 @@ session_start();
                         echo '<p>Prix de vente direct </p>';
                         echo '<hr />';
                         echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
-                    }else if($type==2){
+                    }else if($type==3){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
                         echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
@@ -590,10 +595,11 @@ session_start();
                         echo '<th scope="col">Valider</th>';
                         echo '</tr>';
                         echo '</thead>';
-                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffre WHERE Personne='".$_SESSION['Id']."'");
+                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffres WHERE Personne='".$_SESSION['Id']."' AND Referance='".$tab_objet['Id']."';");
                         $ligne=mysqli_fetch_assoc($listeoffre);
                         echo '<tbody>';
                         echo '<tr>';
+                        echo '<p>Test</p>';
                         echo '<td>Offre</td>';
                         echo '<td>'.$ligne['Offre1'].'</td>';
                         echo '<td>'.$ligne['Offre2'].'</td>';
@@ -602,24 +608,28 @@ session_start();
                         echo '<td>'.$ligne['Offre5'].'</td>';
                         if ($ligne['Offre1']=='0'||$ligne['Offre3']=='0'||$ligne['Offre5']!='0')
                         {
+                            echo '<td>';
                             echo '<form>';
                             echo '<div class="form-row">';
                             echo '<div class="form-group col-md-6">';
                             echo '<input type="text" class="form-control" id="number" name="number">';
                             echo '<span class="text_manquant"></span>';
                             echo '</div>';
+
                             echo '<div class="form-group col-md-6">';
-                            echo '<input onclick="location.href=\'offre.php\'?Personne='.$_SESSION['Id'].'&Id='.$tab_objet['Id'].'" type="button" value="Retour" class="btn btn-secondary" id="btn"></input>';
-                            //
-                            //echo '<input type="submit" value="Valider" class="btn btn-secondary" id="btn"'$i'  name="btn"'$i'>';
+                            echo '<input onclick="location.href=\'offre.php\'?Personne='.$_SESSION['Id'].'&Id='.$tab_objet['Id'].'" type="button" value="Valider" class="btn btn-secondary">';
+
+                    //
+                    //echo '<input type="submit" value="Valider" class="btn btn-secondary" id="btn"'$i'  name="btn"'$i'>';
                             echo '</div>';
                             echo '</div>';
                             echo '</form>';
+                            echo '</td>';
                             echo '</tr>';
                             echo '</tr>';
                             echo '</tbody>'; 
                             echo '</table>';
-                        }else if($type==3){
+                        }else if($type==2){
                             echo '<p>Prix de vente de depart </p>';
                             echo '<hr />';
                             echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
@@ -632,15 +642,6 @@ session_start();
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
-                        if($cmpt%2==1)
-                        {
-                            echo '</div>';
-                        }
-                        $cmpt++;
-                    }
-
-                }
-            }
             if($cmpt%2==0)
             {
                 echo '</div>';

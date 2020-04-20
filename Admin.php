@@ -72,6 +72,9 @@ while($liste=mysqli_fetch_assoc($boucle))
 </table>
 
 </body>
+<br>
+<hr>
+<br>
 <footer class="footer" style="background-color:black;">
     <div style="text-align :center; padding-top :1%;">
       <a style="color:LightGrey;" href="mailto:victor.thevin@edu.ece.fr">Cliquer ici pour nous contacter !</a>

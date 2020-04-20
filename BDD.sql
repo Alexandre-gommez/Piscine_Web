@@ -38,12 +38,12 @@ CREATE TABLE ListeAchat(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Achat int NOT
 --Vendeurs
 --Vendeur 1
 INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","Terrier","1","1","1","09/21");
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username) VALUES ("Terrier","Julien","julien.terrier@edu.ece.fr","0658657052","a","10 rue de la Paix","Paris","75002","Fance","1","JT");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("Terrier","Julien","julien.terrier@edu.ece.fr","0658657052","a","10 rue de la Paix","Paris","75002","Fance","1","JT","avatar.jpg","carreblanc.jpg");
 INSERT INTO Vendeur(Personne) VALUES ("1");
 INSERT INTO Histovendeur(Personne) VALUES ("1");
 --Vendeur 2
 INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","Martin","2","2","2","06/21");
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username) VALUES ("Martin","Pierre","pierre.dupond@edu.ece.fr","0603445612","b","6 rue du Bournaire","Gennevilliers","92230","France","2","PM");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("Martin","Pierre","pierre.dupond@edu.ece.fr","0603445612","b","6 rue du Bournaire","Gennevilliers","92230","France","2","PM","avatar.jpg","carreblanc.jpg");
 INSERT INTO Vendeur(Personne) VALUES ("2");
 INSERT INTO Histovendeur(Personne) VALUES ("2");
 --Acheteurs
@@ -53,20 +53,20 @@ INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,C
 INSERT INTO Acheteur(Personne) VALUES ("3");
 --Acheteur 2
 INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","Dupuis","4","4","4","10/20");
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username) VALUES ("Dupuis","Marc","marc.dupuis@edu.ece.fr","0632552678","d","10 avenue de la République","Chatenay-Malabry","92290","Fance","4","MD");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("Dupuis","Marc","marc.dupuis@edu.ece.fr","0632552678","d","10 avenue de la République","Chatenay-Malabry","92290","Fance","4","MD","avatar.jpg","carreblanc.jpg");
 INSERT INTO Acheteur(Personne) VALUES ("4");
 --Admin
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,username) VALUES ("Gommez","Alexandre","alexandre.gommez@edu.ece.fr","0678258572","e","6 rue du Docteur Rochefort","Chatou","78400","France","AG");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,username,Image1) VALUES ("Gommez","Alexandre","alexandre.gommez@edu.ece.fr","0678258572","e","6 rue du Docteur Rochefort","Chatou","78400","France","AG","BB.jpg");
 INSERT INTO Admin(Personne) VALUES ("5");
 --Objet1
-INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Ferraille","5 tonnes de dechets","Image1.jpeg","dechet.jpg","0","0","0","2");
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Ferraille","5 tonnes de dechets","Image1.jpeg","dechet.jpg","voiture.jpg","0","0","1");
 INSERT INTO Ferraille(Objet) VALUES ("1");
 INSERT INTO Achat(Objet,Prix) VALUES ("1","200");
 INSERT INTO Offre(Objet,Prix) VALUES ("1","300");
 --Objet2
 INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Tag Heuer Carrera","Belle montre sportive","Image2.jpeg","0","0","0","0","2");
 INSERT INTO VIP(Objet) VALUES ("2");
-INSERT INTO Enchere(Objet,Fin,Prix) VALUES("2","25/04/20-12:00","5000")
+INSERT INTO Enchere(Objet,Fin,Prix) VALUES("2","25/04/20-12:00","5000");
 INSERT INTO Achat(Objet,Prix) VALUES ("2","7500");
 --Objet3
 INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Casque de la guerre","Objet d'epoque","Image3.jpeg","0","0","0","0","2");
@@ -76,11 +76,23 @@ INSERT INTO Achat(Objet,Prix) VALUES ("3","500");
 INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Panneau de chantier","Ramener tot le matin","Image4.jpeg","0","0","0","0","2");
 INSERT INTO VIP(Objet) VALUES ("4");
 INSERT INTO Achat(Objet,Prix) VALUES ("4","200");
+-- Objet 5
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("Ancienne batte de baseball","Fabriquée  en 1850","batte1.jpg","batte2.jpg","0","0","0","1");
+INSERT INTO Musee(Objet) VALUES ("5");
+INSERT INTO Achat(Objet,Prix) VALUES ("5","250");
+--Vendeur 2
+INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("999999","McDonald","5","5","5","06/21");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("McDonald","Picsou","picsou.mc@edu.ece.fr","0607080910","$","Coffre blinblé","Donaldville","00000","Disneyland","5","Picpic","picsou.jpg","dollars.jpg");
+INSERT INTO Vendeur(Personne) VALUES ("6");
+INSERT INTO Histovendeur(Personne) VALUES ("6");
+--Objet6
+INSERT INTO Objet(Nom,Description,Image1,Image2,Image3,Image4,Video,Vendeur) VALUES ("île privée","Petite île privée calme dans les Caraïbes","ile.png","ile2.png","0","0","0","6");
+INSERT INTO VIP(Objet) VALUES ("6");
+INSERT INTO Enchere(Objet,Fin,Prix) VALUES("6","25/04/20-12:00","24000");
+
 --Quelques enchères
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','1','12');
 INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','1','2');
-INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','2','20');
-INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','2','2');
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','3','3');
 INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','3','2');
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','4','14');
