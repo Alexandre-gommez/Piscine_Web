@@ -39,7 +39,7 @@ session_start();
   <div class="container" >
 
     <div class="row justify-content-center align-items-center" style="height:79vh">
-      <form class="needs-validation" novalidate action="creationPersonne.php" method="post">
+      <form class="needs-validation" novalidate action="creationPersonne.php" method="post" enctype='multipart/form-data'>
         <div class="card text-center shadow p-3 mb-5" style="background-color: rgb(250, 250, 250);">
           <h3 class="card-header" style="background-image: linear-gradient(rgb(0,123,255), rgb(102, 143, 255)); color: white">S'inscrire</h3>
           <div   class="card-body">
@@ -68,7 +68,7 @@ session_start();
                   <label for="profil">Photo</label>
                   <input type="file"
                   id="img" name="img"
-                  accept="image/png, image/jpg, image/jpeg">
+                  accept=".png, .jpg, .jpeg">
                 </div>
               </div>
               <div class="form-row">

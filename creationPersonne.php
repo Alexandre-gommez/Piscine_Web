@@ -23,7 +23,7 @@ $username=isset($_POST["username"]) ? $_POST["username"]:"";
 $test=mysqli_query($db_handle,"SELECT * FROM Personne WHERE id='".$_SESSION['Id']."';");
 if(isset($test))
 {
-    $personne=mysqli_fetch_assoc($test);
+	$personne=mysqli_fetch_assoc($test);
 }
 if($_FILES['img']['name']=="")
 {
@@ -53,6 +53,15 @@ if($_SESSION['role']==1||$_SESSION['role']==2||$_SESSION['role']==3)
 }
 else 
 {
+	if($_FILES['img']['name']=="")
+	{
+		$filename1='avatar.jpg';
+	}
+	else
+	{
+		$filename1 = $_FILES['img']['name'];
+		move_uploaded_file($_FILES['img']['tmp_name'], '../Piscine_Web/' . basename($_FILES['img']['name']));
+	}
 	//Creation CB
 	mysqli_query($db_handle,"INSERT INTO CB(Solde, Nom_carte, Num, Crypto, Type, Date_expiration) VALUES('1000','".$NomCB."','".$NCarte."','".$crypto."','".$typecarte."','".$date."');");
 
@@ -61,12 +70,14 @@ else
 	$idCB=$CB['MAX(id)'];
 
 	//creation de la personne 
-	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username,'avatar.jpg',Image2) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."','avatar.jpg','".$filename2."');");
+	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username,Image1,Image2) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."','".$filename1."','carreblanc.jpg');");
 
 	$tempp=mysqli_query($db_handle,"SELECT MAX(id) FROM Personne");
 	$Personne=mysqli_fetch_assoc($tempp);
 	$idPersonne=$Personne['MAX(id)'];
 
+	$_SESSION['role']=$Role;
+	$_SESSION['Id']=$idPersonne;
 	if ($Role==1) {
 		mysqli_query($db_handle,"INSERT INTO Vendeur(Personne) VALUES('".$idPersonne."');");
 		mysqli_query($db_handle,"INSERT INTO Histovendeur(Personne) VALUES('".$idPersonne."');");
@@ -76,4 +87,3 @@ else
 	mysqli_close($db_handle);
 	header("Location:index.php");
 }
-?>
