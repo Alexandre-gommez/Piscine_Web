@@ -38,7 +38,7 @@ CREATE TABLE ListeAchat(Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,Achat int NOT
 --Vendeurs
 --Vendeur 1
 INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("100","Terrier","1","1","1","09/21");
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("Terrier","Julien","julien.terrier@edu.ece.fr","0658657052","a","10 rue de la Paix","Paris","75002","Fance","1","JT","avatar.jpg","carreblanc.jpg");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1) VALUES ("Terrier","Julien","julien.terrier@edu.ece.fr","0658657052","a","10 rue de la Paix","Paris","75002","Fance","1","JT","avatar.jpg");
 INSERT INTO Vendeur(Personne) VALUES ("1");
 INSERT INTO Histovendeur(Personne) VALUES ("1");
 --Vendeur 2

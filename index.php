@@ -68,7 +68,9 @@ session_start();
         <img id="logo" src="shopping-cart.svg" alt="">
         <br>
         <br>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        <p class="text-muted">Notre site proprose d'acheter de nombreux produits :
+          <br>Vous pouvez participer à des enchères, négocier le prix ou acheter directement votre article.
+        </p>
       </div>
       <div class="col-md-6">
         <h4>Vendez</h4>
@@ -76,7 +78,8 @@ session_start();
         <img id="logo" src="shopping-bag.svg" alt="">
         <br>
         <br>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+        <p class="text-muted">Besoin de vous débarrasser de vos objets ? <br>
+Vendez les, vous avez le choix entre plusieurs types de ventes</p>
       </div>
     </div>
   </div>
