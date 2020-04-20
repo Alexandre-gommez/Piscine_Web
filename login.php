@@ -13,14 +13,16 @@ $admin=mysqli_query($db_handle,"SELECT Personne FROM Admin  WHERE Personne = '".
 $acheteur=mysqli_query($db_handle,"SELECT Personne FROM Acheteur  WHERE Personne = '".$_SESSION['Id']."'");
 $vendeur=mysqli_query($db_handle,"SELECT Personne FROM Vendeur  WHERE Personne = '".$_SESSION['Id']."'");
 if (mysqli_num_rows($admin)==0&&mysqli_num_rows($acheteur)==0&&mysqli_num_rows($vendeur)==0){
-	$_SESSION['role']=0;
+    $_SESSION['role']=0;
+    header("Location:Frontlogin.php");
 }else if (mysqli_num_rows($admin)==1&&mysqli_num_rows($acheteur)==0&&mysqli_num_rows($vendeur)==0){
-	$_SESSION['role']=3;
+    $_SESSION['role']=3;
+    header("Location:index.php");
 }else if (mysqli_num_rows($admin)==0&&mysqli_num_rows($acheteur)==0&&mysqli_num_rows($vendeur)==1){
-	$_SESSION['role']=2;
+    $_SESSION['role']=2;
+    header("Location:index.php");
 }else if (mysqli_num_rows($admin)==0&&mysqli_num_rows($acheteur)==1&&mysqli_num_rows($vendeur)==0){
-	$_SESSION['role']=1;
+    $_SESSION['role']=1;
+    header("Location:index.php");
 }
-
-header("Location:index.php");
 ?>

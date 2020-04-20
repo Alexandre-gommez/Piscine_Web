@@ -20,26 +20,29 @@ $date=isset($_POST["date"]) ? $_POST["date"]:"";
 $Role=isset($_POST["role"]) ? $_POST["role"]:"";
 $username=isset($_POST["username"]) ? $_POST["username"]:"";
 
-if(isset($_FILES['img']))
+$test=mysqli_query($db_handle,"SELECT * FROM Personne WHERE id='".$_SESSION['Id']."';");
+if(isset($test))
+{
+    $personne=mysqli_fetch_assoc($test);
+}
+if($_FILES['img']['name']=="")
+{
+	$filename1=$personne['Image1'];
+}
+else
 {
 	$filename1 = $_FILES['img']['name'];
 	move_uploaded_file($_FILES['img']['tmp_name'], '../Piscine_Web/' . basename($_FILES['img']['name']));
-	echo "test";
-}
-else
-{
-	$filename1=0;
 }
 
-if(isset($_FILES['Test']))
+if($_FILES['Test']['name']=="")
+{
+	$filename2=$personne['Image2'];
+}
+else
 {
 	$filename2 = $_FILES['Test']['name'];
 	move_uploaded_file($_FILES['Test']['tmp_name'], '../Piscine_Web/' . basename($_FILES['Test']['name']));
-		echo "test1";
-}
-else
-{
-	$filename2="carreblanc.jpg";
 }
 
 if($_SESSION['role']==1||$_SESSION['role']==2||$_SESSION['role']==3)
