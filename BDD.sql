@@ -78,6 +78,10 @@ INSERT INTO VIP(Objet) VALUES ("4");
 INSERT INTO Achat(Objet,Prix) VALUES ("4","200");
 --Quelques enchères
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','1','12');
+INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','1','2');
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','2','20');
+INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','2','2');
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','3','3');
+INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','3','2');
 INSERT INTO ListeEnchere(Referance, Personne, Offre) VALUES('1','4','14');
+INSERT INTO ListeAchat(Achat, Client, typevente) VALUES('1','4','2');
