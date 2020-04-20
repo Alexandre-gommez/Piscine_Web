@@ -46,7 +46,7 @@
 </head>
 <body class="fade-in">
 	<nav class="navbar navbar-expand-md shadow">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="index.php">
 			<img id="logo" src="logo.png" alt="">
 		</a>
 		<button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -54,12 +54,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="main-navigation">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" id="nav1" href="index.php">Acceuil</a></li>
+				<li class="nav-item"><a class="nav-link" id="nav1" href="index.php">Accueil</a></li>
 				<li class="nav-item"><a class="nav-link" id="nav2" href="vendre.php">Vendre</a></li>
-				<li class="nav-item"><a class="nav-link" id="nav3" href="#page-footer">Acheter</a></li>
+				<li class="nav-item"><a class="nav-link" id="nav3" href="#">Acheter</a></li>
 				<li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
 				<li class="nav-item"><a class="nav-link" id="nav5" href="Admin.php">Admin</a></li>
-				<li class="nav-item"><a class="nav-link" id="nav6" href="#page-footer">Panier</a></li>
+				<li class="nav-item"><a class="nav-link" id="nav6" href="panier.php">Panier</a></li>
 				<li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
 			</ul>
 		</div>
