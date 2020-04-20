@@ -1,6 +1,6 @@
 <?php
-//connexion a la bdd
-$db_handle = mysqli_connect('localhost', 'root', '');
+//connexionau a la bdd
+$db_handle = mysqli_connect('localhost', 'root', 'root');
 
 //test de connexion
 if ($db_handle -> connect_errno){
@@ -11,7 +11,7 @@ if ($db_handle -> connect_errno){
 $db_found=mysqli_select_db($db_handle,'ecey');
 //test de placement
 if(!$db_found){
-	echo "Problemes de root (mdp)";
+	echo "Problemes de root mdp";
 }             
 $cmpt=0;
 $categorie=isset($_POST["categorie"]) ? $_POST["categorie"]:"";
@@ -394,11 +394,11 @@ if ($categorie==1&&$vente==1){
 		echo "\n";
 		if($_SESSION['role']==1)
 		{
-			echo '<a href="addpanier.php?ID='.$liste1['Objet'].'&type=1"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="310522.svg" alt=""></a>';
+			echo '<a href="addpanier.php?ID='.$liste1['Objet'].'&type=3"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="310522.svg" alt=""></a>';
 		}
 		if($_SESSION['role']==3)
 		{
-			echo '<a href="DeletObjet.php?ID='.$liste1['Objet'].'&type"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
+			echo '<a href="DeletObjet.php?ID='.$liste1['Objet'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
 		}
 		echo "\n";
 		echo '</div>';
@@ -911,11 +911,11 @@ else if ($categorie==1&&$vente==4){
 		echo "\n";
 		if($_SESSION['role']==1)
 		{
-			echo '<a href="addpanier.php?ID='.$liste1['Objet'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="310522.svg" alt=""></a>';
+			echo '<a href="addpanier.php?ID='.$liste1['Objet'].'&type=3"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="310522.svg" alt=""></a>';
 		}
 		if($_SESSION['role']==3)
 		{
-			echo '<a href="DeletObjet.php?ID='.$liste1['Objet'].'&type=3"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
+			echo '<a href="DeletObjet.php?ID='.$liste1['Objet'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
 		}
 		echo "\n";
 		echo '</div>';
@@ -1253,7 +1253,7 @@ else if ($categorie==2&&$vente==1){
 		echo "\n";
 		if($_SESSION['role']==1)
 		{
-			echo '<a href="addpanier.php?ID='.$liste1['Objet'].'&type=2"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="310522.svg" alt=""></a>';
+			echo '<a href="addpanier.php?ID='.$liste1['Objet'].'&type=1"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="310522.svg" alt=""></a>';
 		}
 		if($_SESSION['role']==3)
 		{

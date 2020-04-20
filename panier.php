@@ -61,7 +61,7 @@ session_start();
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="vendre.php">Vendre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
+                <li class="nav-item"><a class="nav-link" href="FrontAffichage">Acheter</a></li>
                 <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
             </ul>
@@ -73,7 +73,7 @@ session_start();
             <?php
             echo "<div class=\"container-fluid \">";
             echo "<div class=\"container\">" ;
-            $db_handle = mysqli_connect('localhost', 'root', '');
+            $db_handle = mysqli_connect('localhost', 'root', 'root');
 
             //test de connexion
             if ($db_handle -> connect_errno){
@@ -158,63 +158,44 @@ session_start();
                     echo '<h2 class="text-uppercase">'.$tab_objet['Nom'].'</h2>';
                     echo '<div id="demo" class="carousel slide" data-ride="carousel">';
                     echo '<ul class="carousel-indicators">';
-                    if($tab_objet['Image2']==0){
+                    if($tab_objet['Image2']=='0'){
                         $cmpt2=1;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                     }
-                    else if($tab_objet['Image3']==0){
+                    else if($tab_objet['Image3']=='0'){
                         $cmpt2=2;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                     }
-                    else if($tab_objet['Image4']==0){
+                    else if($tab_objet['Image4']=='0'){
                         $cmpt2=3;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                         echo '<li data-target="#demo" data-slide-to="2"></li>';
                     }
-                    else if($tab_objet['Image5']==0){
+                    else {
                         $cmpt2=4;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                         echo '<li data-target="#demo" data-slide-to="2"></li>';
                         echo '<li data-target="#demo" data-slide-to="3"></li>';
                     }
-                    else if($tab_objet['Image5']!=0){
-                        $cmpt2=5;
-                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
-                        echo '<li data-target="#demo" data-slide-to="1"></li>';
-                        echo '<li data-target="#demo" data-slide-to="2"></li>';
-                        echo '<li data-target="#demo" data-slide-to="3"></li>';
-                        echo '<li data-target="#demo" data-slide-to="4"></li>';
-                    }
                     echo '</ul>';
                     echo '<div class="carousel-inner">';
-                    if($cmpt2==1){
+                    if($tab_objet['Image2']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
                     }
-                    else if($cmpt2==2){
-                        echo '<div class="carousel-item active">';
-                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
-                        echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
-                    }
-                    else if($cmpt2==3){
+                    else if($tab_objet['Image3']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
                     }
-                    else if($cmpt2==4){
+                    else if($tab_objet['Image4']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
@@ -224,11 +205,8 @@ session_start();
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
                     }
-                    else if($cmpt2==5){
+                    else {
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
@@ -240,9 +218,6 @@ session_start();
                         echo '</div>';
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image5'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
                     }
                     echo '</div>';
@@ -253,6 +228,11 @@ session_start();
                     echo '<span class="carousel-control-next-icon"></span>';
                     echo '</a>';
                     echo '</div>';
+                    if($tab_objet['Video']!=0){
+                        echo '<div class="embed-responsive embed-responsive-4by3">';
+                        echo '<iframe class="embed-responsive-item" src="'.$tab_objet['Video'].'"></iframe>';
+                        echo '</div>';
+                    }
                     echo '<br />';
                     echo '<p>'.$tab_objet['Description'].'</p>';
                     if($type==1){
@@ -344,63 +324,44 @@ session_start();
                     echo '<h2 class="text-uppercase">'.$tab_objet['Nom'].'</h2>';
                     echo '<div id="demo" class="carousel slide" data-ride="carousel">';
                     echo '<ul class="carousel-indicators">';
-                    if($tab_objet['Image2']==0){
+                    if($tab_objet['Image2']=='0'){
                         $cmpt2=1;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                     }
-                    else if($tab_objet['Image3']==0){
+                    else if($tab_objet['Image3']=='0'){
                         $cmpt2=2;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                     }
-                    else if($tab_objet['Image4']==0){
+                    else if($tab_objet['Image4']=='0'){
                         $cmpt2=3;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                         echo '<li data-target="#demo" data-slide-to="2"></li>';
                     }
-                    else if($tab_objet['Image5']==0){
+                    else {
                         $cmpt2=4;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                         echo '<li data-target="#demo" data-slide-to="2"></li>';
                         echo '<li data-target="#demo" data-slide-to="3"></li>';
                     }
-                    else if($tab_objet['Image5']!=0){
-                        $cmpt2=5;
-                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
-                        echo '<li data-target="#demo" data-slide-to="1"></li>';
-                        echo '<li data-target="#demo" data-slide-to="2"></li>';
-                        echo '<li data-target="#demo" data-slide-to="3"></li>';
-                        echo '<li data-target="#demo" data-slide-to="4"></li>';
-                    }
                     echo '</ul>';
                     echo '<div class="carousel-inner">';
-                    if($cmpt2==1){
+                    if($tab_objet['Image2']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
                     }
-                    else if($cmpt2==2){
-                        echo '<div class="carousel-item active">';
-                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
-                        echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
-                    }
-                    else if($cmpt2==3){
+                    else if($tab_objet['Image3']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
                     }
-                    else if($cmpt2==4){
+                    else if($tab_objet['Image4']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
@@ -410,11 +371,8 @@ session_start();
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
                     }
-                    else if($cmpt2==5){
+                    else {
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
@@ -426,9 +384,6 @@ session_start();
                         echo '</div>';
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image5'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
                     }
                     echo '</div>';
@@ -439,6 +394,11 @@ session_start();
                     echo '<span class="carousel-control-next-icon"></span>';
                     echo '</a>';
                     echo '</div>';
+                    if($tab_objet['Video']!=0){
+                        echo '<div class="embed-responsive embed-responsive-4by3">';
+                        echo '<iframe class="embed-responsive-item" src="'.$tab_objet['Video'].'"></iframe>';
+                        echo '</div>';
+                    }
                     echo '<br />';
                     echo '<p>'.$tab_objet['Description'].'</p>';
                     if($type==1){
@@ -531,63 +491,44 @@ session_start();
                     echo '<h2 class="text-uppercase">'.$tab_objet['Nom'].'</h2>';
                     echo '<div id="demo" class="carousel slide" data-ride="carousel">';
                     echo '<ul class="carousel-indicators">';
-                    if($tab_objet['Image2']==0){
+                    if($tab_objet['Image2']=='0'){
                         $cmpt2=1;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                     }
-                    else if($tab_objet['Image3']==0){
+                    else if($tab_objet['Image3']=='0'){
                         $cmpt2=2;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                     }
-                    else if($tab_objet['Image4']==0){
+                    else if($tab_objet['Image4']=='0'){
                         $cmpt2=3;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                         echo '<li data-target="#demo" data-slide-to="2"></li>';
                     }
-                    else if($tab_objet['Image5']==0){
+                    else {
                         $cmpt2=4;
                         echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
                         echo '<li data-target="#demo" data-slide-to="1"></li>';
                         echo '<li data-target="#demo" data-slide-to="2"></li>';
                         echo '<li data-target="#demo" data-slide-to="3"></li>';
                     }
-                    else if($tab_objet['Image5']!=0){
-                        $cmpt2=5;
-                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
-                        echo '<li data-target="#demo" data-slide-to="1"></li>';
-                        echo '<li data-target="#demo" data-slide-to="2"></li>';
-                        echo '<li data-target="#demo" data-slide-to="3"></li>';
-                        echo '<li data-target="#demo" data-slide-to="4"></li>';
-                    }
                     echo '</ul>';
                     echo '<div class="carousel-inner">';
-                    if($cmpt2==1){
+                    if($tab_objet['Image2']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
                     }
-                    else if($cmpt2==2){
-                        echo '<div class="carousel-item active">';
-                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
-                        echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
-                    }
-                    else if($cmpt2==3){
+                    else if($tab_objet['Image3']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
                     }
-                    else if($cmpt2==4){
+                    else if($tab_objet['Image4']=='0'){
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
@@ -597,11 +538,8 @@ session_start();
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
                     }
-                    else if($cmpt2==5){
+                    else {
                         echo '<div class="carousel-item active">';
                         echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
                         echo '</div>';
@@ -613,9 +551,6 @@ session_start();
                         echo '</div>';
                         echo '<div class="carousel-item">';
                         echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
-                        echo '</div>';
-                        echo '<div class="carousel-item">';
-                        echo '<img src="'.$tab_objet['Image5'].'" alt="image2" width="1100" height="500">';
                         echo '</div>';
                     }
                     echo '</div>';
@@ -626,6 +561,11 @@ session_start();
                     echo '<span class="carousel-control-next-icon"></span>';
                     echo '</a>';
                     echo '</div>';
+                    if($tab_objet['Video']!=0){
+                        echo '<div class="embed-responsive embed-responsive-4by3">';
+                        echo '<iframe class="embed-responsive-item" src="'.$tab_objet['Video'].'"></iframe>';
+                        echo '</div>';
+                    }
                     echo '<br />';
                     echo '<p>'.$tab_objet['Description'].'</p>';
                     if($type==1){
@@ -925,11 +865,4 @@ session_start();
 
     </script>
 </body>
-<footer class="footer" style="background-color:black;">
-    <div style="text-align :center; padding-top :1%;">
-      <a style="color:LightGrey;" href="mailto:victor.thevin@edu.ece.fr">Cliquer ici pour nous contacter !</a>
-      <div class="footer-copyright text-center py-3">&copy; 2020 Copyright : Alexandre GOMMEZ & Julien TERRIER & Victor THEVIN
-      </div>
-    </div>
-  </footer>
 </html>
