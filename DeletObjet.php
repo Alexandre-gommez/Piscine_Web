@@ -4,6 +4,7 @@ include "loginBDD.php";
 $id=$_GET['ID'];
 if($_SESSION['role']==1){
 	$temp=mysqli_query($db_handle,"DELETE FROM ListeAchat WHERE Achat='".$id."';");
+	header("Location:panier.php");
 }
 else  {
 	$test1=mysqli_query($db_handle,"SELECT * FROM Ferraille WHERE Objet='".$id."';");
@@ -47,7 +48,8 @@ else  {
 		$temp=mysqli_query($db_handle,"DELETE FROM Enchere WHERE Objet='".$id."';");
 	}
 	$test=mysqli_query($db_handle,"DELETE FROM Objet WHERE Id='".$id."';");
+	header("Location:index.php");
 }
 
-header("Location:index.php");
+
 ?>

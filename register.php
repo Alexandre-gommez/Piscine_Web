@@ -14,6 +14,12 @@ session_start();
   <title>ECEY - Inscription</title>
 </head>
 
+<style>
+  .conditions:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  </style>
 <script>
   document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
 </script>
@@ -163,7 +169,7 @@ session_start();
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="condition" required>
                   <label class="form-check-label" for="condition">
-                    Accepter les conditions d'utilisation
+                    <p class="conditions" data-toggle="modal" data-target="#clauses">Accepter les conditions d'utilisation</p>
                   </label>
                 </div>
               </div>
@@ -171,7 +177,27 @@ session_start();
               <button type="submit" class="btn btn-primary" id="valid2"> Valider </button>
 
             </div>
-
+            <div class="modal fade" id="clauses" tabindex="-1" role="dialog" aria-labelledby="clauses" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Conditions</h5>
+                  </div>
+                  <div class="modal-body">
+                  Les présentes Conditions Générales de Vente (dites «CGV») s'appliquent, sans restriction ni réserve à l'ensemble des ventes conclues par le Vendeur auprès d'acheteurs non professionnels (« Les Clients ou le Client »), désirant acquérir les produits proposés à la vente (« Les Produits ») par le Vendeur sur le site ecey.fr.
+                  Les caractéristiques principales des Produits et notamment les spécifications, illustrations et indications de dimensions ou de capacité des Produits, sont présentées sur le site ecey.fr ce dont le client est tenu de prendre connaissance avant de commander.
+                  Toutes les indications sont produites par des particuliers et ne seront en aucun cas sujet à remboursement ou plaintes envers ecey.fr.
+                  Le choix et l'achat d'un Produit sont de la seule responsabilité du Client.
+                  Les offres de Produits s'entendent dans la limite des stocks disponibles, tels que précisés lors de la passation de la commande.
+                  Ces CGV prévaudront sur toute autre document.
+                  Le Client déclare avoir pris connaissance des présentes CGV et les avoir acceptées en cochant la case prévue à cet effet avant la mise en œuvre de la procédure de commande en ligne du site ecey.fr
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>

@@ -60,8 +60,7 @@ session_start();
         <div class="collapse navbar-collapse" id="main-navigation">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="vendre.php">Vendre</a></li>
-                <li class="nav-item"><a class="nav-link" href="FrontAffichage">Acheter</a></li>
+                <li class="nav-item"><a class="nav-link" href="FrontAffichage.php">Acheter</a></li>
                 <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
             </ul>
@@ -70,6 +69,8 @@ session_start();
 
     <div class="container-fluid ">
         <div class="container">
+        <button type="button" onclick="location.href='payement.php'" class="btn btn-secondary"> Payer </button>
+        <hr>
             <?php
             echo "<div class=\"container-fluid \">";
             echo "<div class=\"container\">" ;
@@ -645,10 +646,13 @@ session_start();
                 echo '</div>';
             }
             echo "</div>";
-            echo "</div>";
+            
 
             ?>
+         
+            </div>
         </div>
+           
     </div>
     <script>
         var valid = document.getElementById("valid");
