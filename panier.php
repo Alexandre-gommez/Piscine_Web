@@ -132,11 +132,11 @@ session_start();
                     echo '<div class="card-footer">';
                     echo "\n";
                     if($type==1){
-                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'€</span>';
                     }else if($type==2){
-                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'€</span>';
                     }else if($type==3){
-                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'€</span>';
                     }
                     echo "\n";
                     echo '<a href="DeletObjet.php?ID='.$tab_objet['Id'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
@@ -244,15 +244,15 @@ session_start();
                     if($type==1){
                         echo '<p>Prix de vente direct </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                     }else if($type==2){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                     }else if($type==3){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                         echo '<p class="font-weight-bold">Date de fin '.$date.'</p>';
                     }
                     echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
@@ -298,11 +298,11 @@ session_start();
                     echo '<div class="card-footer">';
                     echo "\n";
                     if($type==1){
-                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'€</span>';
                     }else if($type==2){
-                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'€</span>';
                     }else if($type==3){
-                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'€</span>';
                     }
                     echo "\n";
                     echo '<a href="DeletObjet.php?ID='.$tab_objet['Id'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
@@ -410,11 +410,11 @@ session_start();
                     if($type==1){
                         echo '<p>Prix de vente direct </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                     }else if($type==2){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                     }else if($type==3){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
@@ -465,11 +465,11 @@ session_start();
                     echo '<div class="card-footer">';
                     echo "\n";
                     if($type==1){
-                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'€</span>';
                     }else if($type==2){
-                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'€</span>';
                     }else if($type==3){
-                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'$</span>';
+                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'€</span>';
                     }
                     echo "\n";
                     echo '<a href="DeletObjet.php?ID='.$tab_objet['Id'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
@@ -577,11 +577,11 @@ session_start();
                     if($type==1){
                         echo '<p>Prix de vente direct </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                     }else if($type==3){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                         echo '<table class="table table-dark">';
                         echo '<thead>';
                         echo '<tr>';
@@ -632,7 +632,7 @@ session_start();
                         }else if($type==2){
                             echo '<p>Prix de vente de depart </p>';
                             echo '<hr />';
-                            echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                            echo '<p class="font-weight-bold">Prix de base '.$prix.'</p>';
                         }
                         echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
                         echo '</div>';

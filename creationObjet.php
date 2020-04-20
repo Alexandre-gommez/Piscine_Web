@@ -75,5 +75,5 @@ if(isset($_POST["Enchere"]))
 }
 
 mysqli_close($db_handle);
-//header("Location:vendre.php");
+header("Location:vendre.php");
 ?>
