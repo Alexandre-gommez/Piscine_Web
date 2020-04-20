@@ -90,16 +90,18 @@ session_start();
             }             
             $cmpt=0;
             $Listeobj=mysqli_query($db_handle,"SELECT * FROM ListeAchat WHERE Client='".$_SESSION['Id']."'");
-            while($tab_objet=mysqli_fetch_assoc($Listeobj))
+            while($tab_panier=mysqli_fetch_assoc($Listeobj))
             {
                 if($cmpt%2==0)
                 {
                     echo '<div class="row">';
                 }
                 
-                if($tab_objet['typevente']==2){
+                if($tab_panier['typevente']==2){
                     $type=2;
-                    $test7=mysqli_query($db_handle,"SELECT * FROM Enchere WHERE Objet='".$tab_objet['Achat']."';");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']"'");
+                    $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
+                    $test7=mysqli_query($db_handle,"SELECT * FROM Enchere WHERE Objet='".$tab_panier['Achat']."';");
                     $id_enchere=mysqli_fetch_assoc($test7);
                     $prix=$id_enchere['Prix'];
                     $date=$id_enchere['Fin'];
@@ -283,9 +285,11 @@ session_start();
                     }
                     $cmpt++;
                 }
-                //$test1=mysqli_query($db_handle,"SELECT * FROM Achat WHERE Objet='".$tab_objet['Id']."';");
-                if($tab_objet['typevente']==1){
+                if($tab_panier['typevente']==1){
                     $type=1;
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']"'");
+                    $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
+                    $test1=mysqli_query($db_handle,"SELECT * FROM Achat WHERE Objet='".$tab_panier['Achat']."';");
                     $temp_prix=mysqli_fetch_assoc($test1);
                     $prix=$temp_prix['Prix'];
                     echo '<div class="col-sm-6 mb-5">';
@@ -467,9 +471,11 @@ session_start();
                     }
                     $cmpt++;
                 }
-                //$test4=mysqli_query($db_handle,"SELECT * FROM Offre WHERE Objet='".$tab_objet['Id']."';");
-                if($tab_objet['typevente']==3){
-                    $type=3;*/
+                if($tab_panier['typevente']==3){
+                    $type=3;
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']"'");
+                    $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
+                    $test4=mysqli_query($db_handle,"SELECT * FROM Offre WHERE Objet='".$tab_panier['Achat']."';");
                     $id_offre=mysqli_fetch_assoc($test4);
                     $prix=$id_offre['Prix'];
                     $test41=mysqli_query($db_handle,"SELECT * FROM ListeOffres WHERE Referance='".$id_offre['Id']."';");
@@ -645,115 +651,109 @@ session_start();
                         echo '<th scope="col">Valider</th>';
                         echo '</tr>';
                         echo '</thead>';
-                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffre WHERE Referance='".$tab_objet['Id']."'");
-                        $taille=mysqli_num_rows($listeoffre);
+                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffre WHERE Personne='".$_SESSION['Id']."'");
                         $ligne=mysqli_fetch_assoc($listeoffre);
-                        for($i=0;$i<$taille;$i++)
+                        echo '<tbody>';
+                        echo '<tr>';
+                        echo '<td>Offre</td>';
+                        echo '<td>'.$ligne['Offre1'].'</td>';
+                        echo '<td>'.$ligne['Offre2'].'</td>';
+                        echo '<td>'.$ligne['Offre3'].'</td>';
+                        echo '<td>'.$ligne['Offre4'].'</td>';
+                        echo '<td>'.$ligne['Offre5'].'</td>';
+                        if ($ligne['Offre1']=='0'||$ligne['Offre3']=='0'||$ligne['Offre5']!='0')
                         {
-                            echo '<tbody>';
-                            echo '<tr>';
-                            echo '<td>Offre'.$i.'</td>';
-                            echo '<td>'.$ligne[$i]['Offre1'].'</td>';
-                            echo '<td>'.$ligne[$i]['Offre2'].'</td>';
-                            echo '<td>'.$ligne[$i]['Offre3'].'</td>';
-                            echo '<td>'.$ligne[$i]['Offre4'].'</td>';
-                            echo '<td>'.$ligne[$i]['Offre5'].'</td>';
-                            if ($ligne[$i]['Offre2']=='0'||$ligne[$i]['Offre4']=='0'||$ligne[$i]['Offre5']!='0')
-                            {
-                                echo '<form>';
-                                echo '<div class="form-row">';
-                                echo '<div class="form-group col-md-6">';
-                                echo '<input type="text" class="form-control" id="number"'.$i.' name="number"'.$i.'>';
-                                echo '<span class="text_manquant"></span>';
-                                echo '</div>';
-                                echo '<div class="form-group col-md-6">';
-                                echo '<input onclick="location.href=\'offre.php\'?key='.$liste[$i]['Id'].'&i='.$i.'" type="button" value="Retour" class="btn btn-secondary" id="btn"'.$i.'></input>';
+                            echo '<form>';
+                            echo '<div class="form-row">';
+                            echo '<div class="form-group col-md-6">';
+                            echo '<input type="text" class="form-control" id="number" name="number">';
+                            echo '<span class="text_manquant"></span>';
+                            echo '</div>';
+                            echo '<div class="form-group col-md-6">';
+                            echo '<input onclick="location.href=\'offre.php\'?Personne='.$_SESSION['Id'].'&Id='.$tab_objet['Id'].'" type="button" value="Retour" class="btn btn-secondary" id="btn"></input>';
                             //
                             //echo '<input type="submit" value="Valider" class="btn btn-secondary" id="btn"'$i'  name="btn"'$i'>';
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</form>';
-                            }
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</form>';
                             echo '</tr>';
                             echo '</tr>';
-                            echo '</tbody>';
-                        } 
-                        echo '</table>';
-                    }else if($type==3){
-                        echo '<p>Prix de vente de depart </p>';
-                        echo '<hr />';
-                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
-                    }
-                    echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                    if($cmpt%2==1)
-                    {
+                            echo '</tbody>'; 
+                            echo '</table>';
+                        }else if($type==3){
+                            echo '<p>Prix de vente de depart </p>';
+                            echo '<hr />';
+                            echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        }
+                        echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
                         echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        if($cmpt%2==1)
+                        {
+                            echo '</div>';
+                        }
+                        $cmpt++;
                     }
-                    $cmpt++;
+
                 }
-
-            }
-            if($cmpt%2==0)
-            {
-                echo '</div>';
-            }
-            echo "</div>";
-            echo "</div>";
-            ?>
-            <br>   
-            <br />
+                if($cmpt%2==0)
+                {
+                    echo '</div>';
+                }
+                echo "</div>";
+                echo "</div>";
+                ?>
+                <br>   
+                <br />
+            </div>
         </div>
-    </div>
-    <script>
-        var valid = document.getElementById("valid");
+        <script>
+            var valid = document.getElementById("valid");
 
-        var ajout = document.getElementById("ajouter");
-        var form = document.getElementById("form1");
+            var ajout = document.getElementById("ajouter");
+            var form = document.getElementById("form1");
 
-        var achat = document.getElementById("Achat");
-        var offre = document.getElementById("Offre");
-        var enchere = document.getElementById("Enchere");
+            var achat = document.getElementById("Achat");
+            var offre = document.getElementById("Offre");
+            var enchere = document.getElementById("Enchere");
 
-        var prix1 = document.getElementById("prix1");
-        var prix2 = document.getElementById("prix2");
-        var prix3 = document.getElementById("prix3");
-        var datelim = document.getElementById("datelim");
+            var prix1 = document.getElementById("prix1");
+            var prix2 = document.getElementById("prix2");
+            var prix3 = document.getElementById("prix3");
+            var datelim = document.getElementById("datelim");
 
-        var nom = document.getElementById("nom");
-        var nmanquant = document.getElementById("nom_manquant");
-        var type = document.getElementById("type");
-        var typemanquant = document.getElementById("type_manquant");
-        var desc = document.getElementById("description");
-        var dmanquant = document.getElementById("description_manquant");
-        var vmanquant = document.getElementById("vente_manquant");
-        var pachat = document.getElementById("Pachat");
-        var pamanquant = document.getElementById("pa_manquant");
-        var pnego = document.getElementById("Pnego");
-        var pnmanquant = document.getElementById("pn_manquant");
-        var penchere = document.getElementById("Penchere");
-        var pemanquant = document.getElementById("pe_manquant");
-        var plimit = document.getElementById("Plimit");
-        var plmanquant = document.getElementById("pl_manquant");
-        var img = document.getElementById("images");
-        var imanquant = document.getElementById("image_manquant");
+            var nom = document.getElementById("nom");
+            var nmanquant = document.getElementById("nom_manquant");
+            var type = document.getElementById("type");
+            var typemanquant = document.getElementById("type_manquant");
+            var desc = document.getElementById("description");
+            var dmanquant = document.getElementById("description_manquant");
+            var vmanquant = document.getElementById("vente_manquant");
+            var pachat = document.getElementById("Pachat");
+            var pamanquant = document.getElementById("pa_manquant");
+            var pnego = document.getElementById("Pnego");
+            var pnmanquant = document.getElementById("pn_manquant");
+            var penchere = document.getElementById("Penchere");
+            var pemanquant = document.getElementById("pe_manquant");
+            var plimit = document.getElementById("Plimit");
+            var plmanquant = document.getElementById("pl_manquant");
+            var img = document.getElementById("images");
+            var imanquant = document.getElementById("image_manquant");
 
-        var btn = [];
-        var text = [];
-        var tmanquant = [];
+            var btn = [];
+            var text = [];
+            var tmanquant = [];
 
-        for( int i = 0 ; i < la taille ; i++)
-        {
-            btn[i]= document.getElementById("btn"+i);
-            text[i]= document.getElementById("number"+i);
-            btn[i].onclick(function(){
-                if(number[i].validity.valueMissing)
+
+            btn= document.getElementById("btn");
+            text= document.getElementById("number");
+            btn.onclick(function(){
+                if(number.validity.valueMissing)
                 {
 
                     tmanquant.textContent = "Entrez un prix";
@@ -764,167 +764,166 @@ session_start();
 
                 }
             });
-        }
 
-        form.style.display = 'none';
+            form.style.display = 'none';
 
-        prix1.style.display = 'none';
-        prix2.style.display = 'none';
-        prix3.style.display = 'none';
-        datelim.style.display = 'none';
+            prix1.style.display = 'none';
+            prix2.style.display = 'none';
+            prix3.style.display = 'none';
+            datelim.style.display = 'none';
 
-        img.addEventListener('input', filesNb);
+            img.addEventListener('input', filesNb);
 
-        valid.addEventListener('click', validation);
+            valid.addEventListener('click', validation);
 
-        ajout.addEventListener('click', open);
+            ajout.addEventListener('click', open);
 
-        achat.addEventListener('change', function() {
-            if (this.checked) {
-                prix1.style.display = 'block';
-            } else {
-                prix1.style.display = 'none';
-            }
-        });
-        enchere.addEventListener('change', function() {
-            if (this.checked) {
-                prix2.style.display = 'block';
-                datelim.style.display = 'block';
-            } else {
-                prix2.style.display = 'none';
-                datelim.style.display = 'none';
-            }
-        });
-        offre.addEventListener('change', function() {
-            if (this.checked) {
-                prix3.style.display = 'block';
-            } else {
-                prix3.style.display = 'none';
-            }
-        });
+            achat.addEventListener('change', function() {
+                if (this.checked) {
+                    prix1.style.display = 'block';
+                } else {
+                    prix1.style.display = 'none';
+                }
+            });
+            enchere.addEventListener('change', function() {
+                if (this.checked) {
+                    prix2.style.display = 'block';
+                    datelim.style.display = 'block';
+                } else {
+                    prix2.style.display = 'none';
+                    datelim.style.display = 'none';
+                }
+            });
+            offre.addEventListener('change', function() {
+                if (this.checked) {
+                    prix3.style.display = 'block';
+                } else {
+                    prix3.style.display = 'none';
+                }
+            });
 
-        function open() {
-            form.style.display = 'block';
-            ajout.style.display = 'none';
-        }
-
-        function validation(res) {
-            var i = 0;
-            if (achat.checked) {
-                i++;
-                pachat.required = true;
-            } else {
-                pachat.required = false;
-            }
-            if (enchere.checked) {
-                i++;
-                penchere.required = true;
-                plimit.required = true;
-            } else {
-                penchere.required = false;
-                plimit.required = false;
-            }
-            if (offre.checked) {
-                i++;
-                pnego.required = true;
-            } else {
-                pnego.required = false;
+            function open() {
+                form.style.display = 'block';
+                ajout.style.display = 'none';
             }
 
-            if (enchere.checked && offre.checked) {
-                res.preventDefault();
-                vmanquant.textContent = "Enchère et offre ne sont pas compatibles";
-                vmanquant.style.color = 'red';
-                vmanquant.style.display = 'block';
-            } else {
-                vmanquant.style.display = 'none';
-            }
-            if (achat.checked && pachat.validity.valueMissing) {
-                res.preventDefault();
-                pamanquant.textContent = "Entrez un prix";
-                pamanquant.style.color = 'red';
-                pamanquant.style.display = 'block';
-            } else {
-                pamanquant.style.display = 'none';
-            }
-            if (enchere.checked && penchere.validity.valueMissing) {
-                res.preventDefault();
-                pemanquant.textContent = "Entrez un prix";
-                pemanquant.style.color = 'red';
-                pemanquant.style.display = 'block';
-            } else {
-                pemanquant.style.display = 'none';
-            }
-            if (enchere.checked && plimit.validity.valueMissing) {
-                res.preventDefault();
-                plmanquant.textContent = "Entrez une date limite";
-                plmanquant.style.color = 'red';
-                plmanquant.style.display = 'block';
-            } else {
-                plmanquant.style.display = 'none';
-            }
-            if (offre.checked && pnego.validity.valueMissing) {
-                res.preventDefault();
-                pnmanquant.textContent = "Entrez un prix";
-                pnmanquant.style.color = 'red';
-                pnmanquant.style.display = 'block';
-            } else {
-                pnmanquant.style.display = 'none';
-            }
-            if (nom.validity.valueMissing) {
-                res.preventDefault();
-                nmanquant.textContent = "Entrez le nom de l'article";
-                nmanquant.style.color = 'red';
-                nmanquant.style.display = 'block';
-            } else {
-                nmanquant.style.display = 'none';
+            function validation(res) {
+                var i = 0;
+                if (achat.checked) {
+                    i++;
+                    pachat.required = true;
+                } else {
+                    pachat.required = false;
+                }
+                if (enchere.checked) {
+                    i++;
+                    penchere.required = true;
+                    plimit.required = true;
+                } else {
+                    penchere.required = false;
+                    plimit.required = false;
+                }
+                if (offre.checked) {
+                    i++;
+                    pnego.required = true;
+                } else {
+                    pnego.required = false;
+                }
+
+                if (enchere.checked && offre.checked) {
+                    res.preventDefault();
+                    vmanquant.textContent = "Enchère et offre ne sont pas compatibles";
+                    vmanquant.style.color = 'red';
+                    vmanquant.style.display = 'block';
+                } else {
+                    vmanquant.style.display = 'none';
+                }
+                if (achat.checked && pachat.validity.valueMissing) {
+                    res.preventDefault();
+                    pamanquant.textContent = "Entrez un prix";
+                    pamanquant.style.color = 'red';
+                    pamanquant.style.display = 'block';
+                } else {
+                    pamanquant.style.display = 'none';
+                }
+                if (enchere.checked && penchere.validity.valueMissing) {
+                    res.preventDefault();
+                    pemanquant.textContent = "Entrez un prix";
+                    pemanquant.style.color = 'red';
+                    pemanquant.style.display = 'block';
+                } else {
+                    pemanquant.style.display = 'none';
+                }
+                if (enchere.checked && plimit.validity.valueMissing) {
+                    res.preventDefault();
+                    plmanquant.textContent = "Entrez une date limite";
+                    plmanquant.style.color = 'red';
+                    plmanquant.style.display = 'block';
+                } else {
+                    plmanquant.style.display = 'none';
+                }
+                if (offre.checked && pnego.validity.valueMissing) {
+                    res.preventDefault();
+                    pnmanquant.textContent = "Entrez un prix";
+                    pnmanquant.style.color = 'red';
+                    pnmanquant.style.display = 'block';
+                } else {
+                    pnmanquant.style.display = 'none';
+                }
+                if (nom.validity.valueMissing) {
+                    res.preventDefault();
+                    nmanquant.textContent = "Entrez le nom de l'article";
+                    nmanquant.style.color = 'red';
+                    nmanquant.style.display = 'block';
+                } else {
+                    nmanquant.style.display = 'none';
+                }
+
+                if (type.validity.valueMissing) {
+                    res.preventDefault();
+                    typemanquant.textContent = "Entrez la catégorie";
+                    typemanquant.style.color = 'red';
+                    typemanquant.style.display = 'block';
+                } else {
+                    typemanquant.style.display = 'none';
+                }
+                if (desc.validity.valueMissing) {
+                    res.preventDefault();
+                    dmanquant.textContent = "Entrez la description";
+                    dmanquant.style.color = 'red';
+                    dmanquant.style.display = 'block';
+                } else {
+                    dmanquant.style.display = 'none';
+                }
+                if (i == 0) {
+                    res.preventDefault();
+                    vmanquant.textContent = "Selectionnez au moins une case";
+                    vmanquant.style.color = 'red';
+                    vmanquant.style.display = 'block';
+                }
+                if (img.files.length < 1) {
+                    res.preventDefault();
+                    imanquant.textContent = "Selectionnez au moins une image";
+                    imanquant.style.color = 'red';
+                    imanquant.style.display = 'block';
+                    img.preventDefault();
+                } else if (img.files.length > 5) {
+                    res.preventDefault();
+                    imanquant.textContent = "Selectionnez maximum 5 images";
+                    imanquant.style.color = 'red';
+                    imanquant.style.display = 'block';
+                    img.preventDefault();
+                } else {
+                    imanquant.style.display = 'none';
+                }
             }
 
-            if (type.validity.valueMissing) {
-                res.preventDefault();
-                typemanquant.textContent = "Entrez la catégorie";
-                typemanquant.style.color = 'red';
-                typemanquant.style.display = 'block';
-            } else {
-                typemanquant.style.display = 'none';
+            function filesNb() {
+                if (img.files.length > 4) {
+                    alert("4 images Maximum");
+                    img.preventDefault();
+                }
             }
-            if (desc.validity.valueMissing) {
-                res.preventDefault();
-                dmanquant.textContent = "Entrez la description";
-                dmanquant.style.color = 'red';
-                dmanquant.style.display = 'block';
-            } else {
-                dmanquant.style.display = 'none';
-            }
-            if (i == 0) {
-                res.preventDefault();
-                vmanquant.textContent = "Selectionnez au moins une case";
-                vmanquant.style.color = 'red';
-                vmanquant.style.display = 'block';
-            }
-            if (img.files.length < 1) {
-                res.preventDefault();
-                imanquant.textContent = "Selectionnez au moins une image";
-                imanquant.style.color = 'red';
-                imanquant.style.display = 'block';
-                img.preventDefault();
-            } else if (img.files.length > 5) {
-                res.preventDefault();
-                imanquant.textContent = "Selectionnez maximum 5 images";
-                imanquant.style.color = 'red';
-                imanquant.style.display = 'block';
-                img.preventDefault();
-            } else {
-                imanquant.style.display = 'none';
-            }
-        }
 
-        function filesNb() {
-            if (img.files.length > 4) {
-                alert("4 images Maximum");
-                img.preventDefault();
-            }
-        }
-
-    </script>
-</body>
+        </script>
+    </body>

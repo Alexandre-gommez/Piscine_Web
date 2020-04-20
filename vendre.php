@@ -854,24 +854,6 @@ session_start();
         var text = [];
         var tmanquant = [];
 
-        for( int i = 0 ; i < la taille ; i++)
-        {
-            btn[i]= document.getElementById("btn"+i);
-            text[i]= document.getElementById("number"+i);
-            btn[i].onclick(function(){
-                if(number[i].validity.valueMissing)
-                {
-
-                    tmanquant.textContent = "Entrez un prix";
-                    tmanquant.style.color = 'red';
-                    tmanquant.style.display = 'block';
-                }
-                else{
-
-                }
-            });
-        }
-
         form.style.display = 'none';
 
         prix1.style.display = 'none';
