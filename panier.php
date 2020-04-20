@@ -61,17 +61,15 @@ session_start();
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="vendre.php">Vendre</a></li>
-                <li class="nav-item"><a class="nav-link" href="FrontAffichage.php">Acheter</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Acheter</a></li>
                 <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
                 <li class="nav-item"><a class="nav-link" id="nav7" href="deconnexion.php">Deconnexion</a></li>
             </ul>
         </div>
     </nav>
 
-    <br />
     <div class="container-fluid ">
         <div class="container">
-            <hr>
             <?php
             echo "<div class=\"container-fluid \">";
             echo "<div class=\"container\">" ;
@@ -99,7 +97,7 @@ session_start();
                 
                 if($tab_panier['typevente']==2){
                     $type=2;
-                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."'");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."';");
                     $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
                     $test7=mysqli_query($db_handle,"SELECT * FROM Enchere WHERE Objet='".$tab_panier['Achat']."';");
                     $id_enchere=mysqli_fetch_assoc($test7);
@@ -287,7 +285,7 @@ session_start();
                 }
                 if($tab_panier['typevente']==1){
                     $type=1;
-                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."'");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."';");
                     $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
                     $test1=mysqli_query($db_handle,"SELECT * FROM Achat WHERE Objet='".$tab_panier['Achat']."';");
                     $temp_prix=mysqli_fetch_assoc($test1);
@@ -473,7 +471,7 @@ session_start();
                 }
                 if($tab_panier['typevente']==3){
                     $type=3;
-                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."'");
+                    $tab_objet_temp=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Id='".$tab_panier['Achat']."';");
                     $tab_objet=mysqli_fetch_assoc($tab_objet_temp);
                     $test4=mysqli_query($db_handle,"SELECT * FROM Offre WHERE Objet='".$tab_panier['Achat']."';");
                     $id_offre=mysqli_fetch_assoc($test4);
@@ -701,229 +699,237 @@ session_start();
                     }
 
                 }
-                if($cmpt%2==0)
-                {
-                    echo '</div>';
-                }
-                echo "</div>";
-                echo "</div>";
-                ?>
-                <br>   
-                <br>
-            </div>
+            }
+            if($cmpt%2==0)
+            {
+                echo '</div>';
+            }
+            echo "</div>";
+            echo "</div>";
+
+            ?>
         </div>
-        <script>
-            var valid = document.getElementById("valid");
+    </div>
+    <script>
+        var valid = document.getElementById("valid");
 
-            var ajout = document.getElementById("ajouter");
-            var form = document.getElementById("form1");
+        var ajout = document.getElementById("ajouter");
+        var form = document.getElementById("form1");
 
-            var achat = document.getElementById("Achat");
-            var offre = document.getElementById("Offre");
-            var enchere = document.getElementById("Enchere");
+        var achat = document.getElementById("Achat");
+        var offre = document.getElementById("Offre");
+        var enchere = document.getElementById("Enchere");
 
-            var prix1 = document.getElementById("prix1");
-            var prix2 = document.getElementById("prix2");
-            var prix3 = document.getElementById("prix3");
-            var datelim = document.getElementById("datelim");
+        var prix1 = document.getElementById("prix1");
+        var prix2 = document.getElementById("prix2");
+        var prix3 = document.getElementById("prix3");
+        var datelim = document.getElementById("datelim");
 
-            var nom = document.getElementById("nom");
-            var nmanquant = document.getElementById("nom_manquant");
-            var type = document.getElementById("type");
-            var typemanquant = document.getElementById("type_manquant");
-            var desc = document.getElementById("description");
-            var dmanquant = document.getElementById("description_manquant");
-            var vmanquant = document.getElementById("vente_manquant");
-            var pachat = document.getElementById("Pachat");
-            var pamanquant = document.getElementById("pa_manquant");
-            var pnego = document.getElementById("Pnego");
-            var pnmanquant = document.getElementById("pn_manquant");
-            var penchere = document.getElementById("Penchere");
-            var pemanquant = document.getElementById("pe_manquant");
-            var plimit = document.getElementById("Plimit");
-            var plmanquant = document.getElementById("pl_manquant");
-            var img = document.getElementById("images");
-            var imanquant = document.getElementById("image_manquant");
+        var nom = document.getElementById("nom");
+        var nmanquant = document.getElementById("nom_manquant");
+        var type = document.getElementById("type");
+        var typemanquant = document.getElementById("type_manquant");
+        var desc = document.getElementById("description");
+        var dmanquant = document.getElementById("description_manquant");
+        var vmanquant = document.getElementById("vente_manquant");
+        var pachat = document.getElementById("Pachat");
+        var pamanquant = document.getElementById("pa_manquant");
+        var pnego = document.getElementById("Pnego");
+        var pnmanquant = document.getElementById("pn_manquant");
+        var penchere = document.getElementById("Penchere");
+        var pemanquant = document.getElementById("pe_manquant");
+        var plimit = document.getElementById("Plimit");
+        var plmanquant = document.getElementById("pl_manquant");
+        var img = document.getElementById("images");
+        var imanquant = document.getElementById("image_manquant");
 
-            var btn = [];
-            var text = [];
-            var tmanquant = [];
+        var btn = [];
+        var text = [];
+        var tmanquant = [];
 
 
-            btn= document.getElementById("btn");
-            text= document.getElementById("number");
-            btn.onclick(function(){
-                if(number.validity.valueMissing)
-                {
+        btn= document.getElementById("btn");
+        text= document.getElementById("number");
+        btn.onclick(function(){
+            if(number.validity.valueMissing)
+            {
 
-                    tmanquant.textContent = "Entrez un prix";
-                    tmanquant.style.color = 'red';
-                    tmanquant.style.display = 'block';
-                }
-                else{
+                tmanquant.textContent = "Entrez un prix";
+                tmanquant.style.color = 'red';
+                tmanquant.style.display = 'block';
+            }
+            else{
 
-                }
-            });
+            }
+        });
 
-            form.style.display = 'none';
+        form.style.display = 'none';
 
-            prix1.style.display = 'none';
-            prix2.style.display = 'none';
-            prix3.style.display = 'none';
-            datelim.style.display = 'none';
+        prix1.style.display = 'none';
+        prix2.style.display = 'none';
+        prix3.style.display = 'none';
+        datelim.style.display = 'none';
 
-            img.addEventListener('input', filesNb);
+        img.addEventListener('input', filesNb);
 
-            valid.addEventListener('click', validation);
+        valid.addEventListener('click', validation);
 
-            ajout.addEventListener('click', open);
+        ajout.addEventListener('click', open);
 
-            achat.addEventListener('change', function() {
-                if (this.checked) {
-                    prix1.style.display = 'block';
-                } else {
-                    prix1.style.display = 'none';
-                }
-            });
-            enchere.addEventListener('change', function() {
-                if (this.checked) {
-                    prix2.style.display = 'block';
-                    datelim.style.display = 'block';
-                } else {
-                    prix2.style.display = 'none';
-                    datelim.style.display = 'none';
-                }
-            });
-            offre.addEventListener('change', function() {
-                if (this.checked) {
-                    prix3.style.display = 'block';
-                } else {
-                    prix3.style.display = 'none';
-                }
-            });
+        achat.addEventListener('change', function() {
+            if (this.checked) {
+                prix1.style.display = 'block';
+            } else {
+                prix1.style.display = 'none';
+            }
+        });
+        enchere.addEventListener('change', function() {
+            if (this.checked) {
+                prix2.style.display = 'block';
+                datelim.style.display = 'block';
+            } else {
+                prix2.style.display = 'none';
+                datelim.style.display = 'none';
+            }
+        });
+        offre.addEventListener('change', function() {
+            if (this.checked) {
+                prix3.style.display = 'block';
+            } else {
+                prix3.style.display = 'none';
+            }
+        });
 
-            function open() {
-                form.style.display = 'block';
-                ajout.style.display = 'none';
+        function open() {
+            form.style.display = 'block';
+            ajout.style.display = 'none';
+        }
+
+        function validation(res) {
+            var i = 0;
+            if (achat.checked) {
+                i++;
+                pachat.required = true;
+            } else {
+                pachat.required = false;
+            }
+            if (enchere.checked) {
+                i++;
+                penchere.required = true;
+                plimit.required = true;
+            } else {
+                penchere.required = false;
+                plimit.required = false;
+            }
+            if (offre.checked) {
+                i++;
+                pnego.required = true;
+            } else {
+                pnego.required = false;
             }
 
-            function validation(res) {
-                var i = 0;
-                if (achat.checked) {
-                    i++;
-                    pachat.required = true;
-                } else {
-                    pachat.required = false;
-                }
-                if (enchere.checked) {
-                    i++;
-                    penchere.required = true;
-                    plimit.required = true;
-                } else {
-                    penchere.required = false;
-                    plimit.required = false;
-                }
-                if (offre.checked) {
-                    i++;
-                    pnego.required = true;
-                } else {
-                    pnego.required = false;
-                }
-
-                if (enchere.checked && offre.checked) {
-                    res.preventDefault();
-                    vmanquant.textContent = "Enchère et offre ne sont pas compatibles";
-                    vmanquant.style.color = 'red';
-                    vmanquant.style.display = 'block';
-                } else {
-                    vmanquant.style.display = 'none';
-                }
-                if (achat.checked && pachat.validity.valueMissing) {
-                    res.preventDefault();
-                    pamanquant.textContent = "Entrez un prix";
-                    pamanquant.style.color = 'red';
-                    pamanquant.style.display = 'block';
-                } else {
-                    pamanquant.style.display = 'none';
-                }
-                if (enchere.checked && penchere.validity.valueMissing) {
-                    res.preventDefault();
-                    pemanquant.textContent = "Entrez un prix";
-                    pemanquant.style.color = 'red';
-                    pemanquant.style.display = 'block';
-                } else {
-                    pemanquant.style.display = 'none';
-                }
-                if (enchere.checked && plimit.validity.valueMissing) {
-                    res.preventDefault();
-                    plmanquant.textContent = "Entrez une date limite";
-                    plmanquant.style.color = 'red';
-                    plmanquant.style.display = 'block';
-                } else {
-                    plmanquant.style.display = 'none';
-                }
-                if (offre.checked && pnego.validity.valueMissing) {
-                    res.preventDefault();
-                    pnmanquant.textContent = "Entrez un prix";
-                    pnmanquant.style.color = 'red';
-                    pnmanquant.style.display = 'block';
-                } else {
-                    pnmanquant.style.display = 'none';
-                }
-                if (nom.validity.valueMissing) {
-                    res.preventDefault();
-                    nmanquant.textContent = "Entrez le nom de l'article";
-                    nmanquant.style.color = 'red';
-                    nmanquant.style.display = 'block';
-                } else {
-                    nmanquant.style.display = 'none';
-                }
-
-                if (type.validity.valueMissing) {
-                    res.preventDefault();
-                    typemanquant.textContent = "Entrez la catégorie";
-                    typemanquant.style.color = 'red';
-                    typemanquant.style.display = 'block';
-                } else {
-                    typemanquant.style.display = 'none';
-                }
-                if (desc.validity.valueMissing) {
-                    res.preventDefault();
-                    dmanquant.textContent = "Entrez la description";
-                    dmanquant.style.color = 'red';
-                    dmanquant.style.display = 'block';
-                } else {
-                    dmanquant.style.display = 'none';
-                }
-                if (i == 0) {
-                    res.preventDefault();
-                    vmanquant.textContent = "Selectionnez au moins une case";
-                    vmanquant.style.color = 'red';
-                    vmanquant.style.display = 'block';
-                }
-                if (img.files.length < 1) {
-                    res.preventDefault();
-                    imanquant.textContent = "Selectionnez au moins une image";
-                    imanquant.style.color = 'red';
-                    imanquant.style.display = 'block';
-                    img.preventDefault();
-                } else if (img.files.length > 5) {
-                    res.preventDefault();
-                    imanquant.textContent = "Selectionnez maximum 5 images";
-                    imanquant.style.color = 'red';
-                    imanquant.style.display = 'block';
-                    img.preventDefault();
-                } else {
-                    imanquant.style.display = 'none';
-                }
+            if (enchere.checked && offre.checked) {
+                res.preventDefault();
+                vmanquant.textContent = "Enchère et offre ne sont pas compatibles";
+                vmanquant.style.color = 'red';
+                vmanquant.style.display = 'block';
+            } else {
+                vmanquant.style.display = 'none';
+            }
+            if (achat.checked && pachat.validity.valueMissing) {
+                res.preventDefault();
+                pamanquant.textContent = "Entrez un prix";
+                pamanquant.style.color = 'red';
+                pamanquant.style.display = 'block';
+            } else {
+                pamanquant.style.display = 'none';
+            }
+            if (enchere.checked && penchere.validity.valueMissing) {
+                res.preventDefault();
+                pemanquant.textContent = "Entrez un prix";
+                pemanquant.style.color = 'red';
+                pemanquant.style.display = 'block';
+            } else {
+                pemanquant.style.display = 'none';
+            }
+            if (enchere.checked && plimit.validity.valueMissing) {
+                res.preventDefault();
+                plmanquant.textContent = "Entrez une date limite";
+                plmanquant.style.color = 'red';
+                plmanquant.style.display = 'block';
+            } else {
+                plmanquant.style.display = 'none';
+            }
+            if (offre.checked && pnego.validity.valueMissing) {
+                res.preventDefault();
+                pnmanquant.textContent = "Entrez un prix";
+                pnmanquant.style.color = 'red';
+                pnmanquant.style.display = 'block';
+            } else {
+                pnmanquant.style.display = 'none';
+            }
+            if (nom.validity.valueMissing) {
+                res.preventDefault();
+                nmanquant.textContent = "Entrez le nom de l'article";
+                nmanquant.style.color = 'red';
+                nmanquant.style.display = 'block';
+            } else {
+                nmanquant.style.display = 'none';
             }
 
-            function filesNb() {
-                if (img.files.length > 4) {
-                    alert("4 images Maximum");
-                    img.preventDefault();
-                }
+            if (type.validity.valueMissing) {
+                res.preventDefault();
+                typemanquant.textContent = "Entrez la catégorie";
+                typemanquant.style.color = 'red';
+                typemanquant.style.display = 'block';
+            } else {
+                typemanquant.style.display = 'none';
             }
+            if (desc.validity.valueMissing) {
+                res.preventDefault();
+                dmanquant.textContent = "Entrez la description";
+                dmanquant.style.color = 'red';
+                dmanquant.style.display = 'block';
+            } else {
+                dmanquant.style.display = 'none';
+            }
+            if (i == 0) {
+                res.preventDefault();
+                vmanquant.textContent = "Selectionnez au moins une case";
+                vmanquant.style.color = 'red';
+                vmanquant.style.display = 'block';
+            }
+            if (img.files.length < 1) {
+                res.preventDefault();
+                imanquant.textContent = "Selectionnez au moins une image";
+                imanquant.style.color = 'red';
+                imanquant.style.display = 'block';
+                img.preventDefault();
+            } else if (img.files.length > 5) {
+                res.preventDefault();
+                imanquant.textContent = "Selectionnez maximum 5 images";
+                imanquant.style.color = 'red';
+                imanquant.style.display = 'block';
+                img.preventDefault();
+            } else {
+                imanquant.style.display = 'none';
+            }
+        }
 
-        </script>
-    </body>
+        function filesNb() {
+            if (img.files.length > 4) {
+                alert("4 images Maximum");
+                img.preventDefault();
+            }
+        }
+
+    </script>
+</body>
+<footer class="footer" style="background-color:black;">
+    <div style="text-align :center; padding-top :1%;">
+      <a style="color:LightGrey;" href="mailto:victor.thevin@edu.ece.fr">Cliquer ici pour nous contacter !</a>
+      <div class="footer-copyright text-center py-3">&copy; 2020 Copyright : Alexandre GOMMEZ & Julien TERRIER & Victor THEVIN
+      </div>
+    </div>
+  </footer>
+</html>
