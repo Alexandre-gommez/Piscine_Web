@@ -21,12 +21,18 @@ $minutes = mysqli_fetch_assoc($req5);
 date_default_timezone_set("Europe/Paris"); //dire que le time() est en FRance
 
 if(time() > mktime(11,14,0,04,20,2020)){
-    echo 'testV';
+    echo '  ';
 }
+
+$req=mysqli_query($db_handle,"SELECT Personne FROM ListeEnchere WHERE Referance='1' ORDER BY Offre DESC");
+$test = mysqli_fetch_assoc($req);
+echo $test['Personne'];
+echo $test['Personne'];
 
 //La date limite est finie
 if(time() > mktime($heure['SUBSTRING(Fin, 10, 2)'],$minutes['SUBSTRING(Fin, 13, 2)'],0,$mois['SUBSTRING(Fin, 4, 2)'],$jour['SUBSTRING(Fin, 1, 2)'],2020)){
-    $req=mysqli_query($db_handle,"SELECT * FROM ListeEnchere WHERE Referance='1' ORDER BY Offre DESC"); 
+    $req=mysqli_query($db_handle,"SELECT * FROM ListeEnchere WHERE Referance='1' ORDER BY Offre DESC");
+    $test = mysqli_fetch_assoc($req);
 }
 
 ?>
