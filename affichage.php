@@ -3,7 +3,7 @@ include 'loginBDD.php';
 $cmpt=0;
 $categorie=isset($_POST["categorie"]) ? $_POST["categorie"]:"";
 $vente=isset($_POST["vente"]) ? $_POST["vente"]:"";
-include 'FrontAffichage.php';
+//include 'FrontAffichage.php';
 echo "<div class=\"container-fluid \">";
 echo "<div class=\"container\">" ;
 if ($categorie==1&&$vente==1){

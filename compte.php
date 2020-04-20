@@ -79,8 +79,8 @@
       echo "<div class=\"col\">";
       echo "<div class=\"cropping\">";
       echo "<div class=\"text-center\">";
-      echo"<img src=\"image1.jpeg\" style=\"height:120px\">";
-      echo"</div>";
+      echo "<img src=".$info['adresse2']." style=\"height:120px\">";
+      echo "</div>";
       echo "</div>";
       echo "</div>";
       echo "</div>";

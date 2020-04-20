@@ -67,7 +67,7 @@
 
 	<br>
 	<div class="container">
-		<form action="affichage.php" method="post">
+		<form action="" method="post">
 			<div class="form-row justify-content-center align-items-center">
 				<div class="form-group col-md-2">
 					<select class="custom-select" id="vente" name="vente" >
@@ -91,8 +91,12 @@
 				</div>
 			</div>
 		</form>
+		
 		<hr>
 	</div>
+	<?php 
+	include 'affichage.php';
+	?>
 	<script>
 		var elem1 = document.getElementById("nav1");
 		var elem2 = document.getElementById("nav2");

@@ -20,9 +20,19 @@ $date=isset($_POST["date"]) ? $_POST["date"]:"";
 $Role=isset($_POST["role"]) ? $_POST["role"]:"";
 $username=isset($_POST["username"]) ? $_POST["username"]:"";
 
+if(isset($_FILES['img']))
+{
+	$filename = $_FILES['images']['name'];
+	move_uploaded_file($_FILES['images']['tmp_name'], '../Piscine_Web/' . basename($_FILES['images']['name']));
+}
+else
+{
+	$filename="";
+}
+
 if($_SESSION['role']==1||$_SESSION['role']==2||$_SESSION['role']==3)
 {
-	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."' WHERE Id = '".$_SESSION['Id']."';");
+	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."',Image1='".$filename."' WHERE Id = '".$_SESSION['Id']."';");
 	mysqli_close($db_handle);
 	header("Location:compte.php");
 }
@@ -36,7 +46,7 @@ else
 	$idCB=$CB['MAX(id)'];
 
 	//creation de la personne 
-	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."');");
+	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username,Image1) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."','".$filename."');");
 
 	$tempp=mysqli_query($db_handle,"SELECT MAX(id) FROM Personne");
 	$Personne=mysqli_fetch_assoc($tempp);

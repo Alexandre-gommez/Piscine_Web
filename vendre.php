@@ -16,34 +16,36 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link href="css/landing-page.min.css" rel="stylesheet">
-    <script type="text/javascript" src="scripts.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.header').height($(window).height());
-        });
-    </script>
-    <style>
-        a{
-            text-decoration: none;
-            color:black;
-        }
-        a:link{
-            text-decoration: none!important;
-            color:black;
-        }
-        a:hover{
-            opacity:30%;
-        }
-        .cropping{
-            overflow:hidden;
-            width:auto;
-            height:300px;
-        }
-    </style>
+      document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link href="css/landing-page.min.css" rel="stylesheet">
+  <script type="text/javascript" src="scripts.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('.header').height($(window).height());
+    });
+</script>
+<style>
+    a{
+        text-decoration: none;
+        color:black;
+    }
+    a:link{
+        text-decoration: none!important;
+        color:black;
+    }
+    a:hover{
+        opacity:30%;
+    }
+    .cropping{
+        overflow:hidden;
+        width:auto;
+        height:300px;
+    }
+</style>
 </head>
 
 <body class="fade-in">
@@ -68,11 +70,10 @@ session_start();
 
     <br />
     <div class="container-fluid ">
-
         <div class="container">
             <button id="ajouter" type="button" class="btn btn-light btn-lg btn-block">+ Ajouter un article</button>
             <div id="form1">
-                <form class="needs-validation">
+                <form action="creationObjet.php" method="post" enctype='multipart/form-data'>
                     <div class="card text-center shadow p-3 mb-5" style="background-color: rgb(250, 250, 250);">
                         <h3 class="card-title">Ajouter un produit</h3>
                         <div class="card-body">
@@ -96,8 +97,8 @@ session_start();
                                 </div>
                                 <div class="form-group col-md-3 mx-auto">
                                     <div>
-                                        <label for="images">5 images maximum</label>
-                                        <input type="file" name="images" id="images" accept=".jpg,.jpeg,.png" multiple>
+                                        <label for="images">4 images maximum</label>
+                                        <input type="file" name="images[]" id="images" accept="image/.jpg,image/.jpeg,image/.png" multiple>
                                         <span id="image_manquant"></span>
                                     </div>
                                 </div>
@@ -119,15 +120,15 @@ session_start();
                             <div class="form-group">
                                 <div class="checkbox-group" required>
                                     <div class="form-check form-check-inline ml-5 mr-5">
-                                        <input type="checkbox" class="custom-control-input" id="Achat">
+                                        <input type="checkbox" class="custom-control-input" id="Achat" name="Achat">
                                         <label class="custom-control-label" for="Achat">Achat</label>
                                     </div>
                                     <div class="form-check form-check-inline mr-5">
-                                        <input type="checkbox" class="custom-control-input" id="Offre">
+                                        <input type="checkbox" class="custom-control-input" id="Offre" name="Offre">
                                         <label class="custom-control-label" for="Offre">Offre</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input type="checkbox" class="custom-control-input" id="Enchere">
+                                        <input type="checkbox" class="custom-control-input" id="Enchere" name="Enchere">
                                         <label class="custom-control-label" for="Enchere">Enchere</label>
                                     </div>
                                 </div>
@@ -169,99 +170,650 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+                            
                             <input onclick="location.href='vendre.php'" type="button" value="Retour" class="btn btn-secondary" id="retour"></input>
-                            <button type="submit" class="btn btn-primary" id="valid"> Valider </button>
+                            <input class="btn btn-primary" type="submit" name="Valider" id="valid" >
                         </div>
                     </div>
                 </form>
             </div>
             <hr>
-            <!--Articles-->
-            <br>
-            <div class="row">
-                <div class="col-sm-6 mb-5">
-                    <div class="card">
+            <?php
+            echo "<div class=\"container-fluid \">";
+            echo "<div class=\"container\">" ;
+            $db_handle = mysqli_connect('localhost', 'root', '');
 
-                        <a href="#" >
-                            <div class="cropping">
-                                <img src="image1.jpeg" class="card-img-top">
-                            </div>
-                            <div class="card-body" >
-                                <h5 class="card-title text-center">Nom objet</h5>
-                                <p style="color:black" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                            </div>
-                        </a>
-                        <div class="card-footer">
-                            <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            //test de connexion
+            if ($db_handle -> connect_errno){
+                echo "Echec connexion";
+                exit();
+            }
+            //on se place dans la base ECEY
+            $db_found=mysqli_select_db($db_handle,'ecey');
+            //test de placement
+            if(!$db_found){
+                echo "Problemes";
+            }             
+            $cmpt=0;
+            $Listeobj=mysqli_query($db_handle,"SELECT * FROM Objet WHERE Vendeur='".$_SESSION['Id']."'");
+            while($tab_objet=mysqli_fetch_assoc($Listeobj))
+            {
+                if($cmpt%2==0)
+                {
+                    echo '<div class="row">';
+                }
+                $test7=mysqli_query($db_handle,"SELECT * FROM Enchere WHERE Objet='".$tab_objet['Id']."';");
+                if(mysqli_num_rows($test7)!=0){
+                    $type=2;
+                    $id_enchere=mysqli_fetch_assoc($test7);
+                    $prix=$id_enchere['Prix'];
+                    $date=$id_enchere['Fin'];
+                    $test71=mysqli_query($db_handle,"SELECT * FROM ListeEnchere WHERE Referance='".$id_enchere['Id']."';");
 
-                <div class="col-sm-6">
-                    <div class="card">
-                        <a href="#" >
-                            <div class="cropping">
-                                <img src="image2.jpeg" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Nom objet</h5>
-                                <p style="color:black" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                            </div>
-                        </a>
-                        <div class="card-footer">
-                            <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 mb-5">
-                    <div class="card">
+                    echo '<div class="col-sm-6 mb-5">';
+                    echo "\n";
+                    echo '<div class="card">';
+                    echo "\n";
+                    echo "<a data-toggle=\"modal\" href=\"#myModal".$cmpt."\">";
+                    echo "<div class=\"cropping\">";
+                    echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+                    echo "</div>";
+                    echo "\n";
+                    echo '<div class="card-body">';
+                    echo "\n";
+                    echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
+                    echo "\n";
+                    echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</a>';
+                    echo "\n";
+                    echo '<div class="card-footer">';
+                    echo "\n";
+                    if($type==1){
+                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'$</span>';
+                    }else if($type==2){
+                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'$</span>';
+                    }else if($type==3){
+                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'$</span>';
+                    }
+                    echo "\n";
+                    echo '<a href="DeletObjet.php?ID='.$tab_objet['Id'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    $cmpt2=0;
+                    echo '<div class="portfolio-modal modal fade" id="myModal'.$cmpt.'" tabindex="-1" role="dialog" aria-hidden="true">';
+                    echo '<div class="modal-dialog modal-xl">';
+                    echo '<div class="modal-content">';
+                    echo '<div class="close-modal" data-dismiss="modal">';
+                    echo '<div class="lr">';
+                    echo '<div class="rl"></div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="container">';
+                    echo '<div class="row">';
+                    echo '<div class="col-lg-8 mx-auto">';
+                    echo '<div class="modal-body">';
+                    echo '<!-- Détail du modal-->';
+                    echo '<h2 class="text-uppercase">'.$tab_objet['Nom'].'</h2>';
+                    echo '<div id="demo" class="carousel slide" data-ride="carousel">';
+                    echo '<ul class="carousel-indicators">';
+                    if($tab_objet['Image2']==0){
+                        $cmpt2=1;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                    }
+                    else if($tab_objet['Image3']==0){
+                        $cmpt2=2;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                    }
+                    else if($tab_objet['Image4']==0){
+                        $cmpt2=3;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                    }
+                    else if($tab_objet['Image5']==0){
+                        $cmpt2=4;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                        echo '<li data-target="#demo" data-slide-to="3"></li>';
+                    }
+                    else if($tab_objet['Image5']!=0){
+                        $cmpt2=5;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                        echo '<li data-target="#demo" data-slide-to="3"></li>';
+                        echo '<li data-target="#demo" data-slide-to="4"></li>';
+                    }
+                    echo '</ul>';
+                    echo '<div class="carousel-inner">';
+                    if($cmpt2==1){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==2){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==3){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==4){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==5){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image5'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                    echo '<a class="carousel-control-prev" href="#demo" data-slide="prev">';
+                    echo '<span class="carousel-control-prev-icon"></span>';
+                    echo '</a>';
+                    echo '<a class="carousel-control-next" href="#demo" data-slide="next">';
+                    echo '<span class="carousel-control-next-icon"></span>';
+                    echo '</a>';
+                    echo '</div>';
+                    echo '<br />';
+                    echo '<p>'.$tab_objet['Description'].'</p>';
+                    if($type==1){
+                        echo '<p>Prix de vente direct </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                    }else if($type==2){
+                        echo '<p>Prix de vente de depart </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                    }else if($type==3){
+                        echo '<p>Prix de vente de depart </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Date de fin '.$date.'</p>';
+                    }
+                    echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    if($cmpt%2==1)
+                    {
+                        echo '</div>';
+                    }
+                    $cmpt++;
+                }
+                $test1=mysqli_query($db_handle,"SELECT * FROM Achat WHERE Objet='".$tab_objet['Id']."';");
+                if(mysqli_num_rows($test1)!=0){
+                    $type=1;
+                    $temp_prix=mysqli_fetch_assoc($test1);
+                    $prix=$temp_prix['Prix'];
+                    echo '<div class="col-sm-6 mb-5">';
+                    echo "\n";
+                    echo '<div class="card">';
+                    echo "\n";
+                    echo "<a data-toggle=\"modal\" href=\"#myModal".$cmpt."\">";
+                    echo "<div class=\"cropping\">";
+                    echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+                    echo "</div>";
+                    echo "\n";
+                    echo '<div class="card-body">';
+                    echo "\n";
+                    echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
+                    echo "\n";
+                    echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</a>';
+                    echo "\n";
+                    echo '<div class="card-footer">';
+                    echo "\n";
+                    if($type==1){
+                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'$</span>';
+                    }else if($type==2){
+                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'$</span>';
+                    }else if($type==3){
+                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'$</span>';
+                    }
+                    echo "\n";
+                    echo '<a href="DeletObjet.php?ID='.$tab_objet['Id'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    $cmpt2=0;
+                    echo '<div class="portfolio-modal modal fade" id="myModal'.$cmpt.'" tabindex="-1" role="dialog" aria-hidden="true">';
+                    echo '<div class="modal-dialog modal-xl">';
+                    echo '<div class="modal-content">';
+                    echo '<div class="close-modal" data-dismiss="modal">';
+                    echo '<div class="lr">';
+                    echo '<div class="rl"></div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="container">';
+                    echo '<div class="row">';
+                    echo '<div class="col-lg-8 mx-auto">';
+                    echo '<div class="modal-body">';
+                    echo '<!-- Détail du modal-->';
+                    echo '<h2 class="text-uppercase">'.$tab_objet['Nom'].'</h2>';
+                    echo '<div id="demo" class="carousel slide" data-ride="carousel">';
+                    echo '<ul class="carousel-indicators">';
+                    if($tab_objet['Image2']==0){
+                        $cmpt2=1;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                    }
+                    else if($tab_objet['Image3']==0){
+                        $cmpt2=2;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                    }
+                    else if($tab_objet['Image4']==0){
+                        $cmpt2=3;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                    }
+                    else if($tab_objet['Image5']==0){
+                        $cmpt2=4;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                        echo '<li data-target="#demo" data-slide-to="3"></li>';
+                    }
+                    else if($tab_objet['Image5']!=0){
+                        $cmpt2=5;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                        echo '<li data-target="#demo" data-slide-to="3"></li>';
+                        echo '<li data-target="#demo" data-slide-to="4"></li>';
+                    }
+                    echo '</ul>';
+                    echo '<div class="carousel-inner">';
+                    if($cmpt2==1){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==2){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==3){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==4){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==5){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image5'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                    echo '<a class="carousel-control-prev" href="#demo" data-slide="prev">';
+                    echo '<span class="carousel-control-prev-icon"></span>';
+                    echo '</a>';
+                    echo '<a class="carousel-control-next" href="#demo" data-slide="next">';
+                    echo '<span class="carousel-control-next-icon"></span>';
+                    echo '</a>';
+                    echo '</div>';
+                    echo '<br />';
+                    echo '<p>'.$tab_objet['Description'].'</p>';
+                    if($type==1){
+                        echo '<p>Prix de vente direct </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                    }else if($type==2){
+                        echo '<p>Prix de vente de depart </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                    }else if($type==3){
+                        echo '<p>Prix de vente de depart </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<p class="font-weight-bold">Date de fin '.$date.'</p>';
+                    }
+                    echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    if($cmpt%2==1)
+                    {
+                        echo '</div>';
+                    }
+                    $cmpt++;
+                }
+                $test4=mysqli_query($db_handle,"SELECT * FROM Offre WHERE Objet='".$tab_objet['Id']."';");
+                if(mysqli_num_rows($test4)!=0){
+                    $type=3;
+                    $id_offre=mysqli_fetch_assoc($test4);
+                    $prix=$id_offre['Prix'];
+                    $test41=mysqli_query($db_handle,"SELECT * FROM ListeOffres WHERE Referance='".$id_offre['Id']."';");
+                    echo '<div class="col-sm-6 mb-5">';
+                    echo "\n";
+                    echo '<div class="card">';
+                    echo "\n";
+                    echo "<a data-toggle=\"modal\" href=\"#myModal".$cmpt."\">";
+                    echo "<div class=\"cropping\">";
+                    echo '<img src="'.$tab_objet['Image1'].'" class="card-img-top">';
+                    echo "</div>";
+                    echo "\n";
+                    echo '<div class="card-body">';
+                    echo "\n";
+                    echo '<h5 class="card-title text-center">'.$tab_objet['Nom'].'</h5>';
+                    echo "\n";
+                    echo '<p class="card-text">'.$tab_objet['Description'].'</p>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</a>';
+                    echo "\n";
+                    echo '<div class="card-footer">';
+                    echo "\n";
+                    if($type==1){
+                        echo '<span class="font-weight-bold">Achat -> Prix : '.$prix.'$</span>';
+                    }else if($type==2){
+                        echo '<span class="font-weight-bold">Enchere -> Prix : '.$prix.'$</span>';
+                    }else if($type==3){
+                        echo '<span class="font-weight-bold">A Negocier -> Prix : '.$prix.'$</span>';
+                    }
+                    echo "\n";
+                    echo '<a href="DeletObjet.php?ID='.$tab_objet['Id'].'"><img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt=""></a>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    echo '</div>';
+                    echo "\n";
+                    $cmpt2=0;
+                    echo '<div class="portfolio-modal modal fade" id="myModal'.$cmpt.'" tabindex="-1" role="dialog" aria-hidden="true">';
+                    echo '<div class="modal-dialog modal-xl">';
+                    echo '<div class="modal-content">';
+                    echo '<div class="close-modal" data-dismiss="modal">';
+                    echo '<div class="lr">';
+                    echo '<div class="rl"></div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="container">';
+                    echo '<div class="row">';
+                    echo '<div class="col-lg-8 mx-auto">';
+                    echo '<div class="modal-body">';
+                    echo '<!-- Détail du modal-->';
+                    echo '<h2 class="text-uppercase">'.$tab_objet['Nom'].'</h2>';
+                    echo '<div id="demo" class="carousel slide" data-ride="carousel">';
+                    echo '<ul class="carousel-indicators">';
+                    if($tab_objet['Image2']==0){
+                        $cmpt2=1;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                    }
+                    else if($tab_objet['Image3']==0){
+                        $cmpt2=2;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                    }
+                    else if($tab_objet['Image4']==0){
+                        $cmpt2=3;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                    }
+                    else if($tab_objet['Image5']==0){
+                        $cmpt2=4;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                        echo '<li data-target="#demo" data-slide-to="3"></li>';
+                    }
+                    else if($tab_objet['Image5']!=0){
+                        $cmpt2=5;
+                        echo '<li data-target="#demo" data-slide-to="0" class="active"></li> ';
+                        echo '<li data-target="#demo" data-slide-to="1"></li>';
+                        echo '<li data-target="#demo" data-slide-to="2"></li>';
+                        echo '<li data-target="#demo" data-slide-to="3"></li>';
+                        echo '<li data-target="#demo" data-slide-to="4"></li>';
+                    }
+                    echo '</ul>';
+                    echo '<div class="carousel-inner">';
+                    if($cmpt2==1){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==2){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==3){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==4){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    else if($cmpt2==5){
+                        echo '<div class="carousel-item active">';
+                        echo '<img src="'.$tab_objet['Image1'].'" alt="image1" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image2'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image3'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image4'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                        echo '<div class="carousel-item">';
+                        echo '<img src="'.$tab_objet['Image5'].'" alt="image2" width="1100" height="500">';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                    echo '<a class="carousel-control-prev" href="#demo" data-slide="prev">';
+                    echo '<span class="carousel-control-prev-icon"></span>';
+                    echo '</a>';
+                    echo '<a class="carousel-control-next" href="#demo" data-slide="next">';
+                    echo '<span class="carousel-control-next-icon"></span>';
+                    echo '</a>';
+                    echo '</div>';
+                    echo '<br />';
+                    echo '<p>'.$tab_objet['Description'].'</p>';
+                    if($type==1){
+                        echo '<p>Prix de vente direct </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                    }else if($type==2){
+                        echo '<p>Prix de vente de depart </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                        echo '<table class="table table-dark">';
+                        echo '<thead>';
+                        echo '<tr>';
+                        echo '<th scope="col">Offre</th>';
+                        echo '<th scope="col">1</th>';
+                        echo '<th scope="col">2</th>';
+                        echo '<th scope="col">3</th>';
+                        echo '<th scope="col">4</th>';
+                        echo '<th scope="col">5</th>';
+                        echo '<th scope="col">proposition</th>';
+                        echo '<th scope="col">Valider</th>';
+                        echo '</tr>';
+                        echo '</thead>';
+                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffre WHERE Referance='".$tab_objet['Id']."'");
+                        $taille=mysqli_num_rows($listeoffre);
+                        $ligne=mysqli_fetch_assoc($listeoffre);
+                        for($i=0;$i<$taille;$i++)
+                        {
+                            echo '<tbody>';
+                            echo '<tr>';
+                            echo '<td>Offre'.$i.'</td>';
+                            echo '<td>'.$ligne[$i]['Offre1'].'</td>';
+                            echo '<td>'.$ligne[$i]['Offre2'].'</td>';
+                            echo '<td>'.$ligne[$i]['Offre3'].'</td>';
+                            echo '<td>'.$ligne[$i]['Offre4'].'</td>';
+                            echo '<td>'.$ligne[$i]['Offre5'].'</td>';
+                            if ($ligne[$i]['Offre2']=='0'||$ligne[$i]['Offre4']=='0'||$ligne[$i]['Offre5']!='0')
+                            {
+                                echo '<form>';
+                                echo '<div class="form-row">';
+                                echo '<div class="form-group col-md-6">';
+                                echo '<input type="text" class="form-control" id="number"'.$i.' name="number"'.$i.'>';
+                                echo '<span class="text_manquant"></span>';
+                                echo '</div>';
+                                echo '<div class="form-group col-md-6">';
+                                echo '<input onclick="location.href=\'offre.php\'?key='.$liste[$i]['Id'].'&i='.$i.'" type="button" value="Retour" class="btn btn-secondary" id="btn"'.$i.'></input>';
+                            //
+                            //echo '<input type="submit" value="Valider" class="btn btn-secondary" id="btn"'$i'  name="btn"'$i'>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</form>';
+                            }
+                            echo '</tr>';
+                            echo '</tr>';
+                            echo '</tbody>';
+                        } 
+                        echo '</table>';
+                    }else if($type==3){
+                        echo '<p>Prix de vente de depart </p>';
+                        echo '<hr />';
+                        echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
+                    }
+                    echo '<button class="btn btn-primary" data-dismiss="modal" type="button">Fermer</button>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    if($cmpt%2==1)
+                    {
+                        echo '</div>';
+                    }
+                    $cmpt++;
+                }
 
-                        <a href="#" >
-                            <div class="cropping">
-                                <img src="image3.jpeg" class="card-img-top">
-                            </div>
-                            <div class="card-body" >
-                                <h5 class="card-title text-center">Nom objet</h5>
-                                <p style="color:black" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                            </div>
-                        </a>
-                        <div class="card-footer">
-                            <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="card">
-                        <a href="#" >
-                            <div class="cropping">
-                                <img src="image4.jpeg" class="card-img-top">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Nom objet</h5>
-                                <p style="color:black" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                            </div>
-                        </a>
-                        <div class="card-footer">
-                            <span class="font-weight-bold">Prix</span>
-                            <a href="#" >
-                                <img class="float-right"style="width : 45px; height :24px;" id="logo" src="backspace-solid.svg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>           
+            }
+            if($cmpt%2==0)
+            {
+                echo '</div>';
+            }
+            echo "</div>";
+            echo "</div>";
+            ?>
+            <br>   
             <br />
         </div>
     </div>
@@ -297,6 +849,28 @@ session_start();
         var plmanquant = document.getElementById("pl_manquant");
         var img = document.getElementById("images");
         var imanquant = document.getElementById("image_manquant");
+
+        var btn = [];
+        var text = [];
+        var tmanquant = [];
+
+        for( int i = 0 ; i < la taille ; i++)
+        {
+            btn[i]= document.getElementById("btn"+i);
+            text[i]= document.getElementById("number"+i);
+            btn[i].onclick(function(){
+                if(number[i].validity.valueMissing)
+                {
+
+                    tmanquant.textContent = "Entrez un prix";
+                    tmanquant.style.color = 'red';
+                    tmanquant.style.display = 'block';
+                }
+                else{
+
+                }
+            });
+        }
 
         form.style.display = 'none';
 
@@ -452,8 +1026,8 @@ session_start();
         }
 
         function filesNb() {
-            if (img.files.length > 5) {
-                alert("5 images Maximum");
+            if (img.files.length > 4) {
+                alert("4 images Maximum");
                 img.preventDefault();
             }
         }

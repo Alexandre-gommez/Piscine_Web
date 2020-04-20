@@ -67,7 +67,7 @@ session_start();
                 <div class="form-group col-md-1">
                   <label for="profil">Photo</label>
                   <input type="file"
-                  id="profil" name="profil"
+                  id="img" name="img"
                   accept="image/png, image/jpg, image/jpeg">
                 </div>
               </div>
