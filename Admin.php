@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="affichage.php">Produits</a></li>
+        <li class="nav-item"><a class="nav-link" href="FrontAffichage.php">Produits</a></li>
         <li class="nav-item"><a class="nav-link" href="compte.php">Mon compte</a></li>
         <li class="nav-item"><a class="nav-link" href="Admin.php">Admin</a></li>
         <li class="nav-item"><a class="nav-link" href="deconnexion.php">Deconnexion</a></li>

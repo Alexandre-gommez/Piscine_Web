@@ -37,7 +37,7 @@ session_start();
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" id="nav1" href="#">Accueil</a></li>
         <li class="nav-item"><a class="nav-link" id="nav2" href="vendre.php">Vendre</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav3" href="affichage.php">Acheter</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav3" href="FrontAffichage.php">Acheter</a></li>
         <li class="nav-item"><a class="nav-link" id="nav4" href="Frontlogin.php">Mon Compte</a></li>
         <li class="nav-item"><a class="nav-link" id="nav5" href="Admin.php">Admin</a></li>
         <li class="nav-item"><a class="nav-link" id="nav6" href="panier.php">Panier</a></li>

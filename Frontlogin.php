@@ -24,7 +24,7 @@ session_start();
       <div class="collapse navbar-collapse" id="main-navigation">
           <ul class="navbar-nav">
               <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
-              <li class="nav-item"><a class="nav-link" href="affichage.php">Acheter</a></li>
+              <li class="nav-item"><a class="nav-link" href="FrontAffichage.php">Acheter</a></li>
               <li class="nav-item"><a class="nav-link" href="#page-footer">Profil</a></li>
           </ul>
       </div>
