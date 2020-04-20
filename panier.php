@@ -642,6 +642,15 @@ session_start();
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
+                        if($cmpt%2==1)
+                        {
+                            echo '</div>';
+                        }
+                        $cmpt++;
+                    }
+
+                }
+            }
             if($cmpt%2==0)
             {
                 echo '</div>';

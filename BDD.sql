@@ -82,7 +82,7 @@ INSERT INTO Musee(Objet) VALUES ("5");
 INSERT INTO Achat(Objet,Prix) VALUES ("5","250");
 --Vendeur 2
 INSERT INTO	CB(Solde,Nom_Carte,Num,Crypto,Type,Date_Expiration) VALUES ("999999","McDonald","5","5","5","06/21");
-INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("McDonald","Picsou","picsou.mc@edu.ece.fr","0607080910","$","Coffre blinblé","Donaldville","00000","Disneyland","5","Picpic","picsou.jpg","dollars.jpg");
+INSERT INTO Personne(Nom,Prenom,Mail,NumTel,Mdp,adresse1,ville,CodePostal,Pays,Carte,username,Image1,Image2) VALUES ("McDonald","Picsou","picsou.mc@edu.ece.fr","0607080910","$","Coffre blindlé","Donaldville","00000","Disneyland","5","Picpic","picsou.jpg","dollars.jpg");
 INSERT INTO Vendeur(Personne) VALUES ("6");
 INSERT INTO Histovendeur(Personne) VALUES ("6");
 --Objet6

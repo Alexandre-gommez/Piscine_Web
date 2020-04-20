@@ -673,7 +673,7 @@ session_start();
                         echo '<p>Prix de vente direct </p>';
                         echo '<hr />';
                         echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
-                    }else if($type==2){
+                    }else if($type==3){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
                         echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
@@ -690,7 +690,7 @@ session_start();
                         echo '<th scope="col">Valider</th>';
                         echo '</tr>';
                         echo '</thead>';
-                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffre WHERE Referance='".$tab_objet['Id']."'");
+                        $listeoffre=mysqli_query($db_handle,"SELECT * FROM ListeOffres WHERE Referance='".$tab_objet['Id']."' AND Referance='".$tab_objet['Id']."';");
                         $taille=mysqli_num_rows($listeoffre);
                         $ligne=mysqli_fetch_assoc($listeoffre);
                         for($i=0;$i<$taille;$i++)
@@ -724,7 +724,7 @@ session_start();
                             echo '</tbody>';
                         } 
                         echo '</table>';
-                    }else if($type==3){
+                    }else if($type==2){
                         echo '<p>Prix de vente de depart </p>';
                         echo '<hr />';
                         echo '<p class="font-weight-bold">Prix de base'.$prix.'</p>';
