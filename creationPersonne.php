@@ -22,17 +22,29 @@ $username=isset($_POST["username"]) ? $_POST["username"]:"";
 
 if(isset($_FILES['img']))
 {
-	$filename = $_FILES['images']['name'];
-	move_uploaded_file($_FILES['images']['tmp_name'], '../Piscine_Web/' . basename($_FILES['images']['name']));
+	$filename1 = $_FILES['img']['name'];
+	move_uploaded_file($_FILES['img']['tmp_name'], '../Piscine_Web/' . basename($_FILES['img']['name']));
+	echo "test";
 }
 else
 {
-	$filename="";
+	$filename1=0;
+}
+
+if(isset($_FILES['Test']))
+{
+	$filename2 = $_FILES['Test']['name'];
+	move_uploaded_file($_FILES['Test']['tmp_name'], '../Piscine_Web/' . basename($_FILES['Test']['name']));
+		echo "test1";
+}
+else
+{
+	$filename2="carreblanc.jpg";
 }
 
 if($_SESSION['role']==1||$_SESSION['role']==2||$_SESSION['role']==3)
 {
-	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."',Image1='".$filename."' WHERE Id = '".$_SESSION['Id']."';");
+	mysqli_query($db_handle,"UPDATE Personne SET nom = '".$nom."',Prenom ='".$prenom."',Mail='".$mail."',NumTel='".$Ntel."',Mdp='".$mdp."',adresse1='".$adresse1."',adresse2='".$adresse2."',ville='".$ville."',CodePostal='".$codePostal."',Pays='".$Pays."',username='".$username."',Image1='".$filename1."',Image2='".$filename2."' WHERE Id = '".$_SESSION['Id']."';");
 	mysqli_close($db_handle);
 	header("Location:compte.php");
 }
@@ -46,7 +58,7 @@ else
 	$idCB=$CB['MAX(id)'];
 
 	//creation de la personne 
-	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username,Image1) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."','".$filename."');");
+	mysqli_query($db_handle,"INSERT INTO Personne(Nom, Prenom, Mail, NumTel, Mdp, adresse1, adresse2, ville, CodePostal, Pays, Carte, username,'avatar.jpg',Image2) VALUES('".$nom."','".$prenom."','".$mail."','".$Ntel."','".$mdp."','".$adresse1."','".$adresse2."','".$ville."','".$codePostal."','".$Pays."','".$idCB."','".$username."','avatar.jpg','".$filename2."');");
 
 	$tempp=mysqli_query($db_handle,"SELECT MAX(id) FROM Personne");
 	$Personne=mysqli_fetch_assoc($tempp);

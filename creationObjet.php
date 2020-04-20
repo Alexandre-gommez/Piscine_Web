@@ -4,13 +4,12 @@
 include 'loginBDD.php';
 //recuperation des données 
 $nom=isset($_POST["nom"]) ? $_POST["nom"]:"";
-$description=isset($_POST["description"]) ? $_POST["description"]:"";
+$description=isset($_POST["desciption"]) ? $_POST["desciption"]:"";
 $type=isset($_POST["type"]) ? $_POST["type"]:"";
 $video=isset($_FILES["video"]) ? $_FILES["video"]:"0";
 $_SESSION['Id'];
 
 $countfiles = count($_FILES['images']['name']);
-echo $countfiles;
 if(isset($_FILES['images']))
 {
 	// Looping all files
@@ -22,7 +21,7 @@ if(isset($_FILES['images']))
 	}
 }
 
-if(isset($_FILES['video']))
+if(isset($_FILES['video'])&&$_FILES['video']['error'] == 0)
 {
 	$filename = $_FILES['video']['name'];
 	move_uploaded_file($_FILES['video']['tmp_name'], '../Piscine_Web/' . basename($_FILES['video']['name']));
@@ -44,7 +43,7 @@ if($countfiles==1){
 }
 
 	//creation de l'objet 
-mysqli_query($db_handle,"INSERT INTO Objet(Nom, Description, Image1, Image2, Image4, Video, Vendeur) VALUES('".$nom."','".$description."','".$adresse[1]."','".$adresse[2]."','".$adresse[3]."','".$adresse[4]."','".$filename."','".$_SESSION['Id']."');");
+mysqli_query($db_handle,"INSERT INTO Objet(Nom, Description, Image1, Image2, Image3, Image4, Video, Vendeur) VALUES('".$nom."','".$description."','".$adresse[1]."','".$adresse[2]."','".$adresse[3]."','".$adresse[4]."','".$filename."','".$_SESSION['Id']."');");
 
 $temp=mysqli_query($db_handle,"SELECT MAX(id) FROM Objet");
 $Objet=mysqli_fetch_assoc($temp);
@@ -76,5 +75,5 @@ if(isset($_POST["Enchere"]))
 }
 
 mysqli_close($db_handle);
-header("Location:vendre.php");
+//header("Location:vendre.php");
 ?>
