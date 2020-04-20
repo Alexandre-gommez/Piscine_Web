@@ -1,7 +1,7 @@
 <?php
 session_start();
 //connexionau a la bdd
-$db_handle = mysqli_connect('localhost', 'root', '');
+$db_handle = mysqli_connect('localhost', 'root', 'root');
 
 //test de connexion
 if ($db_handle -> connect_errno){
@@ -12,6 +12,6 @@ if ($db_handle -> connect_errno){
 $db_found=mysqli_select_db($db_handle,'ecey');
 //test de placement
 if(!$db_found){
-	echo "Problemes";
+	echo "Problemes de BDD";
 }
 ?>
